@@ -29,15 +29,7 @@ const config: Config = {
     locales: ['en'],
   },
 
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      ({
-        hashed: true,
-        language: ['en', 'es']
-      }),
-    ],
-  ],
+  themes: [],
 
   presets: [
     [
@@ -85,15 +77,24 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          href: '#publications',
+          label: 'Publications',
           position: 'left',
-          label: 'Docs',
         },
         {
-          href: 'https://github.com/LuchoBazz/about-me',
-          label: 'GitHub',
-          position: 'right',
+          href: '#experience',
+          label: 'Experience',
+          position: 'left',
+        },
+        {
+          href: '#projects',
+          label: 'Projects',
+          position: 'left',
+        },
+        {
+          href: '#tools',
+          label: 'Tools',
+          position: 'left',
         },
       ],
     },

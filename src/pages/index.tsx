@@ -475,7 +475,7 @@ function HomePage() {
         </section>
 
         {/* Experience Timeline */}
-        <section id="experiencia" className={`py-20 ${isDark ? 'bg-slate-800/30' : 'bg-slate-100/50'}`}>
+        <section id="experience" className={`py-20 ${isDark ? 'bg-slate-800/30' : 'bg-slate-100/50'}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
               <Globe className="text-indigo-500" />
@@ -498,7 +498,7 @@ function HomePage() {
         </section>
 
         {/* Projects/Papers */}
-        <section id="proyectos" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="projects" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
             <Code2 className="text-indigo-500" />
             Featured Projects
