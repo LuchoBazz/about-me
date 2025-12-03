@@ -11,12 +11,12 @@ const config: Config = {
   url: 'https://luchobazz.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docusaurus-personal-starter-kit',
+  baseUrl: '/about-me',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'LuchoBazz', // Usually your GitHub org/user name.
-  projectName: 'docusaurus-personal-starter-kit', // Usually your repo name.
+  projectName: 'about-me', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -91,7 +91,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/LuchoBazz/docusaurus-personal-starter-kit',
+          href: 'https://github.com/LuchoBazz/about-me',
           label: 'GitHub',
           position: 'right',
         },
