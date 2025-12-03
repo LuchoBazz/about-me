@@ -13,7 +13,11 @@ import {
   ArrowRight,
   GraduationCap,
   Code2,
-  Download
+  Download,
+  Wrench,
+  Brain,
+  Library,
+  Globe
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -85,6 +89,29 @@ function HomePage() {
     }
   ];
 
+
+  const experience = [
+    {
+      role: "Investigador Senior",
+      company: "Instituto de Tecnología Avanzada",
+      period: "2020 - Presente",
+      desc: "Liderando el equipo de investigación en arquitecturas de nube. Publicación de 3 papers en conferencias Tier-1."
+    },
+    {
+      role: "Ingeniero de Software (Backend)",
+      company: "TechGlobal Systems",
+      period: "2017 - 2020",
+      desc: "Diseño de microservicios de alta concurrencia. Optimización de bases de datos reduciendo costos operativos en un 25%."
+    },
+    {
+      role: "Asistente de Cátedra",
+      company: "Universidad Nacional",
+      period: "2015 - 2017",
+      desc: "Impartiendo cursos de Estructuras de Datos y Teoría de la Computación."
+    }
+  ];
+
+
   const publications = [
     {
       year: 2025,
@@ -107,6 +134,59 @@ function HomePage() {
     //   type: "Conference Paper",
     //   link: "#"
     // }
+  ];
+
+
+  const projects = [
+    {
+      title: "Protocolo Hydra-X",
+      type: "Investigación / Open Source",
+      desc: "Un nuevo protocolo de consenso para redes asíncronas que reduce la latencia en un 40% comparado con Paxos estándar.",
+      tags: ["C++", "Distributed Systems", "Consensus"],
+      link: "#"
+    },
+    {
+      title: "NeuroGraph",
+      type: "Aplicación / AI",
+      desc: "Biblioteca de Python para la visualización e interpretación de redes neuronales profundas en tiempo real.",
+      tags: ["Python", "TensorFlow", "WebGL"],
+      link: "#"
+    },
+    {
+      title: "SecureLedger",
+      type: "Seguridad / Blockchain",
+      desc: "Arquitectura de libro mayor inmutable con pruebas de conocimiento cero (Zero-Knowledge Proofs) para auditoría financiera.",
+      tags: ["Rust", "Cryptography", "ZK-Snarks"],
+      link: "#"
+    }
+  ];
+
+
+  const internalTools = [
+    {
+      title: "Cpp Algorithm Snippets",
+      desc: "Repositorio optimizado de estructuras de datos y algoritmos.",
+      icon: <Library size={32} />,
+      link: "https://luchobazz.github.io/cpp-algorithm-snippets/docs/intro/",
+      color: "bg-orange-500",
+      textColor: "text-orange-500"
+    },
+    {
+      title: "Personal Toolkit",
+      desc: "Colección de utilidades y scripts para automatización.",
+      icon: <Wrench size={32} />,
+      link: "https://luchobazz.github.io/personal-toolkit/docs/intro/",
+      color: "bg-slate-600",
+      textColor: "text-slate-600 dark:text-slate-400"
+    },
+    {
+      title: "AI Handbook",
+      desc: "Guía de referencia rápida para conceptos modernos de ML.",
+      icon: <Brain size={32} />,
+      link: "https://luchobazz.github.io/ai-handbook/docs/intro/",
+      color: "bg-indigo-500",
+      textColor: "text-indigo-500"
+    }
   ];
 
   return (
@@ -252,7 +332,7 @@ function HomePage() {
         </header>
 
         {/* --- RESEARCH AREAS --- */}
-        <section id="research" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+        {/* <section id="research" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
               <div>
@@ -293,7 +373,7 @@ function HomePage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* --- LATEST PUBLICATIONS --- */}
         <section id="publications" className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -334,6 +414,101 @@ function HomePage() {
             <button className="px-8 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
               View DBLP / Google Scholar
             </button>
+          </div>
+        </section>
+
+        {/* Experience Timeline */}
+        <section id="experiencia" className={`py-20 ${isDark ? 'bg-slate-800/30' : 'bg-slate-100/50'}`}>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
+              <Globe className="text-indigo-500" />
+              Trayectoria Profesional
+            </h2>
+            <div className="space-y-8">
+              {experience.map((exp, index) => (
+                <div key={index} className="relative pl-8 border-l-2 border-indigo-500/30">
+                  <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 ${isDark ? 'bg-slate-900 border-indigo-500' : 'bg-white border-indigo-500'}`}></div>
+                  <div className="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <h3 className="text-lg font-bold">{exp.role}</h3>
+                    <span className={`text-sm font-mono ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>{exp.period}</span>
+                  </div>
+                  <div className={`mb-2 font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{exp.company}</div>
+                  <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{exp.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects/Papers */}
+        <section id="proyectos" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
+            <Code2 className="text-indigo-500" />
+            Proyectos Destacados
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div key={index} className={`flex flex-col h-full rounded-xl overflow-hidden border transition-all ${isDark ? 'bg-slate-900 border-slate-700 hover:border-indigo-500/50' : 'bg-white border-slate-200 hover:border-indigo-300'}`}>
+                <div className="p-6 flex-1">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className={`text-xs font-mono px-2 py-1 rounded ${isDark ? 'bg-slate-800 text-indigo-300' : 'bg-indigo-50 text-indigo-700'}`}>
+                      {project.type}
+                    </span>
+                    <ExternalLink size={18} className="text-slate-400 hover:text-indigo-500 cursor-pointer" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                  <p className={`text-sm mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    {project.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {project.tags.map((tag, i) => (
+                      <span key={i} className={`text-xs font-mono px-2 py-1 rounded-md border ${isDark ? 'border-slate-700 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="tools" className="py-12 bg-slate-50 dark:bg-slate-950/50 border-y border-slate-200 dark:border-slate-800">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center md:text-left">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 justify-center md:justify-start">
+                <Terminal size={24} className="text-slate-500" />
+                Internal Tools
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 max-w-2xl">
+                Recursos y documentación técnica mantenida para uso interno y comunitario.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {internalTools.map((tool, index) => (
+                <a
+                  key={index}
+                  href={tool.link}
+                  className="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div className={`p-3 rounded-lg ${tool.color} bg-opacity-10 dark:bg-opacity-20`}>
+                      <div className={tool.textColor}>
+                        {tool.icon}
+                      </div>
+                    </div>
+                    <ExternalLink size={16} className="text-slate-400 group-hover:text-indigo-500 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {tool.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    {tool.desc}
+                  </p>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
