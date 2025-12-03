@@ -86,34 +86,39 @@ function HomePage() {
 
   const publications = [
     {
-      year: 2024,
-      title: "Optimizing Attention Mechanisms for Low-Resource Edge Devices",
-      journal: "NeurIPS 2024",
-      type: "Conference Paper",
-      link: "#"
+      year: 2025,
+      title: "Quick Test CLI: A Cross-Platform for Automated Testing in Competitive Programming",
+      journal: "Github",
+      type: "pre-print",
+      link: "https://doi.org/10.5281/zenodo.17803503"
     },
-    {
-      year: 2023,
-      title: "Byzantine Fault Tolerance in Asynchronous Networks: A New Paradigm",
-      journal: "ACM SIGCOMM",
-      type: "Journal Article",
-      link: "#"
-    },
-    {
-      year: 2023,
-      title: "Zero-Knowledge Proofs for Scalable Blockchain Privacy",
-      journal: "IEEE S&P (Oakland)",
-      type: "Conference Paper",
-      link: "#"
-    }
+    // {
+    //   year: 2023,
+    //   title: "Byzantine Fault Tolerance in Asynchronous Networks: A New Paradigm",
+    //   journal: "ACM SIGCOMM",
+    //   type: "Journal Article",
+    //   link: "#"
+    // },
+    // {
+    //   year: 2023,
+    //   title: "Zero-Knowledge Proofs for Scalable Blockchain Privacy",
+    //   journal: "IEEE S&P (Oakland)",
+    //   type: "Conference Paper",
+    //   link: "#"
+    // }
   ];
 
   return (
-    <Layout title="Home" description="Luis Miguel Báez - Computer Scientist">
+    <Layout
+      title="Home"
+      description="Luis Miguel Báez - Computer Scientist"
+    // noFooter={true}
+    // wrapperClassName="homepage-wrapper"
+    >
       <div className="min-h-screen transition-colors duration-300 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans selection:bg-blue-200 dark:selection:bg-blue-900">
 
         {/* --- NAVBAR --- */}
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
+        {/* <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-3">
@@ -121,8 +126,8 @@ function HomePage() {
                   {`/>`}
                 </div>
                 <div>
-                  <h1 className="font-bold text-lg leading-none tracking-tight">Luis Miguel Báez</h1>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Computer Scientist</span>
+                  <h1 className="font-bold text-lg leading-none tracking-tight">LuchoBazz</h1>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Systems and Computer Engineer at UNAL</span>
                 </div>
               </div>
 
@@ -142,7 +147,7 @@ function HomePage() {
               </div>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         {/* --- HERO SECTION --- */}
         <header className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -157,9 +162,9 @@ function HomePage() {
               </div>
 
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                Arquitectura de Sistemas <br />
+                Luis Miguel Báez <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-600">
-                  Inteligentes.
+                  ACM-ICPC contestant.
                 </span>
               </h1>
 
@@ -300,7 +305,7 @@ function HomePage() {
                     {pub.journal}
                   </div>
                   <a href={pub.link} className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
-                    Ver en arXiv <ExternalLink size={12} />
+                    Ver en Zenodo <ExternalLink size={12} />
                   </a>
                 </div>
               </div>
@@ -359,7 +364,7 @@ function HomePage() {
         </section>
 
         {/* --- FOOTER --- */}
-        <footer className="py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-center">
+        {/* <footer className="py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-center">
           <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-slate-500 text-sm">
               <p>© {new Date().getFullYear()} Luis Miguel Báez. Open Source MIT License.</p>
@@ -372,7 +377,7 @@ function HomePage() {
               ))}
             </div>
           </div>
-        </footer>
+        </footer> */}
 
       </div>
     </Layout>

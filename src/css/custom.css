@@ -57,3 +57,10 @@ html[data-theme="dark"] {
   --search-local-highlight-color: #FF6A00;
   /* Highlight Color in Dark Mode */
 }
+
+/* Hide Navbar and Sidebar on Homepage */
+body:has(.homepage-wrapper) .navbar,
+body:has(.homepage-wrapper) .theme-doc-sidebar-container,
+body:has(.homepage-wrapper) aside {
+  display: none !important;
+}
