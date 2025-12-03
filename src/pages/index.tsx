@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Sun,
-  Moon,
-  Cpu,          // Cambiado de Microscope
-  Network,      // Cambiado de Globe
-  Shield,       // Cambiado de Users
-  Terminal,     // Nuevo
+  Cpu,
+  Network,
+  Shield,
+  Terminal,
   Award,
   BookOpen,
-  Mail,
   ExternalLink,
   ArrowRight,
-  GraduationCap,
   Code2,
   Download,
   Wrench,
@@ -21,21 +17,43 @@ import {
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
+const calculateDuration = (startDate: string) => {
+  const start = new Date(startDate);
+  const now = new Date();
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+
+  if (now.getDate() < start.getDate()) {
+    months--;
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  const parts = [];
+  if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
+  if (months > 0) parts.push(`${months} mo${months > 1 ? 's' : ''}`);
+
+  return parts.join(' ');
+};
+
 function HomePage() {
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Sincronizar con el tema de Docusaurus
+  // Synchronize with Docusaurus theme
   useEffect(() => {
     const updateTheme = () => {
       const theme = document.documentElement.dataset.theme;
       setIsDark(theme === 'dark');
     };
 
-    // Actualizar al montar
+    // Update on mount
     updateTheme();
 
-    // Observar cambios en el atributo data-theme
+    // Observe changes to the data-theme attribute
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -45,7 +63,7 @@ function HomePage() {
     return () => observer.disconnect();
   }, []);
 
-  // Efecto para la sombra del navbar al hacer scroll
+  // Navbar shadow effect on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -60,11 +78,11 @@ function HomePage() {
     setIsDark(!isDark);
   };
 
-  // Datos de ejemplo
+  // Sample data
   const stats = [
     { label: "Total Citations", value: "3,100+" },
     { label: "h-index", value: "32" },
-    { label: "Years of Exp.", value: "15" },
+    { label: "Years of Exp.", value: "4" },
     { label: "Algorithms", value: "12" }
   ];
 
@@ -89,33 +107,31 @@ function HomePage() {
     }
   ];
 
-
   const experience = [
     {
-      role: "Investigador Senior",
-      company: "Instituto de Tecnología Avanzada",
-      period: "2020 - Presente",
-      desc: "Liderando el equipo de investigación en arquitecturas de nube. Publicación de 3 papers en conferencias Tier-1."
+      role: "Back-End Software Engineer",
+      company: "Instaleap",
+      period: `Oct 2022 - Present · ${calculateDuration('2022-10-26')}`,
+      desc: "Back-End Engineer."
     },
     {
-      role: "Ingeniero de Software (Backend)",
-      company: "TechGlobal Systems",
-      period: "2017 - 2020",
-      desc: "Diseño de microservicios de alta concurrencia. Optimización de bases de datos reduciendo costos operativos en un 25%."
+      role: "Back-End Software Engineer",
+      company: "IBM",
+      period: "Jan 2022 - Sep 2022 · 9 mos",
+      desc: "Backend Software Engineer + Integration."
     },
     {
-      role: "Asistente de Cátedra",
-      company: "Universidad Nacional",
-      period: "2015 - 2017",
-      desc: "Impartiendo cursos de Estructuras de Datos y Teoría de la Computación."
+      role: "Software Engineer Intern",
+      company: "IBM",
+      period: "Jul 2021 - Dec 2021 · 6 mos",
+      desc: "Software Engineer Intern + Integration."
     }
   ];
-
 
   const publications = [
     {
       year: 2025,
-      title: "Quick Test CLI: A Cross-Platform for Automated Testing in Competitive Programming",
+      title: "Quick Test CLI: A Cross‑Platform for Automated Testing in Competitive Programming",
       journal: "Github",
       type: "pre-print",
       link: "https://doi.org/10.5281/zenodo.17803503"
@@ -129,13 +145,12 @@ function HomePage() {
     // },
     // {
     //   year: 2023,
-    //   title: "Zero-Knowledge Proofs for Scalable Blockchain Privacy",
+    //   title: "Zero‑Knowledge Proofs for Scalable Blockchain Privacy",
     //   journal: "IEEE S&P (Oakland)",
     //   type: "Conference Paper",
     //   link: "#"
     // }
   ];
-
 
   const projects = [
     {
@@ -161,31 +176,30 @@ function HomePage() {
     }
   ];
 
-
   const internalTools = [
     {
-      title: "Cpp Algorithm Snippets",
-      desc: "Repositorio optimizado de estructuras de datos y algoritmos.",
-      icon: <Library size={32} />,
-      link: "https://luchobazz.github.io/cpp-algorithm-snippets/docs/intro/",
-      color: "bg-orange-500",
-      textColor: "text-orange-500"
-    },
-    {
       title: "Personal Toolkit",
-      desc: "Colección de utilidades y scripts para automatización.",
-      icon: <Wrench size={32} />,
+      desc: "Collection of utilities and scripts for automation.",
+      icon: <Wrench className="w-8 h-8" />,
       link: "https://luchobazz.github.io/personal-toolkit/docs/intro/",
-      color: "bg-slate-600",
+      color: "bg-slate-600/10 dark:bg-slate-600/20",
       textColor: "text-slate-600 dark:text-slate-400"
     },
     {
-      title: "AI Handbook",
-      desc: "Guía de referencia rápida para conceptos modernos de ML.",
-      icon: <Brain size={32} />,
-      link: "https://luchobazz.github.io/ai-handbook/docs/intro/",
-      color: "bg-indigo-500",
+      title: "Knowledge Core",
+      desc: "My Knowledge Core Repo.",
+      icon: <Brain className="w-8 h-8" />,
+      link: "https://luchobazz.github.io/knowledge-core/docs/intro",
+      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
       textColor: "text-indigo-500"
+    },
+    {
+      title: "Cpp Algorithm Snippets",
+      desc: "Optimized repository of data structures and algorithms.",
+      icon: <Library className="w-8 h-8" />,
+      link: "https://luchobazz.github.io/cpp-algorithm-snippets/docs/intro/",
+      color: "bg-orange-500/10 dark:bg-orange-500/20",
+      textColor: "text-orange-500"
     }
   ];
 
@@ -301,7 +315,7 @@ function HomePage() {
               <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
 
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* Mock Code Editor Window: Estilos ORIGINALES intactos */}
+                {/* Mock Code Editor Window: Original styles intact */}
                 <div className="bg-slate-900 p-4 rounded-xl border border-slate-700 shadow-2xl w-3/4 max-w-sm transform -rotate-2 hover:rotate-0 transition-transform duration-500">
 
                   {/* Header */}
@@ -314,7 +328,7 @@ function HomePage() {
                     <div className="text-xs text-slate-400 font-mono">research_agent.py</div>
                   </div>
 
-                  {/* Contenido: Fuente aumentada a text-xs */}
+                  {/* Content: Font increased to text-xs */}
                   <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto">
 
                     {/* Imports */}
@@ -331,7 +345,7 @@ function HomePage() {
                       name: <span className="text-blue-400">str</span> = <span className="text-green-400">"Luis Miguel Báez"</span>
                     </div>
 
-                    {/* Focus: Formateado en varias líneas para que quepa con la letra grande */}
+                    {/* Focus: Formatted across multiple lines */}
                     <div className="pl-4">
                       focus: <span className="text-blue-400">List</span>[<span className="text-blue-400">str</span>] = field(
                     </div>
@@ -465,7 +479,7 @@ function HomePage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
               <Globe className="text-indigo-500" />
-              Trayectoria Profesional
+              Professional Timeline
             </h2>
             <div className="space-y-8">
               {experience.map((exp, index) => (
@@ -487,7 +501,7 @@ function HomePage() {
         <section id="proyectos" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
             <Code2 className="text-indigo-500" />
-            Proyectos Destacados
+            Featured Projects
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
@@ -532,7 +546,7 @@ function HomePage() {
                 Internal Tools
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 max-w-2xl">
-                Recursos y documentación técnica mantenida para uso interno y comunitario.
+                Resources and technical documentation maintained for internal and community use.
               </p>
             </div>
 
@@ -541,10 +555,11 @@ function HomePage() {
                 <a
                   key={index}
                   href={tool.link}
+                  target="_blank"
                   className="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`p-3 rounded-lg ${tool.color} bg-opacity-10 dark:bg-opacity-20`}>
+                    <div className={`p-3 rounded-lg ${tool.color}`}>
                       <div className={tool.textColor}>
                         {tool.icon}
                       </div>
@@ -563,7 +578,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* --- AWARDS & RECOGNITION (Compact) --- */}
+        {/* --- AWARDS & RECOGNITION (Compact) ---*/}
         <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
