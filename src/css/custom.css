@@ -45,6 +45,12 @@
   /* Lightest */
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.3);
   /* Light background for highlighted lines */
+
+  --ifm-navbar-background-color: #0f172a;
+}
+
+html[data-theme='dark'] footer {
+  background-color: #050817;
 }
 
 :root {
@@ -63,4 +69,9 @@ body:has(.homepage-wrapper) .navbar,
 body:has(.homepage-wrapper) .theme-doc-sidebar-container,
 body:has(.homepage-wrapper) aside {
   display: none !important;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: #0f172a;
+  border-right: 1px solid #1e293b;
 }
