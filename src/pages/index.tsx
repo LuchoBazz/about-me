@@ -80,10 +80,9 @@ function HomePage() {
 
   // Sample data
   const stats = [
-    { label: "Total Citations", value: "3,100+" },
-    { label: "h-index", value: "32" },
-    { label: "Years of Exp.", value: "4" },
-    { label: "Algorithms", value: "12" }
+    { label: "Spanish", value: "Native" },
+    { label: "English", value: "B1+" },
+    { label: "Years of Exp.", value: `${calculateDuration('2021-07-01')}` },
   ];
 
   const researchAreas = [
