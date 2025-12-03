@@ -139,25 +139,25 @@ function HomePage() {
 
   const projects = [
     {
-      title: "Protocolo Hydra-X",
-      type: "Investigación / Open Source",
-      desc: "Un nuevo protocolo de consenso para redes asíncronas que reduce la latencia en un 40% comparado con Paxos estándar.",
-      tags: ["C++", "Distributed Systems", "Consensus"],
-      link: "#"
+      title: "LuchoBazz/quicktest",
+      type: "CLI / Open Source",
+      desc: "Quick Test CLI: A Cross-Platform for Automated Testing in Competitive Programming",
+      tags: ["Competitive Programming", "Stress Testing", "Comparative Testing", "Differential Testing", "Automated Testing", "Algorithm Validation", "Software Testing"],
+      link: "https://github.com/LuchoBazz/quicktest"
     },
     {
-      title: "NeuroGraph",
-      type: "Aplicación / AI",
-      desc: "Biblioteca de Python para la visualización e interpretación de redes neuronales profundas en tiempo real.",
-      tags: ["Python", "TensorFlow", "WebGL"],
-      link: "#"
+      title: "LuchoBazz/cpp-algorithm-snippets",
+      type: "Data Structures & Algorithms / Open Source",
+      desc: "This repository contains templates of useful algorithms and data structures coded in C++ for use in competitive programming.",
+      tags: ["C++", "Algorithms", "Data Structures", "Competitive Programming"],
+      link: "https://github.com/LuchoBazz/cpp-algorithm-snippets"
     },
     {
-      title: "SecureLedger",
-      type: "Seguridad / Blockchain",
-      desc: "Arquitectura de libro mayor inmutable con pruebas de conocimiento cero (Zero-Knowledge Proofs) para auditoría financiera.",
-      tags: ["Rust", "Cryptography", "ZK-Snarks"],
-      link: "#"
+      title: "LuchoBazz/xbitwise",
+      type: "Rust Library / Open Source",
+      desc: "A Rust library that extends the basic functionality of bitwise operations.",
+      tags: ["Rust", "Bitwise Operations", "Bitwise", "Integer"],
+      link: "https://github.com/LuchoBazz/xbitwise"
     }
   ];
 
@@ -454,7 +454,15 @@ function HomePage() {
                     <span className={`text-xs font-mono px-2 py-1 rounded ${isDark ? 'bg-slate-800 text-indigo-300' : 'bg-indigo-50 text-indigo-700'}`}>
                       {project.type}
                     </span>
-                    <ExternalLink size={18} className="text-slate-400 hover:text-indigo-500 cursor-pointer" />
+
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Open example (opens in a new tab)"
+                    >
+                      <ExternalLink size={18} className="text-slate-400 hover:text-indigo-500 cursor-pointer" />
+                    </a>
                   </div>
                   <h3 className="text-xl font-bold mb-3">{project.title}</h3>
                   <p className={`text-sm mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
