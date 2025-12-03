@@ -1,6 +1,13 @@
 @import 'katex/dist/katex.min.css';
 @import 'tailwindcss';
 
+@theme {
+  /* --color-*: initial;*/
+  --color-primary: #FF4F00;
+}
+
+@variant dark (html[data-theme='dark'] &);
+
 :root {
   --ifm-color-primary: #FF4F00;
   /* Fluorescent Orange - Darker */

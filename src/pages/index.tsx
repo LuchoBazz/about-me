@@ -14,10 +14,31 @@ import {
   GraduationCap,
   Code2
 } from 'lucide-react';
+import Layout from '@theme/Layout';
 
-const Home = () => {
+function HomePage() {
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Sincronizar con el tema de Docusaurus
+  useEffect(() => {
+    const updateTheme = () => {
+      const theme = document.documentElement.dataset.theme;
+      setIsDark(theme === 'dark');
+    };
+
+    // Actualizar al montar
+    updateTheme();
+
+    // Observar cambios en el atributo data-theme
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Efecto para la sombra del navbar al hacer scroll
   useEffect(() => {
@@ -28,7 +49,11 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  const toggleTheme = () => {
+    const newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.dataset.theme = newTheme;
+    setIsDark(!isDark);
+  };
 
   // Datos de ejemplo
   const stats = [
@@ -84,7 +109,7 @@ const Home = () => {
   ];
 
   return (
-    <div className={isDark ? "dark" : ""}>
+    <Layout title="Home" description="Luis Miguel Báez - Computer Scientist">
       <div className="min-h-screen transition-colors duration-300 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans selection:bg-blue-200 dark:selection:bg-blue-900">
 
         {/* --- NAVBAR --- */}
@@ -350,8 +375,10 @@ const Home = () => {
         </footer>
 
       </div>
-    </div>
+    </Layout>
   );
-};
+}
 
-export default Home;
+export default function Home() {
+  return <HomePage />;
+}

@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Docusaurus Personal Starter Kit',
+  title: 'About Me',
   tagline: 'Dinosaurs are cool',
   favicon: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Emoji_u263a.svg',
 
@@ -78,9 +78,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Emoji_u263a.svg',
     navbar: {
-      title: 'Docusaurus Personal Starter Kit',
+      title: 'About Me',
       logo: {
-        alt: 'Docusaurus Personal Starter Kit',
+        alt: 'About Me',
         src: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Emoji_u263a.svg',
       },
       items: [
@@ -136,7 +136,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Docusaurus Personal Starter Kit, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} About Me, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
