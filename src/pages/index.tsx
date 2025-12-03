@@ -12,7 +12,8 @@ import {
   ExternalLink,
   ArrowRight,
   GraduationCap,
-  Code2
+  Code2,
+  Download
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -57,28 +58,28 @@ function HomePage() {
 
   // Datos de ejemplo
   const stats = [
-    { label: "Citas Totales", value: "3,100+" },
+    { label: "Total Citations", value: "3,100+" },
     { label: "h-index", value: "32" },
-    { label: "Años de Exp.", value: "15" },
-    { label: "Algoritmos", value: "12" }
+    { label: "Years of Exp.", value: "15" },
+    { label: "Algorithms", value: "12" }
   ];
 
   const researchAreas = [
     {
-      title: "Inteligencia Artificial Generativa",
-      desc: "Investigación en arquitecturas de transformers eficientes y reducción de alucinaciones en LLMs.",
+      title: "Generative Artificial Intelligence",
+      desc: "Research on efficient transformer architectures and hallucination reduction in LLMs.",
       icon: <Cpu className="w-6 h-6" />,
       color: "text-blue-500"
     },
     {
-      title: "Sistemas Distribuidos",
-      desc: "Diseño de protocolos de consenso tolerantes a fallos para computación en la nube a gran escala.",
+      title: "Distributed Systems",
+      desc: "Design of fault-tolerant consensus protocols for large-scale cloud computing.",
       icon: <Network className="w-6 h-6" />,
       color: "text-emerald-500"
     },
     {
-      title: "Ciberseguridad & Privacidad",
-      desc: "Métodos de encriptación homomórfica para el procesamiento seguro de datos sensibles.",
+      title: "Cybersecurity & Privacy",
+      desc: "Homomorphic encryption methods for secure processing of sensitive data.",
       icon: <Shield className="w-6 h-6" />,
       color: "text-purple-500"
     }
@@ -133,9 +134,9 @@ function HomePage() {
 
               <div className="flex items-center gap-8">
                 <div className="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
-                  <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Sobre mí</a>
-                  <a href="#research" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Investigación</a>
-                  <a href="#publications" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Publicaciones</a>
+                  <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About Me</a>
+                  <a href="#research" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Research</a>
+                  <a href="#publications" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Publications</a>
                 </div>
                 <button
                   onClick={toggleTheme}
@@ -164,23 +165,40 @@ function HomePage() {
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
                 Luis Miguel Báez <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-600">
-                  ACM-ICPC contestant.
+                  Systems and Computer Engineer at UNAL.
                 </span>
               </h1>
 
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg">
-                Explorando los límites de la computación distribuida y el aprendizaje automático. Construyendo algoritmos robustos para la próxima generación de infraestructuras digitales.
+                I am a Systems and Computer Engineer at UNAL. I am also passionate about computer problem solving and competitive programming that I have been active in for the last 2.5 years.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <button className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-xl shadow-slate-900/20">
+                <a
+                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-xl shadow-slate-900/20"
+                  href="https://github.com/LuchoBazz"
+                  target="_blank"
+                >
                   <Terminal size={18} />
-                  Ver Proyectos / GitHub
-                </button>
-                <button className="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-medium rounded-lg transition-all flex items-center gap-2">
+                  View Projects / GitHub
+                </a>
+                <a
+                  className="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-medium rounded-lg transition-all flex items-center gap-2"
+                  href="https://orcid.org/0009-0008-7515-457X"
+                  target="_blank"
+                >
                   <BookOpen size={18} />
-                  Publicaciones
-                </button>
+                  Publications
+                </a>
+                <a
+                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-xl shadow-slate-900/20"
+                  href="/cv.pdf"
+                  target="_blank"
+                  download
+                >
+                  <Download size={18} />
+                  Download CV
+                </a>
               </div>
 
               {/* Stats Row */}
@@ -217,7 +235,7 @@ function HomePage() {
                     <div className="text-pink-400">import <span className="text-white">torch</span></div>
                     <div className="text-pink-400">import <span className="text-white">neural_net</span> as <span className="text-blue-400">nn</span></div>
                     <br />
-                    <div className="text-slate-400"># Configuración del modelo</div>
+                    <div className="text-slate-400"># Model configuration</div>
                     <div className="text-blue-300">class <span className="text-yellow-300">TransformerBlock</span>(nn.Module):</div>
                     <div className="pl-4 text-white">def <span className="text-blue-300">__init__</span>(self):</div>
                     <div className="pl-8 text-white">super().<span className="text-blue-300">__init__</span>()</div>
@@ -238,13 +256,13 @@ function HomePage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Áreas de Investigación</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Research Areas</h2>
                 <p className="text-slate-600 dark:text-slate-400 max-w-xl">
-                  Mi investigación aborda problemas fundamentales en la escalabilidad y seguridad de los sistemas computacionales modernos.
+                  My research addresses fundamental problems in the scalability and security of modern computational systems.
                 </p>
               </div>
               <a href="#" className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                Ver Laboratorio <ArrowRight size={18} />
+                View Lab <ArrowRight size={18} />
               </a>
             </div>
 
@@ -264,7 +282,7 @@ function HomePage() {
                     {[1, 2].map((i) => (
                       <li key={i} className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-500">
                         <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
-                        Paper en revisión {i}
+                        Paper under review {i}
                       </li>
                     ))}
                   </ul>
@@ -280,7 +298,7 @@ function HomePage() {
         {/* --- LATEST PUBLICATIONS --- */}
         <section id="publications" className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Publicaciones Destacadas</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Featured Publications</h2>
             <div className="h-1 w-20 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
 
@@ -304,8 +322,8 @@ function HomePage() {
                   <div className="text-sm text-slate-600 dark:text-slate-400 font-mono text-xs mb-3">
                     {pub.journal}
                   </div>
-                  <a href={pub.link} className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
-                    Ver en Zenodo <ExternalLink size={12} />
+                  <a href={pub.link} target="_blank" className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
+                    View on Zenodo <ExternalLink size={12} />
                   </a>
                 </div>
               </div>
@@ -314,7 +332,7 @@ function HomePage() {
 
           <div className="mt-12 text-center">
             <button className="px-8 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-              Ver DBLP / Google Scholar
+              View DBLP / Google Scholar
             </button>
           </div>
         </section>
@@ -330,12 +348,12 @@ function HomePage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Reconocimientos & Funding</h2>
+                <h2 className="text-3xl font-bold mb-6">Awards</h2>
                 <p className="text-slate-300 mb-8 leading-relaxed">
-                  Nuestra investigación en sistemas seguros y escalables cuenta con el respaldo de líderes de la industria y organismos gubernamentales.
+                  My experience includes awards and recognition from multiple institutions.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  {["Google Research Scholar", "NSF Career Award", "Best Paper NeurIPS '23"].map((award, i) => (
+                  {["The 2021 ICPC South America-North Finals", "The 2021 ICPC Colombia - XXXV Maraton Nacional de Programacion ACIS REDIS", "2rd Place Ironhacks Competition 2018 Issued by RCODI Purdue University"].map((award, i) => (
                     <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                       <Award size={16} className="text-yellow-400" />
                       <span className="text-sm font-medium">{award}</span>
@@ -349,12 +367,12 @@ function HomePage() {
                     <Code2 size={24} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Únete al Laboratorio</h3>
+                    <h3 className="text-xl font-bold mb-2">Join the Lab</h3>
                     <p className="text-slate-300 text-sm mb-4">
-                      Buscamos estudiantes de doctorado con sólida experiencia en C++, CUDA o pruebas formales.
+                      We are looking for PhD students with strong experience in C++, CUDA, or formal testing.
                     </p>
                     <button className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors flex items-center gap-2">
-                      Aplicar ahora <ArrowRight size={16} />
+                      Apply Now <ArrowRight size={16} />
                     </button>
                   </div>
                 </div>
