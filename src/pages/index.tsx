@@ -301,26 +301,69 @@ function HomePage() {
               <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
 
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* Mock Code Editor Window */}
+                {/* Mock Code Editor Window: Estilos ORIGINALES intactos */}
                 <div className="bg-slate-900 p-4 rounded-xl border border-slate-700 shadow-2xl w-3/4 max-w-sm transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+
+                  {/* Header */}
                   <div className="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-amber-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="text-xs text-slate-400 font-mono">train_model.py</div>
+                    <div className="text-xs text-slate-400 font-mono">research_agent.py</div>
                   </div>
-                  <div className="space-y-2 font-mono text-xs">
-                    <div className="text-pink-400">import <span className="text-white">torch</span></div>
-                    <div className="text-pink-400">import <span className="text-white">neural_net</span> as <span className="text-blue-400">nn</span></div>
+
+                  {/* Contenido: Fuente aumentada a text-xs */}
+                  <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto">
+
+                    {/* Imports */}
+                    <div><span className="text-pink-400">from</span> dataclasses <span className="text-pink-400">import</span> dataclass, field</div>
+                    <div><span className="text-pink-400">from</span> typing <span className="text-pink-400">import</span> List</div>
                     <br />
-                    <div className="text-slate-400"># Model configuration</div>
-                    <div className="text-blue-300">class <span className="text-yellow-300">TransformerBlock</span>(nn.Module):</div>
-                    <div className="pl-4 text-white">def <span className="text-blue-300">__init__</span>(self):</div>
-                    <div className="pl-8 text-white">super().<span className="text-blue-300">__init__</span>()</div>
-                    <div className="pl-8 text-white">self.attention = ...</div>
+
+                    {/* Class Definition */}
+                    <div><span className="text-yellow-300">@dataclass</span></div>
+                    <div><span className="text-pink-400">class</span> <span className="text-yellow-300">ResearchAgent</span>:</div>
+
+                    {/* Name */}
+                    <div className="pl-4">
+                      name: <span className="text-blue-400">str</span> = <span className="text-green-400">"Luis Miguel Báez"</span>
+                    </div>
+
+                    {/* Focus: Formateado en varias líneas para que quepa con la letra grande */}
+                    <div className="pl-4">
+                      focus: <span className="text-blue-400">List</span>[<span className="text-blue-400">str</span>] = field(
+                    </div>
+                    <div className="pl-8">
+                      default_factory=<span className="text-pink-400">lambda</span>: [
+                    </div>
+                    <div className="pl-12 text-green-400">"NLP", "RL", "Ethics"</div>
+                    <div className="pl-8">])</div>
+
+                    {/* Language */}
+                    <div className="pl-4">
+                      language: <span className="text-blue-400">str</span> = <span className="text-green-400">"Python"</span>
+                    </div>
+
+                    {/* Status */}
+                    <div className="pl-4">
+                      status: <span className="text-blue-400">str</span> = <span className="text-green-400">"Training..."</span>
+                    </div>
                     <br />
+
+                    {/* Method */}
+                    <div className="pl-4">
+                      <span className="text-pink-400">def</span> <span className="text-blue-300">__repr__</span>(self):
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-pink-400">return</span> (
+                    </div>
+                    <div className="pl-12 text-green-400">f"&lt;&#123;self.name&#125;\n"</div>
+                    <div className="pl-12 text-green-400">f" Driving: &#123;self.focus&#125;\n"</div>
+                    <div className="pl-12 text-green-400">f" Powered by &#123;self.language&#125;/&gt;"</div>
+                    <div className="pl-8">)</div>
+
                     <div className="flex items-center gap-2 mt-4">
                       <div className="h-1 w-2 bg-white animate-pulse"></div>
                     </div>
