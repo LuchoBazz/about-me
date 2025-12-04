@@ -70,8 +70,8 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: '#tools',
-          label: 'Tools',
+          href: '#subpages',
+          label: 'Subpages',
           position: 'left',
         },
       ],

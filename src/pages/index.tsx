@@ -175,7 +175,7 @@ function HomePage() {
     }
   ];
 
-  const internalTools = [
+  const subpages = [
     {
       title: "Personal Toolkit",
       desc: "Collection of utilities and scripts for automation.",
@@ -539,7 +539,7 @@ function HomePage() {
             <div className="mb-10 text-center md:text-left">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 justify-center md:justify-start">
                 <Terminal size={24} className="text-slate-500" />
-                Internal Tools
+                Subpages
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 max-w-2xl">
                 Resources and technical documentation maintained for internal and community use.
@@ -547,7 +547,7 @@ function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {internalTools.map((tool, index) => (
+              {subpages.map((tool, index) => (
                 <a
                   key={index}
                   href={tool.link}
