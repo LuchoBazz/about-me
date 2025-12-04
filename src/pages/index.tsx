@@ -534,7 +534,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section id="tools" className="py-12 bg-slate-50 dark:bg-slate-950/50 border-y border-slate-200 dark:border-slate-800">
+        <section id="subpages" className="py-12 bg-slate-50 dark:bg-slate-950/50 border-y border-slate-200 dark:border-slate-800">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center md:text-left">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 justify-center md:justify-start">
