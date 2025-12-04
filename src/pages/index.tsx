@@ -551,7 +551,7 @@ function HomePage() {
                 <a
                   key={index}
                   href={tool.link}
-                  target="_blank"
+                  target="_self"
                   className="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-6">
