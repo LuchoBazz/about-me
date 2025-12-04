@@ -283,15 +283,6 @@ function HomePage() {
                   <BookOpen size={18} />
                   Publications
                 </a>
-                <a
-                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-xl shadow-slate-900/20"
-                  href="/cv.pdf"
-                  target="_blank"
-                  download
-                >
-                  <Download size={18} />
-                  Download CV
-                </a>
               </div>
 
               {/* Stats Row */}
