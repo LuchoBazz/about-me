@@ -269,7 +269,9 @@ function HomePage() {
               </h1>
 
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg">
-                I am a Systems and Computer Engineer at UNAL. I am also passionate about computer problem solving and competitive programming that I have been active in for the last 2.5 years.
+                I am a <strong>Systems and Computer Engineer</strong> from the National University of Colombia (UNAL).
+                {' '}
+                I have experience working as a <strong>Software Engineer</strong> at high-growth startups and large tech companies. I specialize in backend development, high-scalability systems, and optimization.
               </p>
 
               <div className="flex flex-wrap gap-4">
