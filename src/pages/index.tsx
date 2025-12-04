@@ -255,11 +255,11 @@ function HomePage() {
                 Open for Research Collaborations
               </div>
 
-              <img
+              {/* <img
                 src="https://i.ibb.co/ZpXwSFB7/serbia-1-removebg-preview.png"
                 alt="Profile"
                 className="w-32 h-auto mb-8 shadow-lg"
-              />
+              /> */}
 
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
                 Luis Miguel Báez <br />
