@@ -464,7 +464,7 @@ function HomePage() {
           </div>
 
           <div className="mt-12 text-center">
-            <a href='https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22B%C3%A1ez%20Aponte%2C%20Luis%20Miguel%22&l=list&p=1&s=10&sort=bestmatch' target='_blank'>
+            <a href='https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22B%C3%A1ez%20Aponte%2C%20Luis%20Miguel%22&l=list&p=1&s=10&sort=mostviewed' target='_blank'>
               <button className="px-8 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                 View Luis Miguel Báez on Zenodo.org
               </button>
