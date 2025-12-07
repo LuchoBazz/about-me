@@ -239,13 +239,13 @@ export default function TravelPassport() {
     <Layout
       title="Travel Passport"
     >
-      <div className="min-h-screen bg-stone-900 py-8 px-4 font-sans selection:bg-amber-200 selection:text-amber-900">
+      <div className="min-h-screen bg-stone-100 dark:bg-[#0f172a] py-8 px-4 font-sans selection:bg-amber-200 selection:text-amber-900">
 
         {/* Main Container (The Passport) */}
         <div className="max-w-5xl mx-auto bg-[#f4f1ea] rounded-[20px] shadow-2xl overflow-hidden min-h-[800px] flex flex-col md:flex-row relative">
 
           {/* Spine / Left Sidebar (User Info) */}
-          <div className="bg-[#1c1917] text-[#a8a29e] w-full md:w-64 p-8 flex flex-col border-r-4 border-[#292524] relative shadow-[10px_0_20px_rgba(0,0,0,0.2)] z-10">
+          <div className="bg-[#050817] text-[#a8a29e] w-full md:w-64 p-8 flex flex-col border-r-4 border-[#292524] relative shadow-[10px_0_20px_rgba(0,0,0,0.2)] z-10">
             <div className="mb-10 text-center">
               <div className="w-20 h-20 mx-auto border-2 border-[#a8a29e] rounded-full flex items-center justify-center mb-4">
                 <Plane size={32} />
@@ -257,7 +257,7 @@ export default function TravelPassport() {
             <div className="space-y-6 flex-1">
               <div>
                 <p className="text-[10px] uppercase tracking-wider mb-1">Document No.</p>
-                <p className="font-mono text-sm text-white">A-74829103</p>
+                <p className="font-mono text-sm text-white">A-****9103</p>
               </div>
 
               <div>
