@@ -250,14 +250,14 @@ export default function TravelPassport() {
               <div className="w-20 h-20 mx-auto border-2 border-[#a8a29e] rounded-full flex items-center justify-center mb-4">
                 <Plane size={32} />
               </div>
-              <h1 className="font-serif text-xl text-[#e7e5e4] tracking-widest uppercase mb-1">Passport</h1>
+              <h1 className="font-serif text-base text-[#e7e5e4] tracking-widest uppercase mb-1">Passport</h1>
               <p className="text-xs tracking-[0.2em] opacity-60">CITIZEN OF THE WORLD</p>
             </div>
 
             <div className="space-y-6 flex-1">
               <div>
                 <p className="text-[10px] uppercase tracking-wider mb-1">Document No.</p>
-                <p className="font-mono text-sm text-white">BC-******25</p>
+                <p className="font-mono text-sm text-white">BC-*******5</p>
               </div>
 
               <div>
