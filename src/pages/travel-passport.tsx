@@ -257,7 +257,7 @@ export default function TravelPassport() {
             <div className="space-y-6 flex-1">
               <div>
                 <p className="text-[10px] uppercase tracking-wider mb-1">Document No.</p>
-                <p className="font-mono text-sm text-white">A-****9103</p>
+                <p className="font-mono text-sm text-white">BC-******25</p>
               </div>
 
               <div>
