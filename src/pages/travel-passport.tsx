@@ -239,91 +239,98 @@ export default function TravelPassport() {
     <Layout
       title="Travel Passport"
     >
-      <div className="min-h-screen bg-stone-100 dark:bg-[#0f172a] py-8 px-4 font-sans selection:bg-amber-200 selection:text-amber-900">
+      <div className="passport-wrapper">
+        <nav className="absolute top-4 left-4 z-50">
+          <a href="/about-me/" className="text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition-colors font-serif italic text-sm">
+            ← Back to Home
+          </a>
+        </nav>
+        <div className="min-h-screen bg-stone-100 dark:bg-[#0f172a] py-8 px-4 font-sans selection:bg-amber-200 selection:text-amber-900">
 
-        {/* Main Container (The Passport) */}
-        <div className="max-w-5xl mx-auto bg-[#f4f1ea] rounded-[20px] shadow-2xl overflow-hidden min-h-[800px] flex flex-col md:flex-row relative">
+          {/* Main Container (The Passport) */}
+          <div className="max-w-5xl mx-auto bg-[#f4f1ea] rounded-[20px] shadow-2xl overflow-hidden min-h-[800px] flex flex-col md:flex-row relative">
 
-          {/* Spine / Left Sidebar (User Info) */}
-          <div className="bg-[#050817] text-[#a8a29e] w-full md:w-64 p-8 flex flex-col border-r-4 border-[#292524] relative shadow-[10px_0_20px_rgba(0,0,0,0.2)] z-10">
-            <div className="mb-10 text-center">
-              <div className="w-20 h-20 mx-auto border-2 border-[#a8a29e] rounded-full flex items-center justify-center mb-4">
-                <Plane size={32} />
+            {/* Spine / Left Sidebar (User Info) */}
+            <div className="bg-[#050817] text-[#a8a29e] w-full md:w-64 p-8 flex flex-col border-r-4 border-[#292524] relative shadow-[10px_0_20px_rgba(0,0,0,0.2)] z-10">
+              <div className="mb-10 text-center">
+                <div className="w-20 h-20 mx-auto border-2 border-[#a8a29e] rounded-full flex items-center justify-center mb-4">
+                  <Plane size={32} />
+                </div>
+                <h1 className="font-serif text-base text-[#e7e5e4] tracking-widest uppercase mb-1">Passport</h1>
+                <p className="text-xs tracking-[0.2em] opacity-60">CITIZEN OF THE WORLD</p>
               </div>
-              <h1 className="font-serif text-base text-[#e7e5e4] tracking-widest uppercase mb-1">Passport</h1>
-              <p className="text-xs tracking-[0.2em] opacity-60">CITIZEN OF THE WORLD</p>
-            </div>
 
-            <div className="space-y-6 flex-1">
-              <div>
-                <p className="text-[10px] uppercase tracking-wider mb-1">Document No.</p>
-                <p className="font-mono text-sm text-white">BC-*******5</p>
-              </div>
+              <div className="space-y-6 flex-1">
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider mb-1">Document No.</p>
+                  <p className="font-mono text-sm text-white">BC-*******5</p>
+                </div>
 
-              <div>
-                <p className="text-[10px] uppercase tracking-wider mb-1">Stats</p>
-                <div className="grid grid-cols-2 gap-4 mt-2">
-                  <div className="bg-stone-800 p-2 rounded text-center">
-                    <Award size={16} className="mx-auto mb-1 text-amber-600" />
-                    <span className="block text-lg font-bold text-white">{visitedPlaces.length}</span>
-                    <span className="text-[9px]">Cities</span>
-                  </div>
-                  <div className="bg-stone-800 p-2 rounded text-center">
-                    <Compass size={16} className="mx-auto mb-1 text-blue-500" />
-                    <span className="block text-lg font-bold text-white">8</span>
-                    <span className="text-[9px]">Countries</span>
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider mb-1">Stats</p>
+                  <div className="grid grid-cols-2 gap-4 mt-2">
+                    <div className="bg-stone-800 p-2 rounded text-center">
+                      <Award size={16} className="mx-auto mb-1 text-amber-600" />
+                      <span className="block text-lg font-bold text-white">{visitedPlaces.length}</span>
+                      <span className="text-[9px]">Cities</span>
+                    </div>
+                    <div className="bg-stone-800 p-2 rounded text-center">
+                      <Compass size={16} className="mx-auto mb-1 text-blue-500" />
+                      <span className="block text-lg font-bold text-white">8</span>
+                      <span className="text-[9px]">Countries</span>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <div className="mt-auto pt-8 border-t border-stone-800 text-center">
+                <p className="font-serif italic text-xs">"Travel is the only thing you buy that makes you richer."</p>
+              </div>
             </div>
 
-            <div className="mt-auto pt-8 border-t border-stone-800 text-center">
-              <p className="font-serif italic text-xs">"Travel is the only thing you buy that makes you richer."</p>
+            {/* Stamps Page (Main Content) */}
+            <div className="flex-1 p-8 md:p-12 relative overflow-hidden">
+              {/* Subtle background texture */}
+              <div className="absolute inset-0 opacity-40 pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#d6d3d1 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+
+              {/* Decorative coffee stain (Pure CSS) */}
+              <div className="absolute top-10 right-20 w-32 h-32 rounded-full border-[12px] border-[#e7e5e4] opacity-40 blur-sm pointer-events-none mix-blend-multiply transform rotate-45"></div>
+
+              <header className="mb-10 border-b-2 border-double border-stone-300 pb-4 flex justify-between items-end relative z-10">
+                <div>
+                  <h2 className="text-3xl font-serif text-stone-800 font-bold uppercase tracking-wide">Visas & Stamps</h2>
+                  <p className="text-stone-500 text-sm mt-1 font-serif italic">Official Travel History</p>
+                </div>
+                <div className="hidden md:block text-right">
+                  <p className="font-mono text-xs text-stone-400">PAGE 14-15</p>
+                </div>
+              </header>
+
+              {/* Stamps Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 relative z-10">
+                {stampsWithStyles.map((place) => (
+                  <Stamp
+                    key={place.id}
+                    place={place}
+                    onClick={setSelectedPlace}
+                    style={place.style}
+                  />
+                ))}
+
+                {/* Empty space "coming soon" */}
+                <div className="border-2 border-dashed border-stone-300 rounded-lg flex items-center justify-center min-h-[140px] opacity-50">
+                  <span className="text-stone-400 font-serif italic text-sm text-center px-4">Next destination...</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Stamps Page (Main Content) */}
-          <div className="flex-1 p-8 md:p-12 relative overflow-hidden">
-            {/* Subtle background texture */}
-            <div className="absolute inset-0 opacity-40 pointer-events-none"
-              style={{ backgroundImage: 'radial-gradient(#d6d3d1 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-
-            {/* Decorative coffee stain (Pure CSS) */}
-            <div className="absolute top-10 right-20 w-32 h-32 rounded-full border-[12px] border-[#e7e5e4] opacity-40 blur-sm pointer-events-none mix-blend-multiply transform rotate-45"></div>
-
-            <header className="mb-10 border-b-2 border-double border-stone-300 pb-4 flex justify-between items-end relative z-10">
-              <div>
-                <h2 className="text-3xl font-serif text-stone-800 font-bold uppercase tracking-wide">Visas & Stamps</h2>
-                <p className="text-stone-500 text-sm mt-1 font-serif italic">Official Travel History</p>
-              </div>
-              <div className="hidden md:block text-right">
-                <p className="font-mono text-xs text-stone-400">PAGE 14-15</p>
-              </div>
-            </header>
-
-            {/* Stamps Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 relative z-10">
-              {stampsWithStyles.map((place) => (
-                <Stamp
-                  key={place.id}
-                  place={place}
-                  onClick={setSelectedPlace}
-                  style={place.style}
-                />
-              ))}
-
-              {/* Empty space "coming soon" */}
-              <div className="border-2 border-dashed border-stone-300 rounded-lg flex items-center justify-center min-h-[140px] opacity-50">
-                <span className="text-stone-400 font-serif italic text-sm text-center px-4">Next destination...</span>
-              </div>
-            </div>
-          </div>
+          {/* Details Modal */}
+          {selectedPlace && (
+            <PassportDetails place={selectedPlace} onClose={() => setSelectedPlace(null)} />
+          )}
         </div>
-
-        {/* Details Modal */}
-        {selectedPlace && (
-          <PassportDetails place={selectedPlace} onClose={() => setSelectedPlace(null)} />
-        )}
       </div>
     </Layout>
   );

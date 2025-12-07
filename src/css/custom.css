@@ -75,3 +75,9 @@ body:has(.homepage-wrapper) aside {
   background-color: #0f172a;
   border-right: 1px solid #1e293b;
 }
+
+/* Hide Navbar and Footer on Passport Page */
+body:has(.passport-wrapper) .navbar,
+body:has(.passport-wrapper) footer {
+  display: none !important;
+}
