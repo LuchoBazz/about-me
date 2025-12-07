@@ -228,7 +228,7 @@ export default function TravelPassport() {
 
   // Generate random styles (rotation) only once to avoid jitter on render
   const stampsWithStyles = useMemo(() => {
-    return visitedPlaces.map(place => ({
+    return [...visitedPlaces].reverse().map(place => ({
       ...place,
       style: {
         transform: `rotate(${Math.floor(Math.random() * 20) - 10}deg)`,
