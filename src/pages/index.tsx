@@ -602,22 +602,24 @@ function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+
+              {/* <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-indigo-600 rounded-lg">
                     <Code2 size={24} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Join the Lab</h3>
+                    <h3 className="text-xl font-bold mb-2">Travel Passport</h3>
                     <p className="text-slate-300 text-sm mb-4">
-                      We are looking for PhD students with strong experience in C++, CUDA, or formal testing.
+                      A collection of my travel experiences.
                     </p>
                     <button className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors flex items-center gap-2">
-                      Apply Now <ArrowRight size={16} />
+                      View Passport <ArrowRight size={16} />
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
+
             </div>
           </div>
         </section>
