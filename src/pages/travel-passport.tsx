@@ -82,18 +82,18 @@ const Shields = {
   )
 };
 
-/**
- * SAMPLE DATA
- */
 const visitedPlaces = [
-  { id: 1, city: 'Paris', country: 'France', date: '2022-04-12', color: '#1e3a8a', icon: 'FleurDeLis', desc: 'The City of Light. Unforgettable visit to the Louvre.' },
-  { id: 2, city: 'Madrid', country: 'Spain', date: '2022-04-20', color: '#b91c1c', icon: 'Crown', desc: 'Tapas, museums, and the Retiro park. Vibrant energy.' },
-  { id: 3, city: 'Rome', country: 'Italy', date: '2023-01-10', color: '#047857', icon: 'Eagle', desc: 'History in every corner. The Colosseum is majestic.' },
-  { id: 4, city: 'London', country: 'UK', date: '2023-01-18', color: '#1e3a8a', icon: 'Lion', desc: 'Rainy afternoon in Soho and tea at 5 PM.' },
-  { id: 5, city: 'Amsterdam', country: 'Netherlands', date: '2023-05-05', color: '#c2410c', icon: 'Ship', desc: 'Endless canals and incredible architecture.' },
-  { id: 6, city: 'Prague', country: 'Czech Republic', date: '2023-05-12', color: '#7c2d12', icon: 'Castle', desc: 'A gothic fairytale made into a city.' },
-  { id: 7, city: 'Tokyo', country: 'Japan', date: '2024-03-22', color: '#be185d', icon: 'Star', desc: 'Future and tradition. Sushi in Tsukiji.' },
-  { id: 8, city: 'New York', country: 'USA', date: '2024-11-02', color: '#0f172a', icon: 'Tower', desc: 'The city that never sleeps. Autumn in Central Park.' },
+  { id: 1, city: 'Cordoba', country: 'Argentina', date: '2023-07-30', color: '#7c2d12', icon: 'Tower', desc: 'History and culture in the heart of Argentina.' },
+  { id: 2, city: 'Buenos Aires', country: 'Argentina', date: '2023-07-31', color: '#1e3a8a', icon: 'Eagle', desc: 'Tango, steak, and the vibrant streets of Palermo.' },
+  { id: 3, city: 'Madrid', country: 'Spain', date: '2025-01-23', color: '#b91c1c', icon: 'Crown', desc: 'Returning to the vibrant energy of the Spanish capital.' },
+  { id: 4, city: 'Valletta', country: 'Malta', date: '2025-01-26', color: '#c2410c', icon: 'Castle', desc: 'The fortress city, a masterpiece of the Baroque.' },
+  { id: 5, city: 'Gzira', country: 'Malta', date: '2025-01-25', color: '#047857', icon: 'Ship', desc: 'Views of Manoel Island and the yacht marina.' },
+  { id: 6, city: 'Sliema', country: 'Malta', date: '2025-01-25', color: '#0f172a', icon: 'Star', desc: 'Bustling promenade and rocky beaches.' },
+  { id: 7, city: 'Rome', country: 'Italy', date: '2025-06-22', color: '#be185d', icon: 'Eagle', desc: 'The Eternal City. Pizza, pasta, and history.' },
+  { id: 8, city: 'Milan', country: 'Italy', date: '2025-06-26', color: '#4338ca', icon: 'FleurDeLis', desc: 'Fashion capital and the magnificent Duomo.' },
+  { id: 9, city: 'Belgrade', country: 'Serbia', date: '2025-08-09', color: '#b45309', icon: 'Castle', desc: 'Where the Sava meets the Danube.' },
+  { id: 10, city: 'Novi Sad', country: 'Serbia', date: '2025-08-12', color: '#15803d', icon: 'Tower', desc: 'The Athens of Serbia, relaxed and charming.' },
+  { id: 11, city: 'Budapest', country: 'Hungary', date: '2025-08-13', color: '#7f1d1d', icon: 'Crown', desc: 'The Pearl of the Danube. Thermal baths and ruin bars.' },
 ];
 
 /**
