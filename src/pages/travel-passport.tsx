@@ -90,10 +90,11 @@ const visitedPlaces = [
   { id: 5, city: 'Gzira', country: 'Malta', date: '2025-01-25', color: '#047857', icon: 'Ship', desc: 'Views of Manoel Island and the yacht marina.' },
   { id: 6, city: 'Sliema', country: 'Malta', date: '2025-01-25', color: '#0f172a', icon: 'Star', desc: 'Bustling promenade and rocky beaches.' },
   { id: 7, city: 'Rome', country: 'Italy', date: '2025-06-22', color: '#be185d', icon: 'Eagle', desc: 'The Eternal City. Pizza, pasta, and history.' },
-  { id: 8, city: 'Milan', country: 'Italy', date: '2025-06-26', color: '#4338ca', icon: 'FleurDeLis', desc: 'Fashion capital and the magnificent Duomo.' },
-  { id: 9, city: 'Belgrade', country: 'Serbia', date: '2025-08-09', color: '#b45309', icon: 'Castle', desc: 'Where the Sava meets the Danube.' },
-  { id: 10, city: 'Novi Sad', country: 'Serbia', date: '2025-08-12', color: '#15803d', icon: 'Tower', desc: 'The Athens of Serbia, relaxed and charming.' },
-  { id: 11, city: 'Budapest', country: 'Hungary', date: '2025-08-13', color: '#7f1d1d', icon: 'Crown', desc: 'The Pearl of the Danube. Thermal baths and ruin bars.' },
+  { id: 8, city: 'Vatican City', country: 'Vatican', date: '2025-06-23', color: '#d97706', icon: 'Crown', desc: 'St. Peter\'s Basilica and the heart of the Catholic Church.' },
+  { id: 9, city: 'Milan', country: 'Italy', date: '2025-06-26', color: '#4338ca', icon: 'FleurDeLis', desc: 'Fashion capital and the magnificent Duomo.' },
+  { id: 10, city: 'Belgrade', country: 'Serbia', date: '2025-08-09', color: '#b45309', icon: 'Castle', desc: 'Where the Sava meets the Danube.' },
+  { id: 11, city: 'Novi Sad', country: 'Serbia', date: '2025-08-12', color: '#15803d', icon: 'Tower', desc: 'The Athens of Serbia, relaxed and charming.' },
+  { id: 12, city: 'Budapest', country: 'Hungary', date: '2025-08-13', color: '#7f1d1d', icon: 'Crown', desc: 'The Pearl of the Danube. Thermal baths and ruin bars.' },
 ];
 
 /**
@@ -235,6 +236,8 @@ export default function TravelPassport() {
     }));
   }, []);
 
+  const uniqueCountries = new Set(visitedPlaces.map(place => place.country)).size;
+
   return (
     <Layout
       title="Travel Passport"
@@ -276,7 +279,7 @@ export default function TravelPassport() {
                     </div>
                     <div className="bg-stone-800 p-2 rounded text-center">
                       <Compass size={16} className="mx-auto mb-1 text-blue-500" />
-                      <span className="block text-lg font-bold text-white">8</span>
+                      <span className="block text-lg font-bold text-white">{uniqueCountries}</span>
                       <span className="text-[9px]">Countries</span>
                     </div>
                   </div>
