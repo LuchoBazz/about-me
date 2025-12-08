@@ -7,7 +7,9 @@ import {
   CalendarClock,
   Sun,
   Moon,
-  ArrowLeft
+  ArrowLeft,
+  Briefcase,
+  Dumbbell
 } from 'lucide-react';
 
 // Simulación simple de Layout para el preview
@@ -58,36 +60,36 @@ function NowPage() {
   // Datos de la sección NOW
   const nowItems = [
     {
-      category: "Reading",
-      title: "Designing Data-Intensive Applications",
-      subtitle: "by Martin Kleppmann",
-      icon: <BookOpen className="w-6 h-6" />,
-      color: "text-blue-500",
-      bg: "bg-blue-100 dark:bg-blue-900/30"
-    },
-    {
-      category: "Building",
-      title: "Improving Quick Test CLI",
-      subtitle: "Adding support for Rust & Python",
-      icon: <Zap className="w-6 h-6" />,
-      color: "text-amber-500",
-      bg: "bg-amber-100 dark:bg-amber-900/30"
+      category: "Health",
+      title: "Going to the Gym",
+      subtitle: "Building strength and consistency",
+      icon: <Dumbbell className="w-6 h-6" />,
+      color: "text-rose-500",
+      bg: "bg-rose-100 dark:bg-rose-900/30"
     },
     {
       category: "Learning",
-      title: "Rust Async Runtime",
-      subtitle: "Deep diving into Tokio",
-      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Studying English",
+      subtitle: "Aiming for a stable B2 level",
+      icon: <Globe className="w-6 h-6" />,
       color: "text-emerald-500",
       bg: "bg-emerald-100 dark:bg-emerald-900/30"
     },
     {
-      category: "Planning",
-      title: "Trip to Japan",
-      subtitle: "Autumn 2025",
-      icon: <Globe className="w-6 h-6" />,
-      color: "text-rose-500",
-      bg: "bg-rose-100 dark:bg-rose-900/30"
+      category: "Work",
+      title: "Back-End Software Engineer",
+      subtitle: "Working at Instaleap",
+      icon: <Briefcase className="w-6 h-6" />,
+      color: "text-blue-500",
+      bg: "bg-blue-100 dark:bg-blue-900/30"
+    },
+    {
+      category: "Reading",
+      title: "The Richest Man in Babylon",
+      subtitle: "by George S. Clason",
+      icon: <BookOpen className="w-6 h-6" />,
+      color: "text-amber-500",
+      bg: "bg-amber-100 dark:bg-amber-900/30"
     }
   ];
 
