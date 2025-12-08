@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
   BookOpen,
-  Zap,
-  TrendingUp,
   Globe,
   CalendarClock,
   Sun,
   Moon,
-  ArrowLeft,
   Briefcase,
-  Dumbbell
+  Dumbbell,
+  GraduationCap,
+  Map
 } from 'lucide-react';
 
 // Simulación simple de Layout para el preview
@@ -90,6 +89,22 @@ function NowPage() {
       icon: <BookOpen className="w-6 h-6" />,
       color: "text-amber-500",
       bg: "bg-amber-100 dark:bg-amber-900/30"
+    },
+    {
+      category: "Education",
+      title: "Master's Degree Scholarships",
+      subtitle: "Applying to various programs",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30"
+    },
+    {
+      category: "Projects",
+      title: "Archiving my Past",
+      subtitle: "Organizing travel memories into a public timeline",
+      icon: <Map className="w-6 h-6" />,
+      color: "text-cyan-500",
+      bg: "bg-cyan-100 dark:bg-cyan-900/30"
     }
   ];
 
