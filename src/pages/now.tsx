@@ -192,23 +192,6 @@ function NowPage() {
 
             </div>
           </main>
-
-          {/* --- FOOTER --- */}
-          <footer className="py-8 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-            <div className="max-w-4xl mx-auto px-4 text-center">
-              <div className="text-slate-500 text-sm">
-                <p>© {new Date().getFullYear()} Luis Miguel Báez.</p>
-                <div className="mt-2 flex justify-center gap-4">
-                  <a href="/" className="hover:text-indigo-600 transition-colors">Home</a>
-                  <span className="text-slate-300">•</span>
-                  <a href="#" className="hover:text-indigo-600 transition-colors">Twitter</a>
-                  <span className="text-slate-300">•</span>
-                  <a href="#" className="hover:text-indigo-600 transition-colors">GitHub</a>
-                </div>
-              </div>
-            </div>
-          </footer>
-
         </div>
       </Layout>
     </div>
