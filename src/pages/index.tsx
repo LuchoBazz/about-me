@@ -13,7 +13,8 @@ import {
   Wrench,
   Brain,
   Library,
-  Globe
+  Globe,
+  CalendarClock
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -603,22 +604,22 @@ function HomePage() {
                 </div>
               </div>
 
-              {/* <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-indigo-600 rounded-lg">
-                    <Code2 size={24} className="text-white" />
+                    <CalendarClock size={24} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Travel Passport</h3>
+                    <h3 className="text-xl font-bold mb-2">Now Page</h3>
                     <p className="text-slate-300 text-sm mb-4">
-                      A collection of my travel experiences.
+                      A snapshot of my current focus, projects, and priorities.
                     </p>
-                    <button className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors flex items-center gap-2">
-                      View Passport <ArrowRight size={16} />
-                    </button>
+                    <a href="/about-me/now" className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors flex items-center gap-2">
+                      View Now Page <ArrowRight size={16} />
+                    </a>
                   </div>
                 </div>
-              </div> */}
+              </div>
 
             </div>
           </div>
