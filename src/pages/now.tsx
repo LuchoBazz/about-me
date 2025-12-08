@@ -18,9 +18,25 @@ function NowPage() {
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Sincronización de tema (Simulada)
+  // Sincronización con el tema de Docusaurus
   useEffect(() => {
-    // En Docusaurus real, verificarías document.documentElement.dataset.theme
+    const updateTheme = () => {
+      // Docusaurus guarda el tema en el atributo data-theme del html
+      const theme = document.documentElement.dataset.theme;
+      setIsDark(theme === 'dark');
+    };
+
+    // Actualizar al montar el componente
+    updateTheme();
+
+    // Observar cambios en el atributo data-theme (por si cambia desde el navbar de Docusaurus)
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   // Efecto de sombra en Navbar al hacer scroll
@@ -33,6 +49,9 @@ function NowPage() {
   }, []);
 
   const toggleTheme = () => {
+    const newTheme = isDark ? 'light' : 'dark';
+    // Establecer el atributo data-theme para Docusaurus
+    document.documentElement.dataset.theme = newTheme;
     setIsDark(!isDark);
   };
 
@@ -81,19 +100,10 @@ function NowPage() {
           <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-20">
-                <div className="flex items-center gap-3">
-                  <a href="/" className="group flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center text-white font-mono font-bold text-xl shadow-lg shadow-indigo-500/30">
-                      {`/>`}
-                    </div>
-                    <div>
-                      <h1 className="font-bold text-lg leading-none tracking-tight">LuchoBazz</h1>
-                      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider group-hover:text-indigo-500 transition-colors">Back to Home</span>
-                    </div>
-                  </a>
-                </div>
-
                 <div className="flex items-center gap-4">
+                  <a href="/about-me/" className="text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition-colors font-serif italic text-sm">
+                    ← Back to Home
+                  </a>
                   <button
                     onClick={toggleTheme}
                     className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-300 dark:hover:border-slate-700"
