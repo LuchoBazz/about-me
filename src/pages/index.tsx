@@ -17,7 +17,6 @@ import {
   Sparkles,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
-import { InspirationSection } from '../components/InspirationSection';
 
 const calculateDuration = (startDate: string) => {
   const start = new Date(startDate);
@@ -203,13 +202,21 @@ function HomePage() {
       textColor: "text-orange-500"
     },
     {
+      title: "Prompts Library",
+      desc: "Collection of useful AI prompts and templates.",
+      icon: <Terminal className="w-8 h-8" />,
+      link: "https://luchobazz.github.io/knowledge-core/prompts/",
+      color: "bg-emerald-500/10 dark:bg-emerald-500/20",
+      textColor: "text-emerald-500"
+    },
+    {
       title: "Daily Inspiration",
       desc: "Fragments of thought collected over time.",
       icon: <Sparkles className="w-8 h-8" />,
       link: "/about-me/inspiration",
       color: "bg-violet-500/10 dark:bg-violet-500/20",
       textColor: "text-violet-500"
-    }
+    },
   ];
 
   return (
@@ -633,9 +640,6 @@ function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* --- INSPIRATION / QUOTES SECTION (NEW) --- */}
-        <InspirationSection />
 
         {/* --- FOOTER --- */}
         {/* <footer className="py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-center">
