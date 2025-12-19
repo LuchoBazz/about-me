@@ -15,6 +15,7 @@ import {
   Globe,
   CalendarClock,
   Sparkles,
+  TreePine,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -216,6 +217,14 @@ function HomePage() {
       link: "/about-me/inspiration",
       color: "bg-violet-500/10 dark:bg-violet-500/20",
       textColor: "text-violet-500"
+    },
+    {
+      title: "Christmas Tree",
+      desc: "Interactive 3D Christmas tree experience.",
+      icon: <TreePine className="w-8 h-8" />,
+      link: "/about-me/christmas",
+      color: "bg-green-500/10 dark:bg-green-500/20",
+      textColor: "text-green-500"
     },
   ];
 
