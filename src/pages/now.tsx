@@ -11,26 +11,26 @@ import {
   Map
 } from 'lucide-react';
 
-// Simulación simple de Layout para el preview
-// En tu código real, esto sería: import Layout from '@theme/Layout';
+// Simple Layout mock for preview
+// In your real code, this should be: import Layout from '@theme/Layout';
 const Layout = ({ children }) => <div className="w-full">{children}</div>;
 
 function NowPage() {
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Sincronización con el tema de Docusaurus
+  // Sync with the Docusaurus theme
   useEffect(() => {
     const updateTheme = () => {
-      // Docusaurus guarda el tema en el atributo data-theme del html
+      // Docusaurus stores the theme in the html data-theme attribute
       const theme = document.documentElement.dataset.theme;
       setIsDark(theme === 'dark');
     };
 
-    // Actualizar al montar el componente
+    // Update when the component mounts
     updateTheme();
 
-    // Observar cambios en el atributo data-theme (por si cambia desde el navbar de Docusaurus)
+    // Watch changes in data-theme (for example, when toggling from the Docusaurus navbar)
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -40,7 +40,7 @@ function NowPage() {
     return () => observer.disconnect();
   }, []);
 
-  // Efecto de sombra en Navbar al hacer scroll
+  // Add a shadow to the navbar when scrolling
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -51,12 +51,12 @@ function NowPage() {
 
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark';
-    // Establecer el atributo data-theme para Docusaurus
+    // Set the data-theme attribute for Docusaurus
     document.documentElement.dataset.theme = newTheme;
     setIsDark(!isDark);
   };
 
-  // Datos de la sección NOW
+  // Data for the NOW section
   const nowItems = [
     {
       category: "Health",
@@ -98,6 +98,15 @@ function NowPage() {
       color: "text-purple-500",
       bg: "bg-purple-100 dark:bg-purple-900/30"
     },
+    {
+      category: "Side project",
+      title: "Taskon",
+      subtitle: "Building an office productivity tools app",
+      icon: <Briefcase className="w-6 h-6" />,
+      color: "text-indigo-500",
+      bg: "bg-indigo-100 dark:bg-indigo-900/30",
+      startDateTime: "2025-12-20"
+    },
   ];
 
   const activityHistoryItems = [
@@ -113,19 +122,7 @@ function NowPage() {
       endDateLabel: "January 8, 2026",
       startDateTime: "2025-12-08",
       endDateTime: "2026-01-08"
-    },
-    {
-      category: "Side project",
-      title: "Taskon",
-      subtitle: "Building an office productivity tools app",
-      icon: <Briefcase className="w-6 h-6" />,
-      color: "text-indigo-500",
-      bg: "bg-indigo-100 dark:bg-indigo-900/30",
-      dot: "bg-indigo-500",
-      startDateLabel: "December 2025",
-      endDateLabel: "Present",
-      startDateTime: "2025-12"
-    },
+    }
   ];
 
   return (
@@ -157,7 +154,7 @@ function NowPage() {
           <main className="flex-grow pt-32 pb-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
 
-              {/* Header de la página Now */}
+              {/* Now page header */}
               <header className="mb-16">
                 <div className="inline-flex items-center gap-2 mb-6 text-indigo-600 dark:text-indigo-400 font-medium">
                   <CalendarClock size={20} />
@@ -182,7 +179,7 @@ function NowPage() {
                 </div>
               </header>
 
-              {/* Grid de Actividades */}
+              {/* Activities grid */}
               <div className="grid md:grid-cols-2 gap-6 mb-20">
                 {nowItems.map((item, index) => (
                   <div
@@ -207,7 +204,7 @@ function NowPage() {
                 ))}
               </div>
 
-              {/* Historial / Timeline de actividades */}
+              {/* Activity history / timeline */}
               <section className="mb-20" aria-label="Activity history">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">
                   Activity history
@@ -258,7 +255,7 @@ function NowPage() {
                 </ol>
               </section>
 
-              {/* Explicación Now Page */}
+              {/* Now page explanation */}
               <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-100 dark:border-indigo-800/50 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-grow">
                   <h3 className="text-lg font-bold text-indigo-900 dark:text-indigo-300 mb-2">Inspired by the "Now" Movement</h3>
