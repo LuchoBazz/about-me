@@ -127,7 +127,14 @@ function NowPage() {
       endDateLabel: "January 8, 2026",
       startDateTime: "2025-12-08",
       endDateTime: "2026-01-08"
-    }
+    },
+    // Add English course in Malta
+    // Add IBM Back-End Software Engineer
+    // Add IBM Back-End Software Engineer Internship
+    // Add Quick-test CLI
+    // Add Training Camp Argentina
+    // Add Competitive Programming
+    // Add Bachelor Degree
   ];
 
   return (
