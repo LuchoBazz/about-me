@@ -143,7 +143,19 @@ function NowPage() {
     {
       category: "Competitive Programming",
       title: "Competitive Programming Training Camp",
-      subtitle: "Argentina",
+      subtitle: "Medellín/Colombia (Eafit University)",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateLabel: "July 2, 2024",
+      endDateLabel: "July 12, 2024",
+      startDateTime: "2024-07-02",
+      endDateTime: "2024-07-12"
+    },
+    {
+      category: "Competitive Programming",
+      title: "Competitive Programming Training Camp",
+      subtitle: "Buenos Aires/Argentina (National University of La Matanza - UNLaM)",
       icon: <GraduationCap className="w-6 h-6" />,
       color: "text-purple-500",
       bg: "bg-purple-100 dark:bg-purple-900/30",
@@ -163,6 +175,18 @@ function NowPage() {
       endDateLabel: "Sep 2022",
       startDateTime: "2022-01-01",
       endDateTime: "2022-09-30"
+    },
+    {
+      category: "Competitive Programming",
+      title: "Competitive Programming Training Camp",
+      subtitle: "Bogotá/Colombia (Politécnico Grancolombiano)",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateLabel: "July 5, 2022",
+      endDateLabel: "July 15, 2022",
+      startDateTime: "2022-07-05",
+      endDateTime: "2022-07-15"
     },
     {
       category: "Projects",
