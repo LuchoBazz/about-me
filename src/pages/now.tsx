@@ -216,7 +216,7 @@ function NowPage() {
     {
       category: "Competitive Programming",
       title: "ICPC Training & Practice",
-      subtitle: "Competitive programming training and Codeforces contests",
+      subtitle: "Competitive programming training and Codeforces contests (codeforces:LuchoBazz)",
       icon: <GraduationCap className="w-6 h-6" />,
       color: "text-purple-500",
       bg: "bg-purple-100 dark:bg-purple-900/30",
