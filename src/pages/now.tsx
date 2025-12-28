@@ -59,15 +59,6 @@ function NowPage() {
   // Data for the NOW section
   const nowItems = [
     {
-      category: "Health",
-      title: "Going to the Gym",
-      subtitle: "Building strength and consistency",
-      icon: <Dumbbell className="w-6 h-6" />,
-      color: "text-rose-500",
-      bg: "bg-rose-100 dark:bg-rose-900/30",
-      startDateTime: "2025-"
-    },
-    {
       category: "Learning",
       title: "Studying English",
       subtitle: "Aiming for a stable B2 level",
@@ -86,12 +77,12 @@ function NowPage() {
       startDateTime: "2025-"
     },
     {
-      category: "Reading",
-      title: "The Richest Man in Babylon",
-      subtitle: "by George S. Clason",
-      icon: <BookOpen className="w-6 h-6" />,
-      color: "text-amber-500",
-      bg: "bg-amber-100 dark:bg-amber-900/30",
+      category: "Health",
+      title: "Going to the Gym",
+      subtitle: "Building strength and consistency",
+      icon: <Dumbbell className="w-6 h-6" />,
+      color: "text-rose-500",
+      bg: "bg-rose-100 dark:bg-rose-900/30",
       startDateTime: "2025-"
     },
     {
@@ -111,6 +102,15 @@ function NowPage() {
       color: "text-indigo-500",
       bg: "bg-indigo-100 dark:bg-indigo-900/30",
       startDateTime: "2025-12-20"
+    },
+    {
+      category: "Reading",
+      title: "The Richest Man in Babylon",
+      subtitle: "by George S. Clason",
+      icon: <BookOpen className="w-6 h-6" />,
+      color: "text-amber-500",
+      bg: "bg-amber-100 dark:bg-amber-900/30",
+      startDateTime: "2025-"
     },
   ];
 
