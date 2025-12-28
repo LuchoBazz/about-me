@@ -64,7 +64,8 @@ function NowPage() {
       subtitle: "Building strength and consistency",
       icon: <Dumbbell className="w-6 h-6" />,
       color: "text-rose-500",
-      bg: "bg-rose-100 dark:bg-rose-900/30"
+      bg: "bg-rose-100 dark:bg-rose-900/30",
+      startDateTime: "2025-"
     },
     {
       category: "Learning",
@@ -72,7 +73,8 @@ function NowPage() {
       subtitle: "Aiming for a stable B2 level",
       icon: <Globe className="w-6 h-6" />,
       color: "text-emerald-500",
-      bg: "bg-emerald-100 dark:bg-emerald-900/30"
+      bg: "bg-emerald-100 dark:bg-emerald-900/30",
+      startDateTime: "2025-"
     },
     {
       category: "Work",
@@ -80,7 +82,8 @@ function NowPage() {
       subtitle: "Working at Instaleap",
       icon: <Briefcase className="w-6 h-6" />,
       color: "text-blue-500",
-      bg: "bg-blue-100 dark:bg-blue-900/30"
+      bg: "bg-blue-100 dark:bg-blue-900/30",
+      startDateTime: "2025-"
     },
     {
       category: "Reading",
@@ -88,7 +91,8 @@ function NowPage() {
       subtitle: "by George S. Clason",
       icon: <BookOpen className="w-6 h-6" />,
       color: "text-amber-500",
-      bg: "bg-amber-100 dark:bg-amber-900/30"
+      bg: "bg-amber-100 dark:bg-amber-900/30",
+      startDateTime: "2025-"
     },
     {
       category: "Education",
@@ -96,7 +100,8 @@ function NowPage() {
       subtitle: "Applying to various programs",
       icon: <GraduationCap className="w-6 h-6" />,
       color: "text-purple-500",
-      bg: "bg-purple-100 dark:bg-purple-900/30"
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateTime: "2025-"
     },
     {
       category: "Side project",
