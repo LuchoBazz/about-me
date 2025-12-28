@@ -128,13 +128,91 @@ function NowPage() {
       startDateTime: "2025-12-08",
       endDateTime: "2026-01-08"
     },
-    // Add English course in Malta
-    // Add IBM Back-End Software Engineer
-    // Add IBM Back-End Software Engineer Internship
-    // Add Quick-test CLI
-    // Add Training Camp Argentina
-    // Add Competitive Programming
-    // Add Bachelor Degree
+    {
+      category: "Learning",
+      title: "English Course in Malta",
+      subtitle: "Immersive English learning experience",
+      icon: <Globe className="w-6 h-6" />,
+      color: "text-emerald-500",
+      bg: "bg-emerald-100 dark:bg-emerald-900/30",
+      startDateLabel: "January 27, 2025",
+      endDateLabel: "August 8, 2025",
+      startDateTime: "2025-01-27",
+      endDateTime: "2025-08-08"
+    },
+    {
+      category: "Competitive Programming",
+      title: "Competitive Programming Training Camp",
+      subtitle: "Argentina",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateLabel: "July 31, 2023",
+      endDateLabel: "August 11, 2023",
+      startDateTime: "2023-07-31",
+      endDateTime: "2023-08-11"
+    },
+    {
+      category: "Work",
+      title: "Back-End Software Engineer",
+      subtitle: "IBM",
+      icon: <Briefcase className="w-6 h-6" />,
+      color: "text-blue-500",
+      bg: "bg-blue-100 dark:bg-blue-900/30",
+      startDateLabel: "Jan 2022",
+      endDateLabel: "Sep 2022",
+      startDateTime: "2022-01-01",
+      endDateTime: "2022-09-30"
+    },
+    {
+      category: "Projects",
+      title: "Quick Test CLI",
+      subtitle: "Command Line Interface (CLI) for Stress Testing for Competitive Programming (At present, I only provide support)",
+      icon: <BookOpen className="w-6 h-6" />,
+      color: "text-indigo-500",
+      bg: "bg-indigo-100 dark:bg-indigo-900/30",
+      dot: "bg-indigo-500",
+      startDateLabel: "May 2021",
+      endDateLabel: "May 2022",
+      startDateTime: "2021-05-01",
+      endDateTime: "2022-05-31"
+    },
+    {
+      category: "Work",
+      title: "Software Engineer Intern",
+      subtitle: "IBM",
+      icon: <Briefcase className="w-6 h-6" />,
+      color: "text-blue-500",
+      bg: "bg-blue-100 dark:bg-blue-900/30",
+      startDateLabel: "Jul 2021",
+      endDateLabel: "Dec 2021",
+      startDateTime: "2021-07-01",
+      endDateTime: "2021-12-31"
+    },
+    {
+      category: "Competitive Programming",
+      title: "ICPC Training & Practice",
+      subtitle: "Competitive programming training and Codeforces contests",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateLabel: "June 24, 2020",
+      endDateLabel: "December 22, 2024",
+      startDateTime: "2020-06-24",
+      endDateTime: "2024-12-22"
+    },
+    {
+      category: "Education",
+      title: "Bachelor of Engineering (Systems and Computer Engineering)",
+      subtitle: "Universidad Nacional de Colombia",
+      icon: <GraduationCap className="w-6 h-6" />,
+      color: "text-purple-500",
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      startDateLabel: "Feb 2016",
+      endDateLabel: "Oct 2022",
+      startDateTime: "2016-02-01",
+      endDateTime: "2022-10-31"
+    },
   ];
 
   return (
