@@ -98,14 +98,34 @@ function NowPage() {
       color: "text-purple-500",
       bg: "bg-purple-100 dark:bg-purple-900/30"
     },
+  ];
+
+  const activityHistoryItems = [
     {
       category: "Projects",
       title: "Archiving my Past",
       subtitle: "Organizing travel memories into a public timeline",
       icon: <Map className="w-6 h-6" />,
       color: "text-cyan-500",
-      bg: "bg-cyan-100 dark:bg-cyan-900/30"
-    }
+      bg: "bg-cyan-100 dark:bg-cyan-900/30",
+      dot: "bg-cyan-500",
+      startDateLabel: "December 8, 2025",
+      endDateLabel: "January 8, 2026",
+      startDateTime: "2025-12-08",
+      endDateTime: "2026-01-08"
+    },
+    {
+      category: "Side project",
+      title: "Taskon",
+      subtitle: "Building an office productivity tools app",
+      icon: <Briefcase className="w-6 h-6" />,
+      color: "text-indigo-500",
+      bg: "bg-indigo-100 dark:bg-indigo-900/30",
+      dot: "bg-indigo-500",
+      startDateLabel: "December 2025",
+      endDateLabel: "Present",
+      startDateTime: "2025-12"
+    },
   ];
 
   return (
@@ -158,7 +178,7 @@ function NowPage() {
 
                 <div className="mt-6 flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 w-fit px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                  Last updated: December 8, 2025
+                  Last updated: December 28, 2025
                 </div>
               </header>
 
@@ -186,6 +206,57 @@ function NowPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Historial / Timeline de actividades */}
+              <section className="mb-20" aria-label="Activity history">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">
+                  Activity history
+                </h2>
+
+                <ol className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-10">
+                  {activityHistoryItems.map((item, index) => (
+                    <li key={index} className="relative pl-8">
+                      {/* Dot */}
+                      <span
+                        className={`absolute -left-[9px] top-1.5 w-5 h-5 rounded-full border-4 border-slate-50 dark:border-slate-950 ${item.dot || 'bg-slate-300 dark:bg-slate-700'}`}
+                        aria-hidden="true"
+                      />
+
+                      <article className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                        {/* Dates */}
+                        <header className="md:w-36 flex-shrink-0">
+                          <div className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                            <time dateTime={item.endDateTime}>{item.endDateLabel}</time>
+                          </div>
+                          <div className="text-xs font-mono text-slate-400 dark:text-slate-500 mt-1">
+                            <time dateTime={item.startDateTime}>{item.startDateLabel}</time>
+                          </div>
+                        </header>
+
+                        {/* Card */}
+                        <div className="flex-grow p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 group">
+                          <div className="flex items-start gap-5">
+                            <div className={`p-4 rounded-xl flex-shrink-0 ${item.bg} ${item.color} group-hover:scale-110 transition-transform duration-300`}>
+                              {item.icon}
+                            </div>
+                            <div>
+                              <div className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
+                                {item.category}
+                              </div>
+                              <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 leading-tight mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                {item.title}
+                              </h3>
+                              <p className="text-base text-slate-600 dark:text-slate-400">
+                                {item.subtitle}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </li>
+                  ))}
+                </ol>
+              </section>
 
               {/* Explicación Now Page */}
               <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-8 border border-indigo-100 dark:border-indigo-800/50 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
