@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
   BookOpen,
-  Globe,
   CalendarClock,
   Sun,
   Moon,
   Briefcase,
   Dumbbell,
   GraduationCap,
-  Map
+  Map,
+  Languages
 } from 'lucide-react';
 
 // Simple Layout mock for preview
@@ -71,7 +71,7 @@ function NowPage() {
       category: "Learning",
       title: "Studying English",
       subtitle: "Aiming for a stable B2 level",
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Languages className="w-6 h-6" />,
       color: "text-emerald-500",
       bg: "bg-emerald-100 dark:bg-emerald-900/30",
       startDateTime: "2025-"
@@ -132,7 +132,7 @@ function NowPage() {
       category: "Learning",
       title: "English Course in Malta",
       subtitle: "Immersive English learning experience",
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Languages className="w-6 h-6" />,
       color: "text-emerald-500",
       bg: "bg-emerald-100 dark:bg-emerald-900/30",
       startDateLabel: "January 27, 2025",
