@@ -82,8 +82,8 @@ function HomePage() {
 
   // Sample data
   const stats = [
-    { label: "🇪🇸🇨🇴 Spanish", value: "Native" },
-    { label: "🇬🇧🇺🇸 English", value: "B1+" },
+    { label: "Native", value: "🇪🇸Spanish" },
+    { label: "B1+", value: "🇬🇧English" },
     { label: "Years of Exp.", value: `${calculateDuration('2021-07-01')}` },
   ];
 
