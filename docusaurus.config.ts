@@ -36,7 +36,11 @@ const config: Config = {
       'classic',
       {
         docs: false,
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -55,23 +59,28 @@ const config: Config = {
       },
       items: [
         {
-          href: '#publications',
+          to: '/#publications',
           label: 'Publications',
           position: 'left',
         },
         {
-          href: '#experience',
+          to: '/#experience',
           label: 'Experience',
           position: 'left',
         },
         {
-          href: '#projects',
+          to: '/#projects',
           label: 'Projects',
           position: 'left',
         },
         {
-          href: '#subpages',
+          to: '/#subpages',
           label: 'Subpages',
+          position: 'left',
+        },
+        {
+          to: '/blog',
+          label: 'Blog',
           position: 'left',
         },
       ],
