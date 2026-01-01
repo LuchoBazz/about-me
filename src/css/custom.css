@@ -47,6 +47,11 @@
   /* Light background for highlighted lines */
 
   --ifm-navbar-background-color: #0f172a;
+  --ifm-background-surface-color: #0f172a;
+}
+
+html[data-theme='dark'] {
+  --ifm-background-color: #0c1221;
 }
 
 html[data-theme='dark'] footer {
@@ -72,6 +77,12 @@ body:has(.homepage-wrapper) aside {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: #0f172a;
+  border-right: 1px solid #1e293b;
+}
+
+/* Blog sidebar (recent posts) */
+[data-theme='dark'] .blog-wrapper aside.col--3 {
   background-color: #0f172a;
   border-right: 1px solid #1e293b;
 }
