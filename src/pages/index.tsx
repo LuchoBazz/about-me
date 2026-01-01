@@ -195,6 +195,14 @@ function HomePage() {
       textColor: "text-indigo-500"
     },
     {
+      title: "AI Handbook",
+      desc: "Notes and guides about AI and Machine Learning.",
+      icon: <Cpu className="w-8 h-8" />,
+      link: "https://luchobazz.github.io/ai-handbook/docs/intro",
+      color: "bg-blue-500/10 dark:bg-blue-500/20",
+      textColor: "text-blue-500"
+    },
+    {
       title: "Cpp Algorithm Snippets",
       desc: "Optimized repository of data structures and algorithms.",
       icon: <Library className="w-8 h-8" />,
@@ -218,14 +226,14 @@ function HomePage() {
       color: "bg-violet-500/10 dark:bg-violet-500/20",
       textColor: "text-violet-500"
     },
-    {
-      title: "Christmas Tree",
-      desc: "Interactive 3D Christmas tree experience.",
-      icon: <TreePine className="w-8 h-8" />,
-      link: "/about-me/christmas",
-      color: "bg-green-500/10 dark:bg-green-500/20",
-      textColor: "text-green-500"
-    },
+    // {
+    //   title: "Christmas Tree",
+    //   desc: "Interactive 3D Christmas tree experience.",
+    //   icon: <TreePine className="w-8 h-8" />,
+    //   link: "/about-me/christmas",
+    //   color: "bg-green-500/10 dark:bg-green-500/20",
+    //   textColor: "text-green-500"
+    // },
   ];
 
   return (
