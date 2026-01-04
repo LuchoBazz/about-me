@@ -219,6 +219,14 @@ function HomePage() {
       textColor: "text-emerald-500"
     },
     {
+      title: "Cultural Explorer",
+      desc: "Discover curious cultural facts with AI.",
+      icon: <Globe className="w-8 h-8" />,
+      link: "/about-me/cultural-explorer/",
+      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
+      textColor: "text-indigo-500"
+    },
+    {
       title: "Daily Inspiration",
       desc: "Fragments of thought collected over time.",
       icon: <Sparkles className="w-8 h-8" />,
