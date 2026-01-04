@@ -16,7 +16,8 @@ const projectPoint = (lon, lat) => {
   // Convert latitude to radians and limit to avoid infinity at poles
   const latRad = Math.min(89, Math.max(-89, lat)) * (Math.PI / 180);
   const mercN = Math.log(Math.tan((Math.PI / 4) + (latRad / 2)));
-  
+
+  // Mercator projection: convert latitude (mercN) into the map's Y coordinate.
   let y = (MAP_HEIGHT / 2) - (MAP_WIDTH * mercN / (2 * Math.PI));
   
   return [x, y];
