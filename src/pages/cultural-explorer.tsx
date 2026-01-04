@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { X, Info, Loader2, Globe, Sparkles, Map as MapIcon, Languages } from 'lucide-react';
+import { X, Info, Loader2, Globe, Sparkles, Map as MapIcon, Languages, Sun, Moon } from 'lucide-react';
 
 // --- MAP UTILITIES (Projection and Native SVG Rendering) ---
 // We implement a simple Mercator projection and GeoJSON conversion to SVG Path
@@ -51,9 +51,42 @@ export default function CulturalExplorer() {
   const [tooltipContent, setTooltipContent] = useState("");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [language, setLanguage] = useState("en");
+  const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   // API Key Configuration
   const apiKey = (siteConfig.customFields?.geminiApiKey as string | undefined) ?? "";
+
+  // Sync with the Docusaurus theme (same approach as src/pages/now.tsx)
+  useEffect(() => {
+    const updateTheme = () => {
+      const theme = document.documentElement.dataset.theme;
+      setIsDark(theme === 'dark');
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? 'light' : 'dark';
+    document.documentElement.dataset.theme = newTheme;
+    setIsDark(!isDark);
+  };
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const languages = {
     en: "English",
@@ -178,51 +211,65 @@ export default function CulturalExplorer() {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-slate-900 text-slate-100 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white flex flex-col"
-      onMouseMove={handleMouseMove}
-    >
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-10 p-4 md:p-6 flex justify-between items-center bg-gradient-to-b from-slate-900 to-transparent pointer-events-none">
-        <div className="flex items-center gap-3 pointer-events-auto">
-          <div className="p-2 bg-indigo-600 rounded-lg shadow-lg shadow-indigo-500/20">
-            <Globe className="w-5 h-5 md:w-6 md:h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white">
-              Cultural Explorer
-            </h1>
-            <p className="text-slate-400 text-xs md:text-sm">
-              Discover the world with AI
-            </p>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-4 pointer-events-auto">
-          {/* Language Selector */}
-          <div className="relative group">
-            <div className="flex items-center bg-slate-800/80 backdrop-blur-sm border border-slate-700 rounded-lg px-2 py-1.5 focus-within:border-indigo-500 transition-colors">
-              <Languages className="w-4 h-4 text-slate-400 mr-2" />
-              <select 
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="bg-transparent text-sm text-slate-200 focus:outline-none cursor-pointer appearance-none pr-4"
-                style={{ backgroundImage: 'none' }}
-              >
-                <option value="en" className="bg-slate-800">English</option>
-                <option value="es" className="bg-slate-800">Español</option>
-                <option value="de" className="bg-slate-800">Deutsch</option>
-                <option value="ru" className="bg-slate-800">Русский</option>
-              </select>
+    <div className={isDark ? 'dark' : ''}>
+      <div 
+        className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white flex flex-col"
+        onMouseMove={handleMouseMove}
+      >
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+              <div className="flex items-center gap-4">
+                <a href="/about-me/" className="text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition-colors font-serif italic text-sm">
+                  ← Back to Home
+                </a>
+
+                <div className="hidden sm:flex items-center gap-3">
+                  <div className="p-2 bg-indigo-600 rounded-lg shadow-lg shadow-indigo-500/20">
+                    <Globe className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-base md:text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                      Cultural Explorer
+                    </h3>
+                  </div>
+                </div>
+
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-300 dark:hover:border-slate-700"
+                  aria-label="Toggle Dark Mode"
+                >
+                  {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-600" />}
+                </button>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="relative group">
+                  <div className="flex items-center bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1.5 focus-within:border-indigo-500 transition-colors">
+                    <Languages className="w-4 h-4 text-slate-500 dark:text-slate-400 mr-2" />
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value)}
+                      className="bg-transparent text-sm text-slate-800 dark:text-slate-200 focus:outline-none cursor-pointer appearance-none pr-4"
+                      style={{ backgroundImage: 'none' }}
+                    >
+                      <option value="en" className="bg-white dark:bg-slate-800">English</option>
+                      <option value="es" className="bg-white dark:bg-slate-800">Español</option>
+                      <option value="de" className="bg-white dark:bg-slate-800">Deutsch</option>
+                      <option value="ru" className="bg-white dark:bg-slate-800">Русский</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-slate-800/50 backdrop-blur-sm rounded-full border border-slate-200 dark:border-slate-700">
+                  <Sparkles className="w-4 h-4 text-yellow-400" />
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-300">Powered by Gemini 2.5</span>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-slate-800/50 backdrop-blur-sm rounded-full border border-slate-700">
-            <Sparkles className="w-4 h-4 text-yellow-400" />
-            <span className="text-xs font-medium text-slate-300">Powered by Gemini 2.5</span>
-          </div>
-        </div>
-      </header>
+        </nav>
 
       {/* Custom Tooltip */}
       {tooltipContent && !selectedCountry && (
@@ -369,6 +416,7 @@ export default function CulturalExplorer() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
