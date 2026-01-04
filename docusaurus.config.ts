@@ -7,6 +7,10 @@ const config: Config = {
   tagline: 'Dinosaurs are cool',
   favicon: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Emoji_u263a.svg',
 
+  customFields: {
+    geminiApiKey: process.env.GEMINI_API_KEY,
+  },
+
   // Set the production url of your site here
   url: 'https://luchobazz.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
