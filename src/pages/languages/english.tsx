@@ -233,7 +233,7 @@ export default function App() {
         example: topic.example
       });
 
-      const htmlRaw = response.data || "Sorry, I couldn't generate an explanation at this moment.";
+      const htmlRaw = response.data.data || "Sorry, I couldn't generate an explanation at this moment.";
       
       // Basic formatting: replace double newlines with <br/><br/> and **bold** with <b>
       const formattedHtmlRaw = htmlRaw
