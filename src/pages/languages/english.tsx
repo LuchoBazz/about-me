@@ -238,7 +238,6 @@ export default function App() {
       
       // Basic formatting: replace double newlines with <br/><br/> and **bold** with <b>
       const formattedHtmlRaw = htmlRaw
-        .replace(/\n/g, '<br/>')
         .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
       setAiExplanation(formattedHtmlRaw);
