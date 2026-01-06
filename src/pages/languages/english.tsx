@@ -142,31 +142,47 @@ export default function App() {
   return (
     <div className={`min-h-screen font-sans pb-20 transition-colors duration-300 ${isDarkMode ? 'bg-[#0f172a] text-slate-100' : 'bg-slate-50 text-slate-800'}`}>
       {/* Header */}
-      <header className={`border-b sticky top-0 z-10 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-indigo-600 p-2 rounded-lg">
-              <Languages className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h2 className={`text-xl font-bold leading-tight ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>English Grammar Path</h2>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'bg-slate-700 hover:bg-slate-600 text-yellow-300' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}
-              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      <header className={`border-b transition-colors duration-300 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}>
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Left: Back to Home */}
+            <a 
+              href="/about-me/" 
+              className={`text-sm transition-colors ${isDarkMode ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-800'}`}
             >
-              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            <div className="flex flex-col items-end">
-              <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{getProgressPercentage()}% Mastered</span>
-              <div className={`w-32 h-2 rounded-full mt-1 overflow-hidden ${isDarkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
-                <div 
-                  className="h-full bg-indigo-500 transition-all duration-500 ease-out"
-                  style={{ width: `${getProgressPercentage()}%` }}
-                ></div>
+              ← Back to Home
+            </a>
+
+            {/* Center: Title and Badge */}
+            <div className="flex items-center gap-2">
+              <div className="bg-indigo-600 p-2 rounded-lg">
+                <Languages className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex items-center gap-2">
+                <h2 className={`text-xl font-bold leading-tight ${isDarkMode ? 'text-slate-100' : 'text-slate-900'}`}>English Grammar Path</h2>
+                <span className={`px-2 py-0.5 rounded text-xs font-medium ${isDarkMode ? 'bg-indigo-900/30 text-indigo-300 border border-indigo-700' : 'bg-indigo-50 text-indigo-700 border border-indigo-200'}`}>
+                  Personal Progress
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Theme Toggle and Progress */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'bg-slate-700 hover:bg-slate-600 text-yellow-300' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}
+                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+              <div className="flex flex-col items-end">
+                <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{getProgressPercentage()}% Mastered</span>
+                <div className={`w-32 h-2 rounded-full mt-1 overflow-hidden ${isDarkMode ? 'bg-slate-700' : 'bg-slate-100'}`}>
+                  <div 
+                    className="h-full bg-indigo-500 transition-all duration-500 ease-out"
+                    style={{ width: `${getProgressPercentage()}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
