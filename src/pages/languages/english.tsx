@@ -230,7 +230,8 @@ export default function App() {
         level: topic.level,
         concept: topic.concept,
         description: topic.description,
-        example: topic.example
+        example: topic.example,
+        theme: isDarkMode ? 'dark' : 'light',
       });
 
       const htmlRaw = response.data.data || "Sorry, I couldn't generate an explanation at this moment.";
