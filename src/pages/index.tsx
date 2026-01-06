@@ -223,7 +223,7 @@ function HomePage() {
       title: "Cultural Explorer",
       desc: "Discover curious cultural facts with AI.",
       icon: <Globe className="w-8 h-8" />,
-      link: "/about-me/cultural-explorer/",
+      link: "/about-me/apps/cultural-explorer/",
       color: "bg-indigo-500/10 dark:bg-indigo-500/20",
       textColor: "text-indigo-500"
     },
@@ -231,7 +231,7 @@ function HomePage() {
       title: "Daily Inspiration",
       desc: "Fragments of thought collected over time.",
       icon: <Sparkles className="w-8 h-8" />,
-      link: "/about-me/inspiration",
+      link: "/about-me/apps/inspiration",
       color: "bg-violet-500/10 dark:bg-violet-500/20",
       textColor: "text-violet-500"
     },
@@ -247,7 +247,7 @@ function HomePage() {
     //   title: "Christmas Tree",
     //   desc: "Interactive 3D Christmas tree experience.",
     //   icon: <TreePine className="w-8 h-8" />,
-    //   link: "/about-me/christmas",
+    //   link: "/about-me/apps/christmas",
     //   color: "bg-green-500/10 dark:bg-green-500/20",
     //   textColor: "text-green-500"
     // },
