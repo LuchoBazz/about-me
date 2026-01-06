@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { X, Info, Loader2, Globe, Sparkles, Map as MapIcon, Languages, Sun, Moon } from 'lucide-react';
+import axios from 'axios';
 
 // --- MAP UTILITIES (Projection and Native SVG Rendering) ---
 // We implement a simple Mercator projection and GeoJSON conversion to SVG Path
@@ -139,65 +140,29 @@ export default function CulturalExplorer() {
     }
   };
 
-  const fetchCountryFact = async (countryName) => {
+  const fetchCountryFact = async (countryName: string) => {
     setLoading(true);
     setFact("");
     setError("");
     
-    // Updated prompt to include the selected language
-    const prompt = `Act as an expert and charismatic tour guide. Give me one (1) curious, cultural, and little-known fact about ${countryName}. 
-    The fact must be fascinating and specific to its culture, history, or traditions. 
-    Respond in ${languages[language]}. Maximum 2 or 3 sentences. Do not use markdown formatting, just plain text.`;
-
-    const payload = {
-      contents: [{ parts: [{ text: prompt }] }]
-    };
-
-    let retries = 0;
-    const maxRetries = 3;
-    const baseDelay = 1000;
-
-    const executeFetch = async () => {
-      try {
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          }
-        );
-
-        if (!response.ok) {
-           if (response.status === 429 || response.status >= 500) {
-             throw new Error(`Server error: ${response.status}`);
-           }
-           throw new Error("Error in Gemini request");
+    try {
+      const response = await axios.post(
+        'https://xforce-serverless.vercel.app/api/apps/cultural-explorer',
+        {
+          countryName: countryName,
+          language: languages[language] ?? "English",
         }
+      );
 
-        const data = await response.json();
-        const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        
-        if (generatedText) {
-          setFact(generatedText);
-        } else {
-          setFact("Sorry, I couldn't find a fun fact at this moment.");
-        }
-        setLoading(false);
+      const generatedText = response.data.data;
+      
+      setFact(generatedText ? generatedText : "Sorry, I couldn't find a fun fact at this moment.");
+      setLoading(false);
 
-      } catch (err) {
-        if (retries < maxRetries) {
-          retries++;
-          const delay = baseDelay * Math.pow(2, retries);
-          setTimeout(executeFetch, delay);
-        } else {
-          setError("There was a problem connecting with the virtual guide. Please try again.");
-          setLoading(false);
-        }
-      }
-    };
-
-    executeFetch();
+    } catch (err) {
+      setError("There was a problem connecting with the virtual guide. Please try again.");
+      setLoading(false);
+    }
   };
 
   const handleCountryClick = (country) => {
