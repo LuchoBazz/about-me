@@ -233,15 +233,14 @@ export default function App() {
         example: topic.example
       });
 
-      const data = response.data;
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate an explanation at this moment.";
+      const htmlRaw = response.data || "Sorry, I couldn't generate an explanation at this moment.";
       
       // Basic formatting: replace double newlines with <br/><br/> and **bold** with <b>
-      const formattedText = text
+      const formattedHtmlRaw = htmlRaw
         .replace(/\n/g, '<br/>')
         .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
 
-      setAiExplanation(formattedText);
+      setAiExplanation(formattedHtmlRaw);
     } catch (error) {
       console.error('AI Explanation Error:', error);
       setAiExplanation(`<b>Error:</b> ${error.message || 'Something went wrong while fetching the explanation.'}`);
