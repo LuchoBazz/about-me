@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Languages, ChevronDown, ChevronUp, Moon, Sun, Info, BookOpen, Star, Sparkles, Loader2, X } from 'lucide-react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import axios from 'axios';
+import { Languages, ChevronDown, Moon, Sun, Info, BookOpen, Star, Sparkles, Loader2, X } from 'lucide-react';
 
 // Static data - purely informational now
 const grammarTopics = [
@@ -189,9 +189,6 @@ const GeminiModal = ({ isOpen, onClose, topic, explanation, isLoading, isDarkMod
 };
 
 export default function App() {
-  const { siteConfig } = useDocusaurusContext();
-  const geminiApiKey = siteConfig.customFields?.geminiApiKey;
-
   const [expandedId, setExpandedId] = useState(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -229,34 +226,14 @@ export default function App() {
     setAiExplanation('');
 
     try {
-      if (!geminiApiKey) {
-        throw new Error('Gemini API Key is missing in Docusaurus configuration.');
-      }
-
-      const prompt = `Act as a professional English teacher. Provide a detailed, easy-to-understand grammar explanation in English for:
-- Level: ${topic.level}
-- Concept: ${topic.concept}
-- Description: ${topic.description}
-- Example: ${topic.example}
-
-Give your answer in B1/B2 English.
-
-IMPORTANT: Please provide the response in valid, semantic HTML format with Tailwind classes (without \`\`\`html code blocks or markdown). 
-Do NOT use markdown symbols like **, ##, or -.`;
-
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }]
-        })
+      const response = await axios.post('https://xforce-serverless.vercel.app/api/languages/english/grammar', {
+        level: topic.level,
+        concept: topic.concept,
+        description: topic.description,
+        example: topic.example
       });
 
-      const data = await response.json();
+      const data = response.data;
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate an explanation at this moment.";
       
       // Basic formatting: replace double newlines with <br/><br/> and **bold** with <b>
