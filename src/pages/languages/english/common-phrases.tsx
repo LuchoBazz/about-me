@@ -75,14 +75,14 @@ const EnglishCommonPhrases = () => {
   return (
     <div className={`min-h-screen font-sans transition-colors duration-300 pb-12 
       ${isDarkMode 
-        ? 'bg-slate-900 text-slate-100 selection:bg-indigo-500 selection:text-white' 
+        ? 'bg-[#0f172a] text-slate-100 selection:bg-indigo-500 selection:text-white' 
         : 'bg-slate-50 text-slate-800 selection:bg-indigo-100 selection:text-indigo-900'
       }`}
     >
       
       {/* Header Section */}
       <div className={`shadow-sm border-b sticky top-0 z-10 transition-colors duration-300
-        ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}
+        ${isDarkMode ? 'bg-[#0f172a] border-slate-700' : 'bg-white border-slate-200'}`}
       >
         <div className="max-w-6xl mx-auto px-4 py-4 md:py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -147,7 +147,7 @@ const EnglishCommonPhrases = () => {
 
         {filteredPhrases.length === 0 ? (
           <div className={`text-center py-20 rounded-xl shadow-sm border border-dashed transition-colors duration-300
-            ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-300'}`}>
+            ${isDarkMode ? 'bg-[#1e293b] border-slate-700' : 'bg-white border-slate-300'}`}>
             <p className={`text-lg ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
               No results found for "{searchTerm}"
             </p>
@@ -165,14 +165,14 @@ const EnglishCommonPhrases = () => {
                 key={index} 
                 className={`group rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden
                   ${isDarkMode 
-                    ? 'bg-slate-800 border-slate-700 hover:border-indigo-500/50' 
+                    ? 'bg-[#1e293b] border-slate-700 hover:border-indigo-500/50' 
                     : 'bg-white border-slate-200 hover:border-indigo-200'
                   }`}
               >
                 {/* Card Header */}
                 <div className={`p-5 border-b transition-colors duration-300
                   ${isDarkMode 
-                    ? 'bg-slate-800/50 border-slate-700' 
+                    ? 'bg-[#1e293b]/50 border-slate-700' 
                     : 'bg-gradient-to-r from-slate-50 to-white border-slate-100'
                   }`}
                 >
