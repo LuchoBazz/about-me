@@ -87,16 +87,23 @@ const EnglishCommonPhrases = () => {
         <div className="max-w-6xl mx-auto px-4 py-4 md:py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
+              <a 
+                href="/about-me/" 
+                className={`text-sm font-serif italic transition-colors
+                  ${isDarkMode 
+                    ? 'text-slate-400 hover:text-slate-200' 
+                    : 'text-stone-500 hover:text-stone-800'
+                  }`}
+              >
+                ← Back to Home
+              </a>
               <div className="bg-indigo-600 p-2 rounded-lg text-white">
                 <BookOpen size={24} />
               </div>
               <div>
-                <h1 className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  English Phrasebook
-                </h1>
-                <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                  Common expressions and vocabulary
-                </p>
+                <h2 className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                  My English Common Phrases Hub
+                </h2>
               </div>
             </div>
 
