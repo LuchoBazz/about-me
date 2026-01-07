@@ -188,7 +188,7 @@ const GeminiModal = ({ isOpen, onClose, topic, explanation, isLoading, isDarkMod
   );
 };
 
-export default function App() {
+export default function EnglishGrammarTopics() {
   const [expandedId, setExpandedId] = useState(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState(null);

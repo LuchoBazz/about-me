@@ -239,9 +239,17 @@ function HomePage() {
       title: "My English Grammar Path",
       desc: "My personal English learning journey from A1 to C2.",
       icon: <Languages className="w-8 h-8" />,
-      link: "/about-me/languages/english",
+      link: "/about-me/languages/english/grammar-topics",
       color: "bg-indigo-500/10 dark:bg-indigo-500/20",
       textColor: "text-indigo-500"
+    },
+    {
+      title: "My English Common Phrases",
+      desc: "My personal collection of common English phrases.",
+      icon: <BookOpen className="w-8 h-8" />,
+      link: "/about-me/languages/english/common-phrases",
+      color: "bg-teal-500/10 dark:bg-teal-500/20",
+      textColor: "text-teal-500"
     },
     // {
     //   title: "Christmas Tree",
