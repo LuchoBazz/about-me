@@ -37,7 +37,7 @@ const EnglishCommonPhrases = () => {
     { phrase: "Oh my gosh! / Oh my God!", translation: "¡Dios mío! / ¡Madre mía!", usage: "US", example: "Oh my gosh! I can't believe it!" },
     { phrase: "Once again", translation: "Una vez más", usage: "UK/US", example: "Could you explain that once again, please?" },
     { phrase: "For the Record", translation: "Para que conste / Para que lo sepas", usage: "UK/US", example: "For the record, I never agreed to this plan." }
-  ];
+  ].reverse();
 
   // Function to handle voice synthesis (Text-to-Speech)
   const handleSpeak = (text: string) => {
