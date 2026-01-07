@@ -6,7 +6,7 @@ const EnglishCommonPhrases = () => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Datos proporcionados por el usuario
+  // Data provided by the user
   const phrasesData = [
     { phrase: "For Real", translation: "De verdad / En serio", usage: "US", example: "Are you for real? That sounds unbelievable!" },
     { phrase: "Go Ahead", translation: "Adelante / Procede", usage: "UK/US", example: "Go ahead and have a seat while I get the tea." },
@@ -39,7 +39,7 @@ const EnglishCommonPhrases = () => {
     { phrase: "For the Record", translation: "Para que conste / Para que lo sepas", usage: "UK/US", example: "For the record, I never agreed to this plan." }
   ];
 
-  // Función para manejar la síntesis de voz (Text-to-Speech)
+  // Function to handle voice synthesis (Text-to-Speech)
   const handleSpeak = (text: string) => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -48,7 +48,7 @@ const EnglishCommonPhrases = () => {
       utterance.rate = 0.9;
       window.speechSynthesis.speak(utterance);
     } else {
-      alert("Tu navegador no soporta la funcionalidad de texto a voz.");
+      alert("Your browser does not support text-to-speech.");
     }
   };
 
@@ -62,7 +62,7 @@ const EnglishCommonPhrases = () => {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(null), 2000);
     } catch (err) {
-      console.error('Error al copiar', err);
+      console.error('Copy error', err);
     }
     document.body.removeChild(textArea);
   };
@@ -95,7 +95,7 @@ const EnglishCommonPhrases = () => {
                   English Phrasebook
                 </h1>
                 <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                  Expresiones comunes y vocabulario
+                  Common expressions and vocabulary
                 </p>
               </div>
             </div>
@@ -142,20 +142,20 @@ const EnglishCommonPhrases = () => {
         
         {/* Stats */}
         <div className={`mb-6 text-sm font-medium transition-colors duration-300 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-          Mostrando {filteredPhrases.length} de {phrasesData.length} expresiones
+          Showing {filteredPhrases.length} of {phrasesData.length} expressions
         </div>
 
         {filteredPhrases.length === 0 ? (
           <div className={`text-center py-20 rounded-xl shadow-sm border border-dashed transition-colors duration-300
             ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-300'}`}>
             <p className={`text-lg ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-              No se encontraron resultados para "{searchTerm}"
+              No results found for "{searchTerm}"
             </p>
             <button 
               onClick={() => setSearchTerm('')}
               className="mt-4 text-indigo-500 hover:text-indigo-400 font-medium"
             >
-              Limpiar búsqueda
+              Clear search
             </button>
           </div>
         ) : (
