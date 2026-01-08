@@ -120,7 +120,6 @@ function NowPage() {
       title: "Archiving my Past",
       subtitle: "Organizing travel memories into a public timeline",
       icon: <Map className="w-6 h-6" />,
-      color: "text-cyan-500",
       bg: "bg-cyan-100 dark:bg-cyan-900/30",
       dot: "bg-cyan-500",
       startDateLabel: "December 8, 2025",
@@ -289,7 +288,7 @@ function NowPage() {
 
                 <div className="mt-6 flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 w-fit px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800">
                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                  Last updated: December 28, 2025
+                  Last updated: January 8, 2026
                 </div>
               </header>
 
