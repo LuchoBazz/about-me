@@ -83,6 +83,12 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: 'https://luchobazz.github.io/journal/blog',
+          label: 'Journal',
+          position: 'left',
+          target: '_self',
+        },
+        {
           to: '/blog',
           label: 'Blog',
           position: 'left',
