@@ -42,6 +42,207 @@ const calculateDuration = (startDate: string) => {
   return parts.join(' ');
 };
 
+function CodeCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Slide data
+  const slides = [
+    {
+      id: 0,
+      filename: "research_agent.py",
+      language: "python",
+      // The content is a rendered component to maintain manual coloring
+      content: (
+        <>
+          {/* Imports */}
+          <div><span className="text-pink-400">from</span> dataclasses <span className="text-pink-400">import</span> dataclass, field</div>
+          <div><span className="text-pink-400">from</span> typing <span className="text-pink-400">import</span> List</div>
+          <br />
+
+          {/* Class Definition */}
+          <div><span className="text-yellow-300">@dataclass</span></div>
+          <div><span className="text-pink-400">class</span> <span className="text-yellow-300">ResearchAgent</span>:</div>
+
+          {/* Name */}
+          <div className="pl-4">
+            name: <span className="text-blue-400">str</span> = <span className="text-green-400">"Luis Miguel Báez"</span>
+          </div>
+
+          {/* Focus */}
+          <div className="pl-4">
+            focus: <span className="text-blue-400">List</span>[<span className="text-blue-400">str</span>] = field(
+          </div>
+          <div className="pl-8">
+            default_factory=<span className="text-pink-400">lambda</span>: [
+          </div>
+          <div className="pl-12 text-green-400">"NLP", "RL", "Ethics"</div>
+          <div className="pl-8">])</div>
+
+          {/* Language */}
+          <div className="pl-4">
+            language: <span className="text-blue-400">str</span> = <span className="text-green-400">"Python"</span>
+          </div>
+
+          {/* Status */}
+          <div className="pl-4">
+            status: <span className="text-blue-400">str</span> = <span className="text-green-400">"Training..."</span>
+          </div>
+          <br />
+
+          {/* Method */}
+          <div className="pl-4">
+            <span className="text-pink-400">def</span> <span className="text-blue-300">__repr__</span>(self):
+          </div>
+          <div className="pl-8">
+            <span className="text-pink-400">return</span> (
+          </div>
+          <div className="pl-12 text-green-400">f"&lt;&#123;self.name&#125;\n"</div>
+          <div className="pl-12 text-green-400">f" Driving: &#123;self.focus&#125;\n"</div>
+          <div className="pl-12 text-green-400">f" Powered by &#123;self.language&#125;/&gt;"</div>
+          <div className="pl-8">)</div>
+        </>
+      )
+    },
+    {
+      id: 1,
+      filename: "knapsack.cpp",
+      language: "cpp",
+      content: (
+        <>
+          {/* Headers */}
+          <div><span className="text-pink-400">#include</span> <span className="text-green-400">&lt;bits/stdc++.h&gt;</span></div>
+          <div><span className="text-pink-400">using namespace</span> std;</div>
+          <br />
+
+          {/* Globals */}
+          <div><span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">int</span>&gt; weights, values;</div>
+          <div><span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">int</span>&gt;&gt; dp;</div>
+          <br />
+
+          {/* Recursive Function */}
+          <div><span className="text-blue-400">int</span> <span className="text-yellow-300">go</span>(<span className="text-blue-400">int</span> i, <span className="text-blue-400">int</span> w) &#123;</div>
+          <div className="pl-4">
+            <span className="text-pink-400">if</span> (i &lt; <span className="text-purple-400">0</span> || w &lt;= <span className="text-purple-400">0</span>) <span className="text-pink-400">return</span> <span className="text-purple-400">0</span>;
+          </div>
+          <div className="pl-4">
+            <span className="text-pink-400">if</span> (dp[i][w] != <span className="text-purple-400">-1</span>) <span className="text-pink-400">return</span> dp[i][w];
+          </div>
+          
+          <div className="pl-4">
+            <span className="text-blue-400">int</span> res = <span className="text-yellow-300">go</span>(i - <span className="text-purple-400">1</span>, w);
+          </div>
+          
+          <div className="pl-4">
+            <span className="text-pink-400">if</span> (weights[i] &lt;= w)
+          </div>
+          <div className="pl-8">
+            res = <span className="text-yellow-300">max</span>(res, values[i] + <span className="text-yellow-300">go</span>(i - <span className="text-purple-400">1</span>, w - weights[i]));
+          </div>
+          
+          <div className="pl-4">
+            <span className="text-pink-400">return</span> dp[i][w] = res;
+          </div>
+          <div>&#125;</div>
+          <br />
+
+          {/* Main */}
+          <div><span className="text-blue-400">int</span> <span className="text-yellow-300">main</span>() &#123;</div>
+          <div className="pl-4">
+            ios::<span className="text-yellow-300">sync_with_stdio</span>(<span className="text-pink-400">false</span>);
+          </div>
+          <div className="pl-4">
+            cin.<span className="text-yellow-300">tie</span>(<span className="text-pink-400">nullptr</span>);
+          </div>
+          <div className="pl-4 text-slate-500">// ... logic implementation</div>
+          <div className="pl-4">
+            cout &lt;&lt; <span className="text-yellow-300">go</span>(n - <span className="text-purple-400">1</span>, W) &lt;&lt; <span className="text-green-400">'\n'</span>;
+          </div>
+          <div className="pl-4">
+            <span className="text-pink-400">return</span> <span className="text-purple-400">0</span>;
+          </div>
+          <div>&#125;</div>
+        </>
+      )
+    }
+  ];
+
+  // Auto-play effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000); // Change every 6 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  return (
+    <div className="relative hidden lg:block h-[500px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl group select-none">
+      
+      {/* Background Grids & Effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
+
+      {/* Decorative glows */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
+
+      {/* Center Container */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        
+        {/* Render all slides, but control visibility with opacity to allow smooth transitions */}
+        {slides.map((slide, index) => (
+          <div 
+            key={slide.id}
+            className={`absolute transition-all duration-700 ease-in-out transform 
+              ${index === currentSlide 
+                ? 'opacity-100 rotate-0 scale-100 z-10' 
+                : 'opacity-0 -rotate-2 scale-95 z-0'
+              }
+              bg-slate-900 p-4 rounded-xl border border-slate-700 shadow-2xl w-3/4 max-w-sm hover:rotate-0`}
+          >
+            {/* Window Header */}
+            <div className="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
+                {slide.language === 'python' ? <Terminal size={12} /> : <Code2 size={12} />}
+                {slide.filename}
+              </div>
+            </div>
+
+            {/* Code Content */}
+            <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto h-[320px] scrollbar-hide">
+              {slide.content}
+              
+              {/* Cursor Effect */}
+              {index === currentSlide && (
+                 <div className="flex items-center gap-2 mt-4">
+                  <div className="h-4 w-2 bg-blue-500/50 animate-pulse"></div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Dots Navigation */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentSlide(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 
+              ${idx === currentSlide ? 'bg-indigo-500 w-4' : 'bg-slate-400/50 hover:bg-slate-400'}`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -364,84 +565,7 @@ function HomePage() {
             </div>
 
             {/* Abstract Visual Representation - CODE THEMED */}
-            <div className="relative hidden lg:block h-[500px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl group">
-              <div className="absolute inset-0 bg-grid-slate-200 dark:bg-grid-slate-800 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
-
-              {/* Decorative glows */}
-              <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
-
-              <div className="absolute inset-0 flex items-center justify-center">
-                {/* Mock Code Editor Window: Original styles intact */}
-                <div className="bg-slate-900 p-4 rounded-xl border border-slate-700 shadow-2xl w-3/4 max-w-sm transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <div className="text-xs text-slate-400 font-mono">research_agent.py</div>
-                  </div>
-
-                  {/* Content: Font increased to text-xs */}
-                  <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto">
-
-                    {/* Imports */}
-                    <div><span className="text-pink-400">from</span> dataclasses <span className="text-pink-400">import</span> dataclass, field</div>
-                    <div><span className="text-pink-400">from</span> typing <span className="text-pink-400">import</span> List</div>
-                    <br />
-
-                    {/* Class Definition */}
-                    <div><span className="text-yellow-300">@dataclass</span></div>
-                    <div><span className="text-pink-400">class</span> <span className="text-yellow-300">ResearchAgent</span>:</div>
-
-                    {/* Name */}
-                    <div className="pl-4">
-                      name: <span className="text-blue-400">str</span> = <span className="text-green-400">"Luis Miguel Báez"</span>
-                    </div>
-
-                    {/* Focus: Formatted across multiple lines */}
-                    <div className="pl-4">
-                      focus: <span className="text-blue-400">List</span>[<span className="text-blue-400">str</span>] = field(
-                    </div>
-                    <div className="pl-8">
-                      default_factory=<span className="text-pink-400">lambda</span>: [
-                    </div>
-                    <div className="pl-12 text-green-400">"NLP", "RL", "Ethics"</div>
-                    <div className="pl-8">])</div>
-
-                    {/* Language */}
-                    <div className="pl-4">
-                      language: <span className="text-blue-400">str</span> = <span className="text-green-400">"Python"</span>
-                    </div>
-
-                    {/* Status */}
-                    <div className="pl-4">
-                      status: <span className="text-blue-400">str</span> = <span className="text-green-400">"Training..."</span>
-                    </div>
-                    <br />
-
-                    {/* Method */}
-                    <div className="pl-4">
-                      <span className="text-pink-400">def</span> <span className="text-blue-300">__repr__</span>(self):
-                    </div>
-                    <div className="pl-8">
-                      <span className="text-pink-400">return</span> (
-                    </div>
-                    <div className="pl-12 text-green-400">f"&lt;&#123;self.name&#125;\n"</div>
-                    <div className="pl-12 text-green-400">f" Driving: &#123;self.focus&#125;\n"</div>
-                    <div className="pl-12 text-green-400">f" Powered by &#123;self.language&#125;/&gt;"</div>
-                    <div className="pl-8">)</div>
-
-                    <div className="flex items-center gap-2 mt-4">
-                      <div className="h-1 w-2 bg-white animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CodeCarousel />
           </div>
         </header>
 
