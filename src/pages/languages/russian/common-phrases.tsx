@@ -157,7 +157,7 @@ const RussianCommonPhrases = () => {
                   </div>
                   <input
                     type="text"
-                    placeholder="Buscar frase..."
+                    placeholder="Search phrase..."
                     className="block w-full pl-10 pr-3 py-2 border rounded-lg leading-5 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 ease-in-out
                       bg-slate-50 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white dark:focus:bg-slate-700 focus:border-indigo-500"
                     value={searchTerm}
