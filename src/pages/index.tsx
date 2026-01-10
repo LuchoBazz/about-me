@@ -176,7 +176,7 @@ function CodeCarousel() {
   }, [slides.length]);
 
   return (
-    <div className="relative hidden lg:block h-[500px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl group select-none">
+    <div className="relative hidden lg:block h-[550px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl group select-none">
       
       {/* Background Grids & Effects */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
@@ -213,7 +213,7 @@ function CodeCarousel() {
             </div>
 
             {/* Code Content */}
-            <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto h-[320px] scrollbar-hide">
+            <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto h-[400px] scrollbar-hide">
               {slide.content}
               
               {/* Cursor Effect */}
