@@ -15,7 +15,7 @@ import {
   Globe,
   CalendarClock,
   Sparkles,
-  TreePine,
+  GraduationCap,
   Languages,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
@@ -455,11 +455,19 @@ function HomePage() {
     // {
     //   title: "Christmas Tree",
     //   desc: "Interactive 3D Christmas tree experience.",
-    //   icon: <TreePine className="w-8 h-8" />,
+    //   icon: <TreePine className="w-8 h-8" />, 
     //   link: "/about-me/apps/christmas",
     //   color: "bg-green-500/10 dark:bg-green-500/20",
     //   textColor: "text-green-500"
     // },
+    {
+      title: "Phrasal Verb Master",
+      desc: "Interactive tool to learn English phrasal verbs with definitions, examples, and grammar.",
+      icon: <GraduationCap className="w-8 h-8" />,
+      link: "/about-me/languages/english/phrasal-verb-master",
+      color: "bg-indigo-600/10 dark:bg-indigo-600/20",
+      textColor: "text-indigo-600 dark:text-indigo-400"
+    },
   ];
 
   return (
