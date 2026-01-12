@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, BookOpen, X, ChevronRight, GraduationCap, ArrowRight, MessageCircle, Layers, Type, Clock, Settings } from 'lucide-react';
+import { Search, BookOpen, X, GraduationCap, ArrowRight, MessageCircle, Layers, Type, Settings } from 'lucide-react';
 
 /**
  * MOCK DATA
@@ -310,18 +310,26 @@ const PhrasalVerbMaster = () => {
       
       {/* Header Section */}
       <div className="bg-indigo-600 text-white pt-16 pb-24 px-6 rounded-b-[3rem] shadow-lg mb-[-3rem]">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-indigo-500 p-3 rounded-2xl shadow-inner">
-              <GraduationCap className="h-10 w-10 text-white" />
-            </div>
+        <div className="max-w-4xl mx-auto">
+          {/* Back to Home Link */}
+          <div className="mb-2">
+            <a href="/about-me/" className="text-stone-200 hover:text-white dark:text-stone-300 dark:hover:text-white transition-colors font-serif italic text-sm">
+              ← Back to Home
+            </a>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            Phrasal Verb Master
-          </h1>
-          <p className="text-indigo-100 text-lg max-w-2xl mx-auto">
-            Explore definitions, morphology, and usage examples to boost your English skills.
-          </p>
+          <div className="text-center">
+            <div className="flex justify-center mb-4">
+              <div className="bg-indigo-500 p-3 rounded-2xl shadow-inner">
+                <GraduationCap className="h-10 w-10 text-white" />
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              Phrasal Verb Master
+            </h1>
+            <p className="text-indigo-100 text-lg max-w-2xl mx-auto">
+              Explore definitions, morphology, and usage examples to boost your English skills.
+            </p>
+          </div>
         </div>
       </div>
 
