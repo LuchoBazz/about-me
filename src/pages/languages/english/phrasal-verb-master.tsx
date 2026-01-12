@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Search, BookOpen, X, GraduationCap, ArrowRight, MessageCircle, Layers, Type, Settings } from 'lucide-react';
+import { Search, BookOpen, X, GraduationCap, ArrowRight, MessageCircle, Layers, Type, Settings, Volume2 } from 'lucide-react';
 
 type PhrasalVerbMeaning = {
   context: string;
@@ -500,6 +500,19 @@ const Modal = ({
 }) => {
   if (!verbName) return null;
 
+  const handleSpeak = (text: string) => {
+    if (!text?.trim()) return;
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert('Your browser does not support text-to-speech.');
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       {/* Backdrop */}
@@ -592,8 +605,21 @@ const Modal = ({
                     </span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-slate-800 font-medium text-lg mb-1">{meaning.definition}</p>
-                    <p className="text-slate-500 italic">{meaning.translation}</p>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-slate-800 font-medium text-lg mb-1">{meaning.definition}</p>
+                        <p className="text-slate-500 italic">{meaning.translation}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleSpeak(meaning.definition)}
+                        className="shrink-0 flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 text-xs font-semibold hover:bg-indigo-200 transition-colors"
+                        aria-label={`Play pronunciation for ${meaning.definition}`}
+                      >
+                        <Volume2 className="h-4 w-4" />
+                        Speak
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -609,14 +635,29 @@ const Modal = ({
                 <h3 className="text-xl font-bold uppercase tracking-wider text-xs">Morphology</h3>
               </div>
               <div className="space-y-3">
-                {Object.entries(verbData.morphology).map(([key, value]) => (
-                  <div key={key} className="flex justify-between items-center py-2 border-b border-slate-50 last:border-0">
-                    <span className="text-slate-400 capitalize text-sm font-medium">
-                      {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </span>
-                    <span className="text-slate-800 font-bold">{String(value)}</span>
+                {Object.entries(verbData.morphology).map(([key, value]) => {
+                  const label = key.replace(/([A-Z])/g, ' $1').trim();
+                  const spoken = `${label}: ${String(value)}`;
+                  return (
+                    <div key={key} className="flex items-center justify-between gap-4 py-2 border-b border-slate-50 last:border-0">
+                      <span className="text-slate-400 capitalize text-sm font-medium">
+                        {label}
+                      </span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-slate-800 font-bold">{String(value)}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleSpeak(value)}
+                          className="flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 text-emerald-600 text-xs font-semibold hover:bg-emerald-200 transition-colors"
+                          aria-label={`Play pronunciation for ${spoken}`}
+                        >
+                          <Volume2 className="h-4 w-4" />
+                          Speak
+                        </button>
+                      </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </section>
 
@@ -635,14 +676,25 @@ const Modal = ({
               <div className="space-y-3">
                 {verbData.grammar.details.map((rule, idx) => (
                   <div key={idx} className="bg-orange-50 p-4 rounded-xl border border-orange-100">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1">
-                        <div className="h-2 w-2 rounded-full bg-orange-400"></div>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-1">
+                          <div className="h-2 w-2 rounded-full bg-orange-400"></div>
+                        </div>
+                        <div>
+                          <p className="text-slate-800 font-medium">{rule.text}</p>
+                          <p className="text-slate-500 text-sm mt-1 italic">{rule.translation}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-slate-800 font-medium">{rule.text}</p>
-                        <p className="text-slate-500 text-sm mt-1 italic">{rule.translation}</p>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleSpeak(rule.text)}
+                        className="shrink-0 flex items-center gap-1 px-3 py-1 rounded-full bg-orange-200 text-orange-700 text-xs font-semibold hover:bg-orange-300 transition-colors"
+                        aria-label={`Play pronunciation for ${rule.text}`}
+                      >
+                        <Volume2 className="h-4 w-4" />
+                        Speak
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -660,11 +712,24 @@ const Modal = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {verbData.tenses.map((tense, idx) => (
                   <div key={idx} className="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md border border-slate-100 transition-all duration-200">
-                    <span className="text-xs font-bold text-purple-600 uppercase tracking-wide mb-2 block">
-                      {tense.name}
-                    </span>
-                    <p className="text-slate-800 font-medium mb-1">{tense.en}</p>
-                    <p className="text-slate-500 text-sm">{tense.es}</p>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <span className="text-xs font-bold text-purple-600 uppercase tracking-wide mb-2 block">
+                          {tense.name}
+                        </span>
+                        <p className="text-slate-800 font-medium mb-1">{tense.en}</p>
+                        <p className="text-slate-500 text-sm">{tense.es}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleSpeak(tense.en)}
+                        className="shrink-0 flex items-center gap-1 px-3 py-1 rounded-full bg-purple-100 text-purple-600 text-xs font-semibold hover:bg-purple-200 transition-colors"
+                        aria-label={`Play pronunciation for ${tense.en}`}
+                      >
+                        <Volume2 className="h-4 w-4" />
+                        Speak
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
