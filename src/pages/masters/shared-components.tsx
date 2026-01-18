@@ -49,7 +49,7 @@ export const Countdown = ({ days }: { days: number }) => {
     colorClass = "text-red-600 bg-red-50 border-red-100 animate-pulse";
     text = "Deadline is today!";
   } else if (days <= 7) {
-    colorClass = "text-amber-600 bg-amber-50 border-amber-100";
+    colorClass = "text-white bg-blue-600 border-blue-700";
     text = `${days} days left - Urgent`;
   }
 
@@ -77,7 +77,7 @@ export const TimelineItem = ({ stage, isLast }: { stage: any, isLast: boolean })
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
           <div>
             <h4 className="font-bold text-slate-800 text-lg">{stage.stage}</h4>
-            <div className="text-sm text-indigo-600 font-medium mt-1">{stage.applicant_type}</div>
+            <div className="text-sm text-blue-600 font-medium mt-1">{stage.applicant_type}</div>
           </div>
           <Countdown days={daysLeft} />
         </div>
@@ -94,15 +94,15 @@ export const TimelineItem = ({ stage, isLast }: { stage: any, isLast: boolean })
           </div>
         </div>
         {stage.requirements_notes && (
-          <div className="flex items-start gap-2 text-sm text-slate-600 bg-yellow-50/50 p-3 rounded-md mb-4 border border-yellow-100/50">
-            <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2 text-sm text-slate-600 bg-blue-50/50 p-3 rounded-md mb-4 border border-blue-100/50">
+            <AlertCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <p>{stage.requirements_notes}</p>
           </div>
         )}
         {stage.step_urls && stage.step_urls.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {stage.step_urls.map((url: string, i: number) => (
-              <a key={i} href={url} target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-medium text-white bg-slate-800 hover:bg-slate-900 px-4 py-2 rounded-lg transition-colors">
+              <a key={i} href={url} target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
                 Apply / View Details <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             ))}
@@ -140,7 +140,7 @@ export const ProgramCard = ({ program }: { program: any }) => {
               </div>
               <div className="flex flex-wrap gap-y-2 gap-x-4 text-sm text-slate-600">
                 {program.website_urls.map((url: string, i: number) => (
-                  <a key={i} href={url} target="_blank" rel="noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800 font-medium hover:underline" onClick={(e) => e.stopPropagation()}>
+                  <a key={i} href={url} target="_blank" rel="noreferrer" className="flex items-center text-blue-600 hover:text-blue-800 font-medium hover:underline" onClick={(e) => e.stopPropagation()}>
                     <ExternalLink className="w-3.5 h-3.5 mr-1" />
                     Official Website {program.website_urls.length > 1 ? i + 1 : ''}
                   </a>

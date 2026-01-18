@@ -17,14 +17,14 @@ const UniversityDetails = ({ data, onBack }) => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button 
             onClick={onBack}
-            className="mb-4 flex items-center text-sm text-slate-500 hover:text-indigo-600 transition-colors font-medium"
+            className="mb-4 flex items-center text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium"
           >
             <ArrowLeft className="w-4 h-4 mr-1" /> Back to Dashboard
           </button>
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className={`p-3 rounded-xl shadow-sm ${data.image_color}`}>
+              <div className="p-3 rounded-xl shadow-sm bg-blue-600">
                 <School className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -53,9 +53,9 @@ const UniversityDetails = ({ data, onBack }) => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Intro Text */}
-        <div className="mb-8 p-4 bg-indigo-50 border border-indigo-100 rounded-lg flex items-start gap-3">
-           <AlertCircle className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
-           <p className="text-indigo-900">
+        <div className="mb-8 p-4 bg-blue-50 border border-blue-100 rounded-lg flex items-start gap-3">
+           <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+           <p className="text-blue-900">
              Showing admission timelines for fields: <span className="font-semibold"> {advising_context.fields.join(", ")}</span>.
            </p>
         </div>
