@@ -715,6 +715,120 @@ const universityOfMurcia = {
   "last_checked": "2026-01-18"
 };
 
+const aghUniversityOfScienceAndTechnology = {
+  "advising_context": {
+    "target_student": "International/Colombia",
+    "country": "Poland",
+    "city": "Kraków",
+    "currency": "Euro (EUR)",
+    "target_university": "AGH University of Science and Technology",
+    "search_year": "2026",
+    "fields": [
+      "CS",
+      "AI",
+      "Software Eng",
+      "Data Science"
+    ]
+  },
+  "programs": [
+    {
+      "program_name": "MSc in Computer Science and Intelligent Systems: Artificial Intelligence and Data Analysis",
+      "faculty_or_department": "Faculty of Electrical Engineering, Automatics, Computer Science and Biomedical Engineering (EAIiIB)",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://www.international.agh.edu.pl/en/studies/education-offer-master-studies",
+        "https://www.eaiib.agh.edu.pl/en/computer-science-and-intelligent-systems/"
+      ],
+      "tuition_fees_approx": "€2,700 per semester (Non-EU). Program duration: 3 semesters.",
+      "admission_timeline": [
+        {
+          "stage": "Winter Recruitment (For Feb 2026 Intake)",
+          "open_date": "2026-01-12",
+          "deadline_date": "2026-02-06",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://rekrutacja.cr.agh.edu.pl/?pg=start",
+            "https://www.international.agh.edu.pl/en/studies/recruitment/deadlines-master-studies"
+          ],
+          "requirements_notes": "Requires BEng/BSc in Engineering (3.5 years). Online Entrance Exam scheduled for Feb 10, 2026. Results by Feb 12."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Automatic Control and Robotics: Cyber-Physical Systems",
+      "faculty_or_department": "Faculty of Electrical Engineering, Automatics, Computer Science and Biomedical Engineering (EAIiIB)",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://www.international.agh.edu.pl/en/studies/education-offer-master-studies"
+      ],
+      "tuition_fees_approx": "€2,700 per semester (Non-EU). Program duration: 3 semesters.",
+      "admission_timeline": [
+        {
+          "stage": "Winter Recruitment (For Feb 2026 Intake)",
+          "open_date": "2026-01-12",
+          "deadline_date": "2026-02-06",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://rekrutacja.cr.agh.edu.pl/?pg=start"
+          ],
+          "requirements_notes": "Focus on AI in control systems and robotics. Requires BEng degree. Online entrance exam required."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Geospatial Computer Science",
+      "faculty_or_department": "Faculty of Geo-Data Science, Geodesy, and Environmental Engineering",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://www.international.agh.edu.pl/en/studies/education-offer-master-studies"
+      ],
+      "tuition_fees_approx": "€1,800 per semester (Non-EU). Program duration: 3 semesters.",
+      "admission_timeline": [
+        {
+          "stage": "Winter Recruitment (For Feb 2026 Intake)",
+          "open_date": "2026-01-12",
+          "deadline_date": "2026-02-06",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://rekrutacja.cr.agh.edu.pl/?pg=start"
+          ],
+          "requirements_notes": "Focus on Remote Sensing, GIS, and Data Analysis. Requires technical background."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Remote Sensing and Geo Informatics",
+      "faculty_or_department": "Faculty of Geo-Data Science, Geodesy, and Environmental Engineering",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://www.international.agh.edu.pl/en/studies/education-offer-master-studies"
+      ],
+      "tuition_fees_approx": "€1,650 per semester (Non-EU). Program duration: 3 semesters.",
+      "admission_timeline": [
+        {
+          "stage": "Winter Recruitment (For Feb 2026 Intake)",
+          "open_date": "2026-01-12",
+          "deadline_date": "2026-02-06",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://rekrutacja.cr.agh.edu.pl/?pg=start"
+          ],
+          "requirements_notes": "Specialized Data Science track for environmental and spatial data."
+        }
+      ]
+    }
+  ],
+  "last_checked": "2026-01-18"
+};
+
 const universityOfAlicante = {
   "advising_context": {
     "target_student": "International/Colombia",
@@ -1347,6 +1461,7 @@ export const allUniversities = [
   universityOfSalamanca,
   universityOfSantiagoDeCompostela,
   universityOfMurcia,
+  aghUniversityOfScienceAndTechnology,
   universityOfAlicante,
   universityOfMalaga,
   UniversityOfCastillaLaMancha,
