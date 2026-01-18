@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { 
   School, BookOpen, ArrowRight, MapPin, LayoutGrid 
 } from 'lucide-react';
-import UniversityDetails from './university-details';
+import UniversityDetails from '../../components/masters/university-details';
 
-import { allUniversities } from './data';
+import { allUniversities } from '../../components/masters/data';
 
 const UniversityDashboard = ({ onSelectUniversity }) => {
   return (
