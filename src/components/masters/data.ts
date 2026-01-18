@@ -1,7 +1,7 @@
 const universityOfGranada = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Granada",
     "currency": "Euro (EUR)",
     "target_university": "University of Granada",
@@ -75,7 +75,7 @@ const universityOfGranada = {
 const universityOfSevilla = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Seville",
     "currency": "Euro (EUR)",
     "target_university": "University of Seville",
@@ -178,7 +178,7 @@ const universityOfSevilla = {
 const universityOfTheBasqueCountry = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Bilbao / San Sebastián / Vitoria-Gasteiz",
     "currency": "Euro (EUR)",
     "target_university": "University of the Basque Country (UPV/EHU)",
@@ -340,7 +340,7 @@ const universityOfTheBasqueCountry = {
 const universityOfSalamanca = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Salamanca",
     "currency": "Euro (EUR)",
     "target_university": "University of Salamanca",
@@ -478,7 +478,7 @@ const universityOfSalamanca = {
 const universityOfSantiagoDeCompostela = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Santiago de Compostela / Lugo",
     "currency": "Euro (EUR)",
     "target_university": "University of Santiago de Compostela (USC)",
@@ -595,7 +595,7 @@ const universityOfSantiagoDeCompostela = {
 const universityOfMurcia = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Murcia",
     "currency": "Euro (EUR)",
     "target_university": "University of Murcia",
@@ -718,7 +718,7 @@ const universityOfMurcia = {
 const aghUniversityOfScienceAndTechnology = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Poland",
+    "country": "Poland 🇵🇱",
     "city": "Kraków",
     "currency": "Euro (EUR)",
     "target_university": "AGH University of Science and Technology",
@@ -832,7 +832,7 @@ const aghUniversityOfScienceAndTechnology = {
 const universityOfAlicante = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Alicante (San Vicente del Raspeig)",
     "currency": "Euro (EUR)",
     "target_university": "University of Alicante",
@@ -973,7 +973,7 @@ const universityOfAlicante = {
 const universityOfMalaga = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Malaga",
     "currency": "Euro (EUR)",
     "target_university": "University of Malaga",
@@ -1077,7 +1077,7 @@ const universityOfMalaga = {
 const UniversityOfCastillaLaMancha = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Ciudad Real / Albacete",
     "currency": "Euro (EUR)",
     "target_university": "University of Castilla-La Mancha",
@@ -1167,7 +1167,7 @@ const UniversityOfCastillaLaMancha = {
 const universityOfVigo = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "Vigo / Ourense",
     "currency": "Euro (EUR)",
     "target_university": "University of Vigo",
@@ -1319,7 +1319,7 @@ const universityOfVigo = {
 const universityOfLeon = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Spain",
+    "country": "Spain 🇪🇸",
     "city": "León",
     "currency": "Euro (EUR)",
     "target_university": "University of León",
