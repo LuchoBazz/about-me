@@ -17,6 +17,7 @@ import {
   Sparkles,
   GraduationCap,
   Languages,
+  Rocket,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -470,6 +471,75 @@ function HomePage() {
     },
   ];
 
+  const launchedProjects = [
+    {
+      id: 1,
+      title: "Quick Test CLI",
+      description: "A cross-platform CLI tool for automated stress testing in competitive programming. Supports multiple languages and eliminates the need for complex testing scripts.",
+      url: "https://luchobazz.github.io/quicktest/docs/intro",
+      image: "https://raw.githubusercontent.com/LuchoBazz/quicktest/refs/heads/main/assets/logo/quicktest-512x512.png",
+      color: "text-blue-500",
+    },
+    {
+      id: 2,
+      title: "Taskon AI",
+      description: "A comprehensive developer productivity suite featuring a wide array of tools and utilities designed to streamline software development workflows.",
+      url: "#",
+      image: "https://i.ibb.co/d0tDkbtH/logo-dark.png",
+      color: "text-purple-500",
+    },
+    {
+      id: 3,
+      title: "Prompt Composer",
+      description: "A centralized platform for storing and perfecting AI prompts. Organize your library and use AI-driven suggestions to improve prompt clarity and output quality.",
+      url: "#",
+      image: "https://i.ibb.co/XrxcM2nb/prompt-composer-logo.png",
+      color: "text-emerald-500",
+    },
+  ];
+
+  const LaunchedProjectCard = ({ project }: { project: any }) => {
+    const Icon = project.icon;
+
+    return (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full aspect-square rounded-xl overflow-hidden transition-all duration-300 ease-in-out border border-transparent hover:shadow-lg hover:border-slate-200 dark:hover:border-slate-800"
+      >
+        {/* Default State: Icon or Image Centered */}
+        <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:opacity-20">
+          <div className={`w-[70%] h-[70%] rounded-full flex items-center justify-center ${project.color}`}>
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-[85%] h-[85%] object-contain drop-shadow-sm"
+              />
+            ) : (
+              <Icon className="w-[85%] h-[85%]" strokeWidth={1.5} />
+            )}
+          </div>
+        </div>
+
+        {/* Hover State: Overlay with Info */}
+        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm ${isDark ? 'bg-slate-900/95' : 'bg-white/95'}`}>
+          <h3 className={`font-bold text-sm mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75 leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            {project.title}
+          </h3>
+          <p className={`text-xs mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 line-clamp-3 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+            {project.description}
+          </p>
+          <div className={`flex items-center text-[10px] font-bold uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
+            <span>View</span>
+            <ExternalLink size={12} className="ml-1" />
+          </div>
+        </div>
+      </a>
+    );
+  };
+
   return (
     <Layout
       title="Home"
@@ -684,6 +754,41 @@ function HomePage() {
                   <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{exp.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- LAUNCHED PROJECTS --- */}
+        <section id="launched-projects" className="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <div className="flex flex-col items-center justify-center gap-4">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 justify-center">
+                  <span className={`p-2 rounded-lg ${isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-700'}`}>
+                    <Rocket size={24} />
+                  </span>
+                  Launched Projects
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                  A selection of applications and tools I've built and deployed.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            {launchedProjects.map((project) => (
+              <LaunchedProjectCard key={project.id} project={project} />
+            ))}
+
+            {/* 'Coming Soon' placeholder */}
+            <div className={`flex flex-col items-center justify-center aspect-square rounded-xl border-2 border-dashed transition-all cursor-default
+              ${isDark ? 'border-slate-800 text-slate-600 hover:border-slate-700' : 'border-slate-200 text-slate-400 hover:border-slate-300'}
+            `}>
+              <Code2 size={40} className="mb-2 opacity-30" />
+              <span className="text-xs font-medium">Coming soon...</span>
             </div>
           </div>
         </section>
