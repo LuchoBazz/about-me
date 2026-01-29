@@ -832,7 +832,7 @@ const aghUniversityOfScienceAndTechnology = {
 const WroclawUniversityOfScienceAndTechnology = {
   "advising_context": {
     "target_student": "International/Colombia",
-    "country": "Poland",
+    "country": "Poland 🇵🇱",
     "city": "Wroclaw",
     "currency": "Euro (EUR)",
     "target_university": "Wroclaw University of Science and Technology (Politechnika Wrocławska)",
