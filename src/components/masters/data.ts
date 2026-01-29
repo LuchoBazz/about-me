@@ -829,6 +829,142 @@ const aghUniversityOfScienceAndTechnology = {
   "last_checked": "2026-01-18"
 };
 
+const WroclawUniversityOfScienceAndTechnology = {
+  "advising_context": {
+    "target_student": "International/Colombia",
+    "country": "Poland",
+    "city": "Wroclaw",
+    "currency": "Euro (EUR)",
+    "target_university": "Wroclaw University of Science and Technology (Politechnika Wrocławska)",
+    "search_year": "2026",
+    "fields": [
+      "CS",
+      "AI",
+      "Software Eng",
+      "Data Science"
+    ]
+  },
+  "programs": [
+    {
+      "program_name": "MSc in Advanced Computer Science",
+      "faculty_or_department": "Faculty of Information and Communication Technology",
+      "languages": [
+        "English (B2/C1)"
+      ],
+      "website_urls": [
+        "https://admission.pwr.edu.pl/study-finder/computer-science-eng-second-edit-9623.html"
+      ],
+      "tuition_fees_approx": "2,000 EUR per semester (approx. 4,000 EUR per year) for non-EU students",
+      "admission_timeline": [
+        {
+          "stage": "Winter Intake Application Period",
+          "open_date": "2026-05-01 America/Bogota",
+          "deadline_date": "2026-07-15 America/Bogota",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://admission.pwr.edu.pl/how-to-apply",
+            "https://admission.pwr.edu.pl/admission-deadlines"
+          ],
+          "requirements_notes": "Bachelor's Degree in Computer Science or related engineering field (min. 3.5 years/210 ECTS); Apostilled/Legalized Diploma; English: TOEFL iBT 87+ or IELTS 6.5+; Application fee 20 EUR."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Artificial Intelligence",
+      "faculty_or_department": "Faculty of Information and Communication Technology",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://wit.pwr.edu.pl/en/candidates/2nd-cycle-studies/artificial-intelligence"
+      ],
+      "tuition_fees_approx": "2,000 EUR per semester (approx. 4,000 EUR per year) for non-EU students",
+      "admission_timeline": [
+        {
+          "stage": "Application Period",
+          "open_date": "2026-05-01 America/Bogota",
+          "deadline_date": "2026-07-15 America/Bogota",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://admission.pwr.edu.pl/how-to-apply"
+          ],
+          "requirements_notes": "Engineer/Bachelor degree in Informatics/CS or related; emphasis on machine learning, deep learning models, and algorithmics proficiency; English B2 required."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Internet Engineering",
+      "faculty_or_department": "Faculty of Information and Communication Technology",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://wit.pwr.edu.pl/en/candidates/2nd-cycle-studies/internet-engineering"
+      ],
+      "tuition_fees_approx": "2,000 EUR per semester (approx. 4,000 EUR per year) for non-EU students",
+      "admission_timeline": [
+        {
+          "stage": "Application Period",
+          "open_date": "2026-05-01 America/Bogota",
+          "deadline_date": "2026-07-15 America/Bogota",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://admission.pwr.edu.pl/how-to-apply"
+          ],
+          "requirements_notes": "Degree in Computer Science, Teleinformatics, or related; Focus on complex service-oriented systems and software development; Legalized diploma and B2 English certificate."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Advanced Informatics and Control",
+      "faculty_or_department": "Faculty of Information and Communication Technology (formerly Electronics)",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://admission.pwr.edu.pl/study-finder/advanced-informatics-and-control-9615.html"
+      ],
+      "tuition_fees_approx": "2,000 EUR per semester (approx. 4,000 EUR per year) for non-EU students",
+      "admission_timeline": [
+        {
+          "stage": "Application Period",
+          "open_date": "2026-05-01 America/Bogota",
+          "deadline_date": "2026-07-15 America/Bogota",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://admission.pwr.edu.pl/how-to-apply"
+          ],
+          "requirements_notes": "Bachelor's in Computer Science/Engineering/Control/Robotics; requires 210 ECTS or 3.5 years of study; TOEFL 87/IELTS 6.5; Diploma must be apostilled for Colombian applicants."
+        }
+      ]
+    },
+    {
+      "program_name": "MSc in Big Data Analytics",
+      "faculty_or_department": "Faculty of Pure and Applied Mathematics",
+      "languages": [
+        "English"
+      ],
+      "website_urls": [
+        "https://wmat.pwr.edu.pl/en/candidates/msc-in-big-data-analytics"
+      ],
+      "tuition_fees_approx": "2,000 EUR per semester (approx. 4,000 EUR per year) for non-EU students",
+      "admission_timeline": [
+        {
+          "stage": "Application Period",
+          "open_date": "2026-05-01 America/Bogota",
+          "deadline_date": "2026-07-15 America/Bogota",
+          "applicant_type": "International / Non-EU",
+          "step_urls": [
+            "https://admission.pwr.edu.pl/how-to-apply"
+          ],
+          "requirements_notes": "Bachelor in Mathematics, Computer Science, or Physics; Strong mathematical background in probability and statistics is essential."
+        }
+      ]
+    }
+  ],
+  "last_checked": "2026-01-29"
+};
+
 const universityOfAlicante = {
   "advising_context": {
     "target_student": "International/Colombia",
@@ -1462,6 +1598,7 @@ export const allUniversities = [
   universityOfSantiagoDeCompostela,
   universityOfMurcia,
   aghUniversityOfScienceAndTechnology,
+  WroclawUniversityOfScienceAndTechnology,
   universityOfAlicante,
   universityOfMalaga,
   UniversityOfCastillaLaMancha,
