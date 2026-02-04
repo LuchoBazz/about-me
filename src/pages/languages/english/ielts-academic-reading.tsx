@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   BookOpen,
@@ -139,49 +140,14 @@ const TOPICS_DATA = {
   ]
 };
 
-const generateIELTSContent = async (topic, apiKey) => {
-  const model = "gemini-2.5-flash-preview-09-2025";
-
-  const promptText = `
-    **Role:** Act as an expert IELTS Academic tutor and content creator.
-    **Task:** Based on the topic "${topic}", write a high-quality reading passage and a set of practice questions that mimic the IELTS Academic Reading module.
-    
-    **Requirements for the Text:**
-    * **Length:** Between 600 and 800 words.
-    * **Complexity:** Use a mix of "Band 7-8" vocabulary and complex grammatical structures.
-    * **Structure:** Organize the text into 6-8 clearly labeled paragraphs (Paragraph A, B, C, etc.).
-    * **Tone:** Formal, academic, and informative.
-
-    **Requirements for the Assessment:**
-    After the text, provide 10-12 questions following these IELTS formats:
-    1. **Matching Headings** or **True/False/Not Given**.
-    2. **Summary Completion**.
-    3. **Multiple Choice**.
-
-    **Vocabulary List:** Include a "Glossary of Academic Terms".
-    **Answer Key:** Provide the answers at the very end.
-
-    ***CRITICAL FORMATTING INSTRUCTION FOR UI PARSING***:
-    You must format the output exactly as follows so my code can split the views:
-    1. Write the Reading Passage first.
-    2. Then, strictly on a new line, print exactly this separator string: "|||SECTION_BREAK|||"
-    3. Then write the Questions, Glossary, and Answer Key.
-  `;
-
+const generateIELTSContent = async (topic, category) => {
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] }),
-      }
-    );
+    const response = await axios.post('https://xforce-serverless.vercel.app/api/languages/english/ielts-reading', {
+      topic,
+      category
+    });
 
-    if (!response.ok) throw new Error(`API Error: ${response.status}`);
-
-    const data = await response.json();
-    const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const resultText = response.data.data;
 
     if (!resultText) throw new Error("No content generated");
 
@@ -270,7 +236,6 @@ const MarkdownRenderer = ({ content, isDark, isSerif = false }) => {
 
 export default function IELTSApp() {
   const { siteConfig } = useDocusaurusContext();
-  const apiKey = siteConfig.customFields.geminiApiKey as string;
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("");
@@ -305,7 +270,7 @@ export default function IELTSApp() {
     setShowAnswers(false);
 
     try {
-      const data = await generateIELTSContent(selectedTopic, apiKey);
+      const data = await generateIELTSContent(selectedTopic, selectedCategory);
       setContent(data);
     } catch (err) {
       setError("Failed to generate content. Please try again later.");
