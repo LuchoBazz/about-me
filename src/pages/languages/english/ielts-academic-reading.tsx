@@ -164,26 +164,36 @@ const generateIELTSContent = async (topic, category) => {
   }
 };
 
-const Header = ({ isDark, toggleTheme }) => (
-  <header className={`sticky top-0 z-50 border-b transition-colors duration-300 ${isDark ? 'bg-slate-900 border-slate-700' : 'bg-white border-slate-200'}`}>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div className="flex items-center space-x-3">
-        <div className={`p-2 rounded-lg ${isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-indigo-100 text-indigo-600'}`}>
-          <GraduationCap size={24} />
+const Header = ({ isDark, toggleTheme, scrolled }) => (
+  <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-20">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 border-r border-slate-200 dark:border-slate-800 pr-6 mr-2">
+            <a href="/about-me/" className="text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition-colors font-serif italic text-sm whitespace-nowrap">
+              ← Back to Home
+            </a>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-300 dark:hover:border-slate-700"
+              aria-label="Toggle Dark Mode"
+            >
+              {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-600" />}
+            </button>
+          </div>
+          
+          <div className="flex items-center space-x-3">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-indigo-100 text-indigo-600'}`}>
+              <GraduationCap size={24} />
+            </div>
+            <h1 className={`text-xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              IELTS <span className="text-indigo-500">Master</span>
+            </h1>
+          </div>
         </div>
-        <h1 className={`text-xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          IELTS <span className="text-indigo-500">Master</span>
-        </h1>
       </div>
-      <button
-        onClick={toggleTheme}
-        className={`p-2 rounded-full transition-all duration-300 ${isDark ? 'bg-slate-800 text-yellow-400 hover:bg-slate-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
-        aria-label="Toggle theme"
-      >
-        {isDark ? <Sun size={20} /> : <Moon size={20} />}
-      </button>
     </div>
-  </header>
+  </nav>
 );
 
 const EmptyState = ({ isDark }) => (
@@ -242,8 +252,17 @@ export default function IELTSApp() {
   const [content, setContent] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -280,11 +299,11 @@ export default function IELTSApp() {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col transition-colors duration-300 font-sans ${isDark ? 'bg-slate-950' : 'bg-slate-50'}`}>
+    <div className={`min-h-screen flex flex-col transition-colors duration-300 font-sans ${isDark ? 'dark bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
 
-      <Header isDark={isDark} toggleTheme={() => setIsDark(!isDark)} />
+      <Header isDark={isDark} toggleTheme={() => setIsDark(!isDark)} scrolled={scrolled} />
 
-      <main className="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 gap-6 h-[calc(100vh-64px)] overflow-hidden">
+      <main className="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 gap-6 pt-24 overflow-hidden">
 
         <div className="flex-none flex flex-col md:flex-row gap-4 items-end md:items-center bg-transparent">
 
