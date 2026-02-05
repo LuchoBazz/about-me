@@ -469,6 +469,14 @@ function HomePage() {
       color: "bg-indigo-600/10 dark:bg-indigo-600/20",
       textColor: "text-indigo-600 dark:text-indigo-400"
     },
+    {
+      title: "IELTS Master",
+      desc: "Practice IELTS Academic Reading with AI-generated tests.",
+      icon: <BookOpen className="w-8 h-8" />,
+      link: "/about-me/languages/english/ielts-academic-reading",
+      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
+      textColor: "text-indigo-500"
+    },
   ];
 
   const launchedProjects = [
