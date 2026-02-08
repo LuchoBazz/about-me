@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, BookOpen, Copy, Check, Hash, Grid, List, Moon, Sun, Book, Volume2, ChevronRight, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare } from 'lucide-react';
+import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronRight, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare } from 'lucide-react';
 
 // --- DATA DEFINITION ---
 
@@ -348,7 +348,7 @@ const GroupCard = ({ group, searchTerm, isDarkMode, onWordClick }) => {
   );
 };
 
-const WordDetailView = ({ onClose, isDarkMode }) => {
+const WordDetailView = ({ onClose, isDarkMode, onToggleTheme }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('all');
 
@@ -386,6 +386,17 @@ const WordDetailView = ({ onClose, isDarkMode }) => {
             </button>
             
             <div className="flex items-center gap-4 ml-auto">
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={onToggleTheme}
+                className="p-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-sm border border-slate-200 dark:border-slate-700 transition-all"
+                aria-label="Toggle Dark Mode"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+
+              <div className="h-6 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block"></div>
+
               <div className="flex gap-2">
                 <button 
                   onClick={handlePrev} 
@@ -537,6 +548,7 @@ export default function App() {
       <WordDetailView 
         onClose={() => setSelectedWord(null)} 
         isDarkMode={isDarkMode} 
+        onToggleTheme={toggleTheme}
       />
     );
   }
