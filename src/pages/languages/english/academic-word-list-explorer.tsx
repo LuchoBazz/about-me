@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronRight, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronRight, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare, Loader2, AlertCircle, Home } from 'lucide-react';
 
 // --- DATA DEFINITION ---
 
@@ -164,27 +164,23 @@ const academicWordList = [
   }
 ];
 
-const vocabularyData = [
-  {
-    "headword": "Analyze",
-    "overall_translation": "Analizar",
-    "word_family": {
-      "verbs": [
-        { "term": "Analyze", "translation": "Analizar", "example": "In my opinion, we need to analyze how social media affects us." }
-      ],
-      "nouns": [
-        { "term": "Analysis", "translation": "Análisis", "example": "After a quick analysis, I realized moving abroad was best." },
-        { "term": "Analyst", "translation": "Analista", "example": "To be a data analyst, you need to love numbers." }
-      ],
-      "adjectives": [
-        { "term": "Analytical", "translation": "Analítico", "example": "I'm not very analytical; I follow my gut feeling." }
-      ],
-      "adverbs": [
-        { "term": "Analytically", "translation": "Analíticamente", "example": "Thinking analytically makes the solution clearer." }
-      ]
-    }
+// --- API FETCHING ---
+
+const fetchWordFamily = async (headword: string) => {
+  const response = await fetch('https://xforce-serverless.vercel.app/api/languages/english/ielts-word-family', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ headword }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch word family data');
   }
-];
+
+  return response.json();
+};
 
 // --- COMPONENTS ---
 
@@ -348,27 +344,76 @@ const GroupCard = ({ group, searchTerm, isDarkMode, onWordClick }) => {
   );
 };
 
-const WordDetailView = ({ onClose, isDarkMode, onToggleTheme }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const WordDetailView = ({ selectedWord, onClose, isDarkMode, onToggleTheme }) => {
+  const [wordData, setWordData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('all');
 
-  const currentWord = vocabularyData[currentIndex];
-  const { word_family } = currentWord;
-  const categories = ['verbs', 'nouns', 'adjectives', 'adverbs'];
-  
-  const handleNext = () => {
-    if (currentIndex < vocabularyData.length - 1) setCurrentIndex(prev => prev + 1);
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetchWordFamily(selectedWord);
+        // API returns data wrapped in a 'data' property
+        const result = response.data || (Array.isArray(response) ? (response[0]?.data || response[0]) : response);
+        setWordData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const handlePrev = () => {
-    if (currentIndex > 0) setCurrentIndex(prev => prev - 1);
-  };
+    if (selectedWord) {
+      loadData();
+    }
+  }, [selectedWord]);
 
   const speak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
   };
+
+  if (isLoading) {
+    return (
+      <div className={`w-full min-h-screen flex items-center justify-center ${isDarkMode ? 'bg-slate-900' : 'bg-slate-50'}`}>
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+          <p className={`text-lg font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+            Fetching details for "{selectedWord}"...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !wordData) {
+    return (
+      <div className={`w-full min-h-screen flex items-center justify-center ${isDarkMode ? 'bg-slate-900' : 'bg-slate-50'}`}>
+        <div className="max-w-md w-full p-8 text-center">
+          <div className="inline-flex items-center justify-center p-4 bg-red-100 dark:bg-red-900/30 rounded-full mb-6">
+            <AlertCircle className="w-12 h-12 text-red-600 dark:text-red-400" />
+          </div>
+          <h2 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Oops! Something went wrong</h2>
+          <p className={`mb-8 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            {error || 'We couldn\'t find details for this word.'}
+          </p>
+          <button 
+            onClick={onClose}
+            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-lg transition-all"
+          >
+            Back to List
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const { word_family } = wordData;
+  const categories = ['verbs', 'nouns', 'adjectives', 'adverbs'];
 
   return (
     <div className={`w-full min-h-screen ${isDarkMode ? 'dark' : ''}`}>
@@ -394,28 +439,6 @@ const WordDetailView = ({ onClose, isDarkMode, onToggleTheme }) => {
               >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-
-              <div className="h-6 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block"></div>
-
-              <div className="flex gap-2">
-                <button 
-                  onClick={handlePrev} 
-                  disabled={currentIndex === 0}
-                  className="p-2 rounded-full hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 dark:text-slate-300 transition-all"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <span className="py-2 px-3 text-sm font-medium text-slate-400 dark:text-slate-500">
-                  {currentIndex + 1} / {vocabularyData.length}
-                </span>
-                <button 
-                  onClick={handleNext} 
-                  disabled={currentIndex === vocabularyData.length - 1}
-                  className="p-2 rounded-full hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm disabled:opacity-30 disabled:hover:bg-transparent text-slate-600 dark:text-slate-300 transition-all"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
             </div>
           </div>
 
@@ -429,15 +452,15 @@ const WordDetailView = ({ onClose, isDarkMode, onToggleTheme }) => {
               </div>
               
               <h2 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight mb-2">
-                {currentWord.headword}
+                {wordData.headword}
               </h2>
               
               <div className="flex items-center justify-center gap-3 mb-6">
                 <span className="text-2xl text-slate-500 dark:text-slate-400 font-light border-b border-slate-200 dark:border-slate-700 pb-0.5">
-                  {currentWord.overall_translation}
+                  {wordData.overall_translation}
                 </span>
                 <button 
-                  onClick={() => speak(currentWord.headword)}
+                  onClick={() => speak(wordData.headword)}
                   className="p-2 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   aria-label="Listen to pronunciation"
                 >
@@ -509,7 +532,7 @@ const WordDetailView = ({ onClose, isDarkMode, onToggleTheme }) => {
 
           {/* Footer info */}
           <div className="mt-12 text-center text-slate-400 dark:text-slate-600 text-sm">
-            <p>Vocabulary Set • {vocabularyData.length} Headwords</p>
+            <p>IELTS Word Family Explorer • Data powered by AI</p>
           </div>
 
         </div>
@@ -546,6 +569,7 @@ export default function App() {
   if (selectedWord) {
     return (
       <WordDetailView 
+        selectedWord={selectedWord}
         onClose={() => setSelectedWord(null)} 
         isDarkMode={isDarkMode} 
         onToggleTheme={toggleTheme}
