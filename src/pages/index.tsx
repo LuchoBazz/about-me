@@ -477,6 +477,14 @@ function HomePage() {
       color: "bg-indigo-500/10 dark:bg-indigo-500/20",
       textColor: "text-indigo-500"
     },
+    {
+      title: "Academic Word List Explorer",
+      desc: "Interactive tool to explore essential academic vocabulary terms.",
+      icon: <BookOpen className="w-8 h-8" />,
+      link: "/about-me/languages/english/academic-word-list-explorer",
+      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
+      textColor: "text-indigo-500"
+    },
   ];
 
   const launchedProjects = [
