@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronRight, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare, Loader2, AlertCircle, Home } from 'lucide-react';
+import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare, Loader2, AlertCircle } from 'lucide-react';
 
 // --- DATA DEFINITION ---
 
@@ -207,13 +207,29 @@ const CategoryBadge = ({ type }) => {
 };
 
 const WordCard = ({ item }) => {
+  const handleSpeak = (e) => {
+    e.stopPropagation();
+    const utterance = new SpeechSynthesisUtterance(item.term);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
+  };
+
   return (
     <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 hover:shadow-md transition-all duration-200 group">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h4 className="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-            {item.term}
-          </h4>
+          <div className="flex items-center gap-2">
+            <h4 className="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+              {item.term}
+            </h4>
+            <button
+              onClick={handleSpeak}
+              className="p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-indigo-600 transition-colors"
+              title="Listen to pronunciation"
+            >
+              <Volume2 size={16} />
+            </button>
+          </div>
           <p className="text-slate-500 dark:text-slate-400 font-medium italic">{item.translation}</p>
         </div>
       </div>
@@ -238,6 +254,13 @@ const WordChip = ({ word, searchTerm, isDarkMode, onClick }) => {
     navigator.clipboard.writeText(word);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
+  };
+
+  const handleSpeak = (e) => {
+    e.stopPropagation();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
   };
 
   // Highlighting logic
@@ -266,11 +289,18 @@ const WordChip = ({ word, searchTerm, isDarkMode, onClick }) => {
     >
       <div className="flex items-center gap-2">
         {word}
-        <Copy 
-          size={12} 
-          className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-slate-400 hover:text-indigo-500" 
-          onClick={handleCopy}
-        />
+        <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Volume2 
+            size={12} 
+            className="cursor-pointer text-slate-400 hover:text-indigo-500" 
+            onClick={handleSpeak}
+          />
+          <Copy 
+            size={12} 
+            className="cursor-pointer text-slate-400 hover:text-indigo-500" 
+            onClick={handleCopy}
+          />
+        </div>
       </div>
 
       {/* Copied Tooltip */}
@@ -522,7 +552,10 @@ const WordDetailView = ({ selectedWord, onClose, isDarkMode, onToggleTheme }) =>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {items.map((item, idx) => (
-                      <WordCard key={`${category}-${idx}`} item={item} />
+                      <WordCard 
+                        key={`${category}-${idx}`} 
+                        item={item} 
+                      />
                     ))}
                   </div>
                 </div>
