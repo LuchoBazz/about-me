@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, BookOpen, Copy, Grid, List, Moon, Sun, Volume2, ChevronLeft, GraduationCap, LayoutGrid, MessageSquare, Loader2, AlertCircle } from 'lucide-react';
 
 // --- DATA DEFINITION ---
+// https://ieltstutors.org/academic-word-list/
 
 const academicWordList = [
   {
