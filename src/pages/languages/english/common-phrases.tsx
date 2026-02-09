@@ -70,7 +70,8 @@ const EnglishCommonPhrases = () => {
     { phrase: "Over time", translation: "Con el tiempo / A lo largo del tiempo", usage: "UK/US", example: "Over time, things will get better." },
     { phrase: "Oh my gosh! / Oh my God!", translation: "¡Dios mío! / ¡Madre mía!", usage: "US", example: "Oh my gosh! I can't believe it!" },
     { phrase: "Once again", translation: "Una vez más", usage: "UK/US", example: "Could you explain that once again, please?" },
-    { phrase: "For the Record", translation: "Para que conste / Para que lo sepas", usage: "UK/US", example: "For the record, I never agreed to this plan." }
+    { phrase: "For the Record", translation: "Para que conste / Para que lo sepas", usage: "UK/US", example: "For the record, I never agreed to this plan." },
+    { phrase: "Does that make sense?", translation: "¿Tiene sentido? / ¿Me explico?", usage: "UK/US", example: "I've explained the process; does that make sense?" }
   ].reverse();
 
   // Function to handle voice synthesis (Text-to-Speech)
