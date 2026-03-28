@@ -21,12 +21,8 @@ export default function LifeCalendar() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // --- State ---
-  const [dob, setDob] = useState(() => {
-    const defaultDate = new Date();
-    defaultDate.setFullYear(defaultDate.getFullYear() - 25);
-    return defaultDate.toISOString().split('T')[0];
-  });
-  const [lifeYears, setLifeYears] = useState(90);
+  const [dob, setDob] = useState('2000-01-01');
+  const [lifeYears, setLifeYears] = useState(80);
   const [selectedColor, setSelectedColor] = useState(COLORS[5]); // Default Blue
   const [customRanges, setCustomRanges] = useState<{ start: number; end: number; color: string }[]>([]);
 
@@ -48,10 +44,19 @@ export default function LifeCalendar() {
   // Theme state
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return document.documentElement.dataset.theme === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
     return false;
   });
+  
+  // Sincronizar con el tema global
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.dataset.theme = isDarkMode ? 'dark' : 'light';
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   // --- Calculations ---
   const totalWeeks = lifeYears * 52;
@@ -302,7 +307,7 @@ export default function LifeCalendar() {
   };
 
   return (
-    <div className={isDarkMode ? 'dark' : ''}>
+    <>
       <div className="flex flex-col h-screen bg-slate-50 dark:bg-[#050817] font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300">
 
         {/* Control Panel */}
@@ -506,6 +511,6 @@ export default function LifeCalendar() {
         )}
 
       </div>
-    </div>
+    </>
   );
 }

@@ -5,6 +5,7 @@ module.exports = {
     "./docs/**/*.{md,mdx}",
     "./blog/**/*.{md,mdx}",
   ],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {},
   },
