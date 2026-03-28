@@ -485,6 +485,14 @@ function HomePage() {
       color: "bg-indigo-500/10 dark:bg-indigo-500/20",
       textColor: "text-indigo-500"
     },
+    {
+      title: "Life Calendar",
+      desc: "Visualize your life in weeks.",
+      icon: <CalendarClock className="w-8 h-8" />,
+      link: "/about-me/apps/life-calendar",
+      color: "bg-blue-500/10 dark:bg-blue-500/20",
+      textColor: "text-blue-500"
+    },
   ];
 
   const launchedProjects = [
