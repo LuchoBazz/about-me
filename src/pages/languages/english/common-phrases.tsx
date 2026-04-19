@@ -71,7 +71,8 @@ const EnglishCommonPhrases = () => {
     { phrase: "Oh my gosh! / Oh my God!", translation: "¡Dios mío! / ¡Madre mía!", usage: "US", example: "Oh my gosh! I can't believe it!" },
     { phrase: "Once again", translation: "Una vez más", usage: "UK/US", example: "Could you explain that once again, please?" },
     { phrase: "For the Record", translation: "Para que conste / Para que lo sepas", usage: "UK/US", example: "For the record, I never agreed to this plan." },
-    { phrase: "Does that make sense?", translation: "¿Tiene sentido? / ¿Me explico?", usage: "UK/US", example: "I've explained the process; does that make sense?" }
+    { phrase: "Does that make sense?", translation: "¿Tiene sentido? / ¿Me explico?", usage: "UK/US", example: "I've explained the process; does that make sense?" },
+    { phrase: "Gift of the gab", translation: "Don de la palabra / Facilidad de palabra", usage: "UK/US", example: "He has the gift of the gab and can sell anything to anyone." }
   ].reverse();
 
   // Function to handle voice synthesis (Text-to-Speech)
