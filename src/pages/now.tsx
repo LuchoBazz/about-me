@@ -8,7 +8,10 @@ import {
   Dumbbell,
   GraduationCap,
   Map,
-  Languages
+  Languages,
+  Radar,
+  Globe,
+  Wind
 } from 'lucide-react';
 
 // Simple Layout mock for preview
@@ -238,6 +241,33 @@ function NowPage() {
     },
   ];
 
+  const radarItems = [
+    {
+      category: "Language",
+      title: "Learn Esperanto",
+      subtitle: "Curious about the international auxiliary language and its community.",
+      icon: <Globe className="w-6 h-6" />,
+      color: "text-teal-500",
+      bg: "bg-teal-100 dark:bg-teal-900/30",
+    },
+    {
+      category: "Adventure",
+      title: "Paragliding",
+      subtitle: "Experiencing the freedom of flight and seeing the world from a different perspective.",
+      icon: <Wind className="w-6 h-6" />,
+      color: "text-sky-500",
+      bg: "bg-sky-100 dark:bg-sky-900/30",
+    },
+    {
+      category: "Adventure",
+      title: "Motorcycle Road Trip through Colombia",
+      subtitle: "A scenic circuit through Bogotá, Bucaramanga, Santa Marta, Medellín, Armenia, and back to Bogotá.",
+      icon: <Map className="w-6 h-6" />,
+      color: "text-orange-500",
+      bg: "bg-orange-100 dark:bg-orange-900/30",
+    },
+  ];
+
   return (
     <div className={isDark ? 'dark' : ''}>
       <Layout>
@@ -366,6 +396,45 @@ function NowPage() {
                     </li>
                   ))}
                 </ol>
+              </section>
+
+              {/* --- NEW: On the Radar Section --- */}
+              <section className="mb-20" aria-label="On the Radar">
+                <div className="flex items-center gap-3 mb-6">
+                  <Radar className="text-slate-500 dark:text-slate-400 w-7 h-7" />
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                    On the Radar
+                  </h2>
+                </div>
+                
+                <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+                  Things I am curious about, considering, or would like to do in the future. 
+                  These are ideas that don't have a concrete plan or deadline yet.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {radarItems.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-5 p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 opacity-80 hover:opacity-100 group"
+                    >
+                      <div className={`p-4 rounded-xl flex-shrink-0 ${item.bg} ${item.color} group-hover:scale-110 transition-transform duration-300`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
+                          {item.category}
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 leading-tight mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-base text-slate-600 dark:text-slate-400">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </section>
 
               {/* Now page explanation */}
