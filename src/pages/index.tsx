@@ -486,6 +486,14 @@ function HomePage() {
       textColor: "text-indigo-500"
     },
     {
+      title: "Vocabulary Builder",
+      desc: "Master new words with synonyms, antonyms, and common collocations.",
+      icon: <BookOpen className="w-8 h-8" />,
+      link: "/about-me/languages/english/vocab-builder",
+      color: "bg-teal-500/10 dark:bg-teal-500/20",
+      textColor: "text-teal-500"
+    },
+    {
       title: "Life Calendar",
       desc: "Visualize your life in weeks.",
       icon: <CalendarClock className="w-8 h-8" />,
