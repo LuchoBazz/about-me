@@ -51,6 +51,14 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "bun": ">=1.0.0"
+  },
+  "trustedDependencies": [
+    "@swc/core",
+    "core-js",
+    "core-js-pure"
+  ],
+  "overrides": {
+    "webpackbar": "7.0.0"
   }
 }
