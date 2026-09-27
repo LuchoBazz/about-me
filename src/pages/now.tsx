@@ -73,7 +73,7 @@ function NowPage() {
     {
       category: "Work",
       title: "Back-End Software Engineer",
-      subtitle: "Working at Instaleap",
+      subtitle: "Working at Instaleap by Instacart",
       icon: <Briefcase className="w-6 h-6" />,
       color: "text-blue-500",
       bg: "bg-blue-100 dark:bg-blue-900/30",

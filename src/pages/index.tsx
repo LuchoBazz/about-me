@@ -314,7 +314,7 @@ function HomePage() {
   const experience = [
     {
       role: "Back-End Software Engineer",
-      company: "Instaleap",
+      company: "Instaleap by Instacart",
       period: `Oct 2022 - Present · ${calculateDuration('2022-10-26')}`,
       desc: "Back-End Engineer."
     },
