@@ -18,6 +18,7 @@ import {
   GraduationCap,
   Languages,
   Rocket,
+  Clock,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -500,6 +501,14 @@ function HomePage() {
       link: "/about-me/apps/life-calendar",
       color: "bg-blue-500/10 dark:bg-blue-500/20",
       textColor: "text-blue-500"
+    },
+    {
+      title: "Work Schedule Comparator",
+      desc: "Compare work hours across countries and see how they affect your sleep.",
+      icon: <Clock className="w-8 h-8" />,
+      link: "/about-me/apps/work-schedule-comparator",
+      color: "bg-teal-500/10 dark:bg-teal-500/20",
+      textColor: "text-teal-500"
     },
   ];
 
