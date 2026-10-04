@@ -521,22 +521,22 @@ function HomePage() {
       image: "https://raw.githubusercontent.com/LuchoBazz/quicktest/refs/heads/main/assets/logo/quicktest-512x512.png",
       color: "text-blue-500",
     },
-    {
-      id: 2,
-      title: "Taskon AI",
-      description: "A comprehensive developer productivity suite featuring a wide array of tools and utilities designed to streamline software development workflows.",
-      url: "#",
-      image: "https://i.ibb.co/d0tDkbtH/logo-dark.png",
-      color: "text-purple-500",
-    },
-    {
-      id: 3,
-      title: "Prompt Composer",
-      description: "A centralized platform for storing and perfecting AI prompts. Organize your library and use AI-driven suggestions to improve prompt clarity and output quality.",
-      url: "#",
-      image: "https://i.ibb.co/XrxcM2nb/prompt-composer-logo.png",
-      color: "text-emerald-500",
-    },
+    // {
+    //   id: 2,
+    //   title: "Taskon AI",
+    //   description: "A comprehensive developer productivity suite featuring a wide array of tools and utilities designed to streamline software development workflows.",
+    //   url: "#",
+    //   image: "https://i.ibb.co/d0tDkbtH/logo-dark.png",
+    //   color: "text-purple-500",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Prompt Composer",
+    //   description: "A centralized platform for storing and perfecting AI prompts. Organize your library and use AI-driven suggestions to improve prompt clarity and output quality.",
+    //   url: "#",
+    //   image: "https://i.ibb.co/XrxcM2nb/prompt-composer-logo.png",
+    //   color: "text-emerald-500",
+    // },
   ];
 
   const LaunchedProjectCard = ({ project }: { project: any }) => {
