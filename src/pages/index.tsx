@@ -88,6 +88,7 @@ function HomePage() {
   const experience: ExperienceCompany[] = [
     {
       company: "Instaleap by Instacart",
+      logo: "https://github.com/user-attachments/assets/4418b5d2-13a0-4631-934e-1e6e84d3e8f3",
       positions: [
         {
           role: "Back-End Software Engineer",
@@ -99,6 +100,7 @@ function HomePage() {
     },
     {
       company: "IBM",
+      logo: "https://github.com/user-attachments/assets/291a78f5-45ce-4d20-acb8-9a14290c73a9",
       positions: [
         {
           role: "Back-End Software Engineer",
