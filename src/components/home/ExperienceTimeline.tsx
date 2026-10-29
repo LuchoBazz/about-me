@@ -32,30 +32,17 @@ function CompanyLogo({ company, logo }: Pick<ExperienceCompany, 'company' | 'log
   );
 }
 
-function PositionDetails({ position, company }: { position: ExperiencePosition; company?: string }) {
-  const subtitle = [company, position.employmentType].filter(Boolean).join(' · ');
-
+function PositionDetails({ position, showDuration = true }: { position: ExperiencePosition; showDuration?: boolean }) {
   return (
     <>
-      {subtitle && <p className="text-sm text-foreground">{subtitle}</p>}
+      {position.employmentType && <p className="text-sm text-foreground">{position.employmentType}</p>}
       <p className="text-sm text-muted-foreground" suppressHydrationWarning>
-        {formatDateRange(position)} · {formatDuration(positionMonths(position))}
+        {formatDateRange(position)}
+        {showDuration && ` · ${formatDuration(positionMonths(position))}`}
       </p>
       {position.location && <p className="text-sm text-muted-foreground">{position.location}</p>}
       <p className="mt-2 text-sm leading-relaxed text-foreground">{position.desc}</p>
     </>
-  );
-}
-
-function SinglePosition({ company, logo, positions: [position] }: ExperienceCompany) {
-  return (
-    <div className="flex gap-[var(--gap)]">
-      <CompanyLogo company={company} logo={logo} />
-      <div className="min-w-0 space-y-0.5">
-        <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground">{position.role}</h3>
-        <PositionDetails position={position} company={company} />
-      </div>
-    </div>
   );
 }
 
@@ -90,7 +77,7 @@ function MultiplePositions({ company, logo, positions }: ExperienceCompany) {
               </div>
               <div className="min-w-0 space-y-0.5">
                 <h4 className="text-base font-semibold leading-6 tracking-tight text-foreground">{position.role}</h4>
-                <PositionDetails position={position} />
+                <PositionDetails position={position} showDuration={positions.length > 1} />
               </div>
             </li>
           );
@@ -113,7 +100,7 @@ export function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
         <ul className="divide-y [--gap:0.75rem] [--logo:2.5rem] sm:[--gap:1rem] sm:[--logo:3rem]">
           {experience.map((entry) => (
             <li key={entry.company} className="px-4 py-5 sm:px-6 sm:py-6">
-              {entry.positions.length > 1 ? <MultiplePositions {...entry} /> : <SinglePosition {...entry} />}
+              <MultiplePositions {...entry} />
             </li>
           ))}
         </ul>
