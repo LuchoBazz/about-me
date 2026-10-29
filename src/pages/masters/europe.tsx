@@ -318,7 +318,7 @@ export default function App() {
   const tipRow = tip ? byId[tip.id] : null;
 
   return (
-    <div className="wrap">
+    <div className="europe-dashboard wrap">
       <header>
         <h1>{isEnglish ? "How much English EU master's ask for" : "What a year of study costs across the EU"}</h1>
         <p>

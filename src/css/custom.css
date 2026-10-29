@@ -1,72 +1,356 @@
 @import 'katex/dist/katex.min.css';
 @import 'tailwindcss';
 
-@theme {
-  /* --color-*: initial;*/
-  --color-primary: #FF4F00;
-}
-
 @variant dark (html[data-theme='dark'] &);
 
+/* -------------------------------------------------------------------------- */
+/* 1. Raw palette — change a hex here and the whole site follows              */
+/* -------------------------------------------------------------------------- */
+
 :root {
-  --ifm-color-primary: #FF4F00;
-  /* Fluorescent Orange - Darker */
-  --ifm-color-primary-dark: #CC3E00;
-  /* Darker Fluorescent Orange */
-  --ifm-color-primary-darker: #B33000;
-  /* Even Darker */
-  --ifm-color-primary-darkest: #992600;
-  /* Darkest */
-  --ifm-color-primary-light: #FF6A00;
-  /* Lighter Fluorescent Orange */
-  --ifm-color-primary-lighter: #FF7F00;
-  /* Even Lighter */
-  --ifm-color-primary-lightest: #FF9900;
-  /* Lightest */
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
-  /* Light background for highlighted lines */
+  /* Midnight (dark surfaces) */
+  --palette-midnight-950: #070b18;
+  --palette-midnight-900: #0b1020;
+  --palette-midnight-850: #111833;
+  --palette-midnight-800: #151d3b;
+  --palette-midnight-750: #182142;
+  --palette-midnight-700: #1f2550;
+  --palette-midnight-600: #263157;
+  --palette-midnight-500: #2f3b66;
+
+  /* Lavender (light surfaces) */
+  --palette-lavender-0: #ffffff;
+  --palette-lavender-50: #f7f7fc;
+  --palette-lavender-100: #efeef8;
+  --palette-lavender-150: #f1ecfe;
+  --palette-lavender-200: #e1dff0;
+  --palette-lavender-300: #d6d3ea;
+
+  /* Ink (text) */
+  --palette-ink-50: #e7eaf6;
+  --palette-ink-300: #a3acc9;
+  --palette-ink-600: #5a5778;
+  --palette-ink-950: #15132b;
+
+  /* Primary — electric violet */
+  --palette-violet-300: #c4b5fd;
+  --palette-violet-400: #a78bfa;
+  --palette-violet-500: #8b5cf6;
+  --palette-violet-600: #7c3aed;
+  --palette-violet-700: #6d28d9;
+  --palette-violet-900: #4c1d95;
+
+  /* Secondary — amber */
+  --palette-amber-300: #fcd34d;
+  --palette-amber-400: #fbbf24;
+  --palette-amber-500: #f59e0b;
+  --palette-amber-700: #b45309;
+  --palette-amber-ink: #1a1204;
+
+  /* Support — success / error */
+  --palette-emerald-300: #6ee7b7;
+  --palette-emerald-400: #34d399;
+  --palette-emerald-700: #047857;
+  --palette-red-400: #f87171;
+  --palette-red-600: #dc2626;
 }
 
-[data-theme='dark'] {
-  --ifm-color-primary: #FF4F00;
-  /* Fluorescent Orange - Darker */
-  --ifm-color-primary-dark: #CC3E00;
-  /* Darker Fluorescent Orange */
-  --ifm-color-primary-darker: #B33000;
-  /* Even Darker */
-  --ifm-color-primary-darkest: #992600;
-  /* Darkest */
-  --ifm-color-primary-light: #FF6A00;
-  /* Lighter Fluorescent Orange */
-  --ifm-color-primary-lighter: #FF7F00;
-  /* Even Lighter */
-  --ifm-color-primary-lightest: #FF9900;
-  /* Lightest */
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.3);
-  /* Light background for highlighted lines */
+/* -------------------------------------------------------------------------- */
+/* 2. Semantic tokens (shadcn/ui names + portfolio extras)                    */
+/* -------------------------------------------------------------------------- */
 
-  --ifm-navbar-background-color: #0f172a;
-  --ifm-background-surface-color: #0f172a;
+:root {
+  --font-geist-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';
+  --font-geist-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', monospace;
+
+  --radius: 0.625rem;
+
+  /* Light theme: lavender-tinted surfaces, deep ink text, darker accents for AA */
+  --background: var(--palette-lavender-50);
+  --foreground: var(--palette-ink-950);
+  --card: var(--palette-lavender-0);
+  --card-foreground: var(--palette-ink-950);
+  --popover: var(--palette-lavender-0);
+  --popover-foreground: var(--palette-ink-950);
+  --primary: var(--palette-violet-700);
+  --primary-foreground: #ffffff;
+  --primary-emphasis: var(--palette-violet-700);
+  --secondary: var(--palette-lavender-150);
+  --secondary-foreground: var(--palette-violet-900);
+  --muted: var(--palette-lavender-100);
+  --muted-foreground: var(--palette-ink-600);
+  --accent: var(--palette-lavender-150);
+  --accent-foreground: var(--palette-violet-900);
+  --highlight: var(--palette-amber-500);
+  --highlight-foreground: var(--palette-amber-ink);
+  --highlight-emphasis: var(--palette-amber-700);
+  --success: var(--palette-emerald-700);
+  --warning: var(--palette-amber-700);
+  --destructive: var(--palette-red-600);
+  --border: var(--palette-lavender-200);
+  --input: var(--palette-lavender-300);
+  --ring: var(--palette-violet-500);
+
+  /* Code window (always dark, in both themes) */
+  --code-background: var(--palette-midnight-950);
+  --code-border: rgb(167 139 250 / 0.18);
+  --code-foreground: #c9d1ea;
+  --code-muted: #8891b5;
+  --code-keyword: var(--palette-violet-300);
+  --code-function: var(--palette-amber-300);
+  --code-type: #a5b4fc;
+  --code-string: var(--palette-emerald-300);
+  --code-number: #fdba74;
+  --code-comment: #7a84aa;
+  --code-dot-red: var(--palette-red-400);
+  --code-dot-amber: var(--palette-amber-400);
+  --code-dot-green: var(--palette-emerald-400);
+
+  /* Subtle decorative layers */
+  --hero-glow:
+    radial-gradient(55% 60% at 12% 0%, rgb(124 58 237 / 0.12), transparent 70%),
+    radial-gradient(35% 45% at 92% 8%, rgb(245 158 11 / 0.1), transparent 70%);
+  --glow-primary: 0 12px 32px -14px rgb(109 40 217 / 0.35);
 }
 
 html[data-theme='dark'] {
-  --ifm-background-color: #0c1221;
+  /* Dark theme: midnight-blue surfaces (never pure black), bright accents */
+  --background: var(--palette-midnight-900);
+  --foreground: var(--palette-ink-50);
+  --card: var(--palette-midnight-850);
+  --card-foreground: var(--palette-ink-50);
+  --popover: var(--palette-midnight-800);
+  --popover-foreground: var(--palette-ink-50);
+  --primary: var(--palette-violet-600);
+  --primary-foreground: #ffffff;
+  --primary-emphasis: var(--palette-violet-400);
+  --secondary: var(--palette-midnight-700);
+  --secondary-foreground: var(--palette-violet-300);
+  --muted: var(--palette-midnight-750);
+  --muted-foreground: var(--palette-ink-300);
+  --accent: var(--palette-midnight-700);
+  --accent-foreground: var(--palette-ink-50);
+  --highlight: var(--palette-amber-500);
+  --highlight-foreground: var(--palette-amber-ink);
+  --highlight-emphasis: var(--palette-amber-400);
+  --success: var(--palette-emerald-400);
+  --warning: var(--palette-amber-400);
+  --destructive: var(--palette-red-400);
+  --border: var(--palette-midnight-600);
+  --input: var(--palette-midnight-500);
+  --ring: var(--palette-violet-400);
+
+  --hero-glow:
+    radial-gradient(55% 60% at 12% 0%, rgb(124 58 237 / 0.22), transparent 70%),
+    radial-gradient(35% 45% at 92% 8%, rgb(245 158 11 / 0.1), transparent 70%);
+  --glow-primary: 0 12px 36px -12px rgb(124 58 237 / 0.45);
 }
 
-html[data-theme='dark'] footer {
-  background-color: #050817;
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-emphasis: var(--primary-emphasis);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-highlight-emphasis: var(--highlight-emphasis);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-code: var(--code-background);
+  --color-code-border: var(--code-border);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-muted: var(--code-muted);
+  --color-code-keyword: var(--code-keyword);
+  --color-code-function: var(--code-function);
+  --color-code-type: var(--code-type);
+  --color-code-string: var(--code-string);
+  --color-code-number: var(--code-number);
+  --color-code-comment: var(--code-comment);
+  --color-code-dot-red: var(--code-dot-red);
+  --color-code-dot-amber: var(--code-dot-amber);
+  --color-code-dot-green: var(--code-dot-green);
+
+  --shadow-glow: var(--glow-primary);
 }
+
+/* -------------------------------------------------------------------------- */
+/* 3. Docusaurus (Infima) theme alignment                                     */
+/* -------------------------------------------------------------------------- */
 
 :root {
+  --ifm-color-primary: #6d28d9;
+  --ifm-color-primary-dark: #6224c3;
+  --ifm-color-primary-darker: #5d22b8;
+  --ifm-color-primary-darkest: #4c1c98;
+  --ifm-color-primary-light: #7836e2;
+  --ifm-color-primary-lighter: #7d3fe4;
+  --ifm-color-primary-lightest: #8f5ae8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgb(124 58 237 / 0.1);
+
+  --ifm-font-family-base: var(--font-geist-sans);
+  --ifm-font-family-monospace: var(--font-geist-mono);
+  --ifm-heading-font-weight: 600;
+  --ifm-font-color-base: var(--foreground);
+  --ifm-heading-color: var(--foreground);
+  --ifm-color-content: var(--foreground);
+  --ifm-color-content-secondary: var(--muted-foreground);
+  --ifm-background-color: var(--background);
+  --ifm-background-surface-color: var(--background);
+  --ifm-card-background-color: var(--card);
+  --ifm-toc-border-color: var(--border);
+  --ifm-hr-background-color: var(--border);
+  --ifm-link-color: var(--primary-emphasis);
+  --ifm-link-hover-color: var(--primary-emphasis);
+
+  --ifm-navbar-height: 3.75rem;
+  --ifm-navbar-background-color: var(--background);
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-link-color: color-mix(in oklab, var(--foreground) 78%, transparent);
+  --ifm-navbar-link-hover-color: var(--primary-emphasis);
+  --ifm-navbar-link-active-color: var(--primary-emphasis);
+
+  --ifm-menu-color: var(--muted-foreground);
+  --ifm-menu-color-active: var(--primary-emphasis);
+  --ifm-menu-color-background-active: var(--accent);
+  --ifm-menu-color-background-hover: var(--accent);
+
+  --ifm-footer-background-color: var(--muted);
+  --ifm-footer-color: var(--muted-foreground);
+  --ifm-footer-link-color: var(--muted-foreground);
+  --ifm-footer-link-hover-color: var(--primary-emphasis);
+  --ifm-footer-title-color: var(--foreground);
+
   --search-local-modal-width: 480px;
-  --search-local-highlight-color: #FF9900;
-  /* Highlight Color */
+  --search-local-highlight-color: var(--highlight);
 }
 
-html[data-theme="dark"] {
-  --search-local-highlight-color: #FF6A00;
-  /* Highlight Color in Dark Mode */
+html[data-theme='dark'] {
+  --ifm-color-primary: #a78bfa;
+  --ifm-color-primary-dark: #9471f9;
+  --ifm-color-primary-darker: #8a64f8;
+  --ifm-color-primary-darkest: #6b3cf6;
+  --ifm-color-primary-light: #baa5fb;
+  --ifm-color-primary-lighter: #c4b2fc;
+  --ifm-color-primary-lightest: #e1d8fd;
+  --docusaurus-highlighted-code-line-bg: rgb(167 139 250 / 0.18);
+
+  --ifm-font-color-base: var(--foreground);
+  --ifm-heading-color: var(--foreground);
+  --ifm-color-content: var(--foreground);
+  --ifm-color-content-secondary: var(--muted-foreground);
+  --ifm-background-color: var(--background);
+  --ifm-background-surface-color: var(--background);
+  --ifm-card-background-color: var(--card);
+  --ifm-toc-border-color: var(--border);
+  --ifm-hr-background-color: var(--border);
+
+  --ifm-menu-color: var(--muted-foreground);
+  --ifm-menu-color-active: var(--primary-emphasis);
+  --ifm-menu-color-background-active: var(--accent);
+  --ifm-menu-color-background-hover: var(--accent);
+
+  --ifm-footer-background-color: var(--palette-midnight-950);
+}
+
+::selection {
+  background-color: rgb(139 92 246 / 0.3);
+}
+
+/* Navbar: translucent, blurred surface with a hairline border. The blur lives on a
+   pseudo-element so the navbar does not become a containing block for the
+   fixed-position mobile sidebar. */
+.navbar {
+  background-color: transparent;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: color-mix(in oklab, var(--background) 82%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+}
+
+.navbar__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.navbar__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+/* Docusaurus flags every same-page `/#hash` link as active on the homepage;
+   keep those neutral so only real active routes get the accent color. */
+.navbar__link--active[href*='#']:not(:hover) {
+  color: var(--ifm-navbar-link-color);
+}
+
+.menu__link--active[href*='#']:not(:hover) {
+  color: var(--ifm-menu-color);
+  background-color: transparent;
+}
+
+.navbar a:focus-visible,
+.footer a:focus-visible,
+.menu a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Tailwind preflight makes every svg `display: block`; keep Docusaurus'
+   external-link icons inline with their label. */
+.navbar svg[class*='iconExternalLink'],
+.footer svg[class*='iconExternalLink'] {
+  display: inline-block;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.footer__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.footer__copyright {
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
 }
 
 /* Hide Navbar and Sidebar on Homepage */
@@ -77,18 +361,79 @@ body:has(.homepage-wrapper) aside {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-container {
-  background-color: #0f172a;
-  border-right: 1px solid #1e293b;
+  background-color: var(--background);
+  border-right: 1px solid var(--border);
 }
 
 /* Blog sidebar (recent posts) */
 [data-theme='dark'] .blog-wrapper aside.col--3 {
-  background-color: #0f172a;
-  border-right: 1px solid #1e293b;
+  background-color: var(--background);
+  border-right: 1px solid var(--border);
 }
 
 /* Hide Navbar and Footer on Passport Page */
 body:has(.passport-wrapper) .navbar,
 body:has(.passport-wrapper) footer {
   display: none !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Portfolio (homepage) scope                                                 */
+/* -------------------------------------------------------------------------- */
+
+/* Infima's element styles are unlayered, so they would override Tailwind's
+   layered preflight/utilities. Inside the portfolio we roll those elements back
+   to the layered cascade so Tailwind classes are the single source of truth.
+   Specificity deliberately matches Infima's element selectors (scope wrapped in
+   :where()) so any class-based utility still wins — the production minifier
+   moves responsive (@media) utilities out of their cascade layer. */
+:where(.portfolio-root) :is(a, h1, h2, h3, h4, h5, h6, p, ul, ol, li, img, button, code, pre, hr, blockquote, table, strong, dl, dt, dd) {
+  all: revert-layer;
+}
+
+:where(.portfolio-root) :is(ul, ol) :is(ul, ol) {
+  all: revert-layer;
+}
+
+:where(.portfolio-root) a:hover {
+  color: revert-layer;
+  text-decoration: revert-layer;
+}
+
+@layer base {
+  .portfolio-root,
+  .portfolio-root * {
+    border-color: var(--border);
+  }
+
+  .portfolio-root section[id] {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+  }
+}
+
+@keyframes portfolio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* One-time entrance for above-the-fold content (pure CSS, no JS required). */
+  .portfolio-enter {
+    animation: portfolio-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Scroll-linked reveal where supported; content is always visible otherwise. */
+  @supports (animation-timeline: view()) {
+    .portfolio-reveal {
+      animation: portfolio-fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
 }

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Cpu,
   Network,
   Shield,
   Terminal,
-  Award,
   BookOpen,
-  ExternalLink,
-  ArrowRight,
-  Code2,
   Wrench,
   Brain,
   Library,
@@ -17,10 +13,25 @@ import {
   Sparkles,
   GraduationCap,
   Languages,
-  Rocket,
   Clock,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
+
+import { HeroSection, type HeroAction } from '@site/src/components/home/HeroSection';
+import { PublicationsSection } from '@site/src/components/home/PublicationsSection';
+import { ExperienceTimeline } from '@site/src/components/home/ExperienceTimeline';
+import { LaunchedProjectsSection } from '@site/src/components/home/LaunchedProjectsSection';
+import { FeaturedProjectsSection } from '@site/src/components/home/FeaturedProjectsSection';
+import { SubpagesSection } from '@site/src/components/home/SubpagesSection';
+import { AwardsSection } from '@site/src/components/home/AwardsSection';
+import type {
+  ExperienceItem,
+  FeaturedProject,
+  LaunchedProject,
+  Publication,
+  Stat,
+  Subpage,
+} from '@site/src/components/home/types';
 
 const calculateDuration = (startDate: string) => {
   const start = new Date(startDate);
@@ -44,253 +55,15 @@ const calculateDuration = (startDate: string) => {
   return parts.join(' ');
 };
 
-function CodeCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Slide data
-  const slides = [
-    {
-      id: 0,
-      filename: "research_agent.py",
-      language: "python",
-      // The content is a rendered component to maintain manual coloring
-      content: (
-        <>
-          {/* Imports */}
-          <div><span className="text-pink-400">from</span> dataclasses <span className="text-pink-400">import</span> dataclass, field</div>
-          <div><span className="text-pink-400">from</span> typing <span className="text-pink-400">import</span> List</div>
-          <br />
-
-          {/* Class Definition */}
-          <div><span className="text-yellow-300">@dataclass</span></div>
-          <div><span className="text-pink-400">class</span> <span className="text-yellow-300">ResearchAgent</span>:</div>
-
-          {/* Name */}
-          <div className="pl-4">
-            name: <span className="text-blue-400">str</span> = <span className="text-green-400">"Luis Miguel Báez"</span>
-          </div>
-
-          {/* Focus */}
-          <div className="pl-4">
-            focus: <span className="text-blue-400">List</span>[<span className="text-blue-400">str</span>] = field(
-          </div>
-          <div className="pl-8">
-            default_factory=<span className="text-pink-400">lambda</span>: [
-          </div>
-          <div className="pl-12 text-green-400">"NLP", "RL", "Ethics"</div>
-          <div className="pl-8">])</div>
-
-          {/* Language */}
-          <div className="pl-4">
-            language: <span className="text-blue-400">str</span> = <span className="text-green-400">"Python"</span>
-          </div>
-
-          {/* Status */}
-          <div className="pl-4">
-            status: <span className="text-blue-400">str</span> = <span className="text-green-400">"Training..."</span>
-          </div>
-          <br />
-
-          {/* Method */}
-          <div className="pl-4">
-            <span className="text-pink-400">def</span> <span className="text-blue-300">__repr__</span>(self):
-          </div>
-          <div className="pl-8">
-            <span className="text-pink-400">return</span> (
-          </div>
-          <div className="pl-12 text-green-400">f"&lt;&#123;self.name&#125;\n"</div>
-          <div className="pl-12 text-green-400">f" Driving: &#123;self.focus&#125;\n"</div>
-          <div className="pl-12 text-green-400">f" Powered by &#123;self.language&#125;/&gt;"</div>
-          <div className="pl-8">)</div>
-        </>
-      )
-    },
-    {
-      id: 1,
-      filename: "knapsack.cpp",
-      language: "cpp",
-      content: (
-        <>
-          {/* Headers */}
-          <div><span className="text-pink-400">#include</span> <span className="text-green-400">&lt;bits/stdc++.h&gt;</span></div>
-          <div><span className="text-pink-400">using namespace</span> std;</div>
-          <br />
-
-          {/* Globals */}
-          <div><span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">int</span>&gt; weights, values;</div>
-          <div><span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">vector</span>&lt;<span className="text-blue-400">int</span>&gt;&gt; dp;</div>
-          <br />
-
-          {/* Recursive Function */}
-          <div><span className="text-blue-400">int</span> <span className="text-yellow-300">go</span>(<span className="text-blue-400">int</span> i, <span className="text-blue-400">int</span> w) &#123;</div>
-          <div className="pl-4">
-            <span className="text-pink-400">if</span> (i &lt; <span className="text-purple-400">0</span> || w &lt;= <span className="text-purple-400">0</span>) <span className="text-pink-400">return</span> <span className="text-purple-400">0</span>;
-          </div>
-          <div className="pl-4">
-            <span className="text-pink-400">if</span> (dp[i][w] != <span className="text-purple-400">-1</span>) <span className="text-pink-400">return</span> dp[i][w];
-          </div>
-          
-          <div className="pl-4">
-            <span className="text-blue-400">int</span> res = <span className="text-yellow-300">go</span>(i - <span className="text-purple-400">1</span>, w);
-          </div>
-          
-          <div className="pl-4">
-            <span className="text-pink-400">if</span> (weights[i] &lt;= w)
-          </div>
-          <div className="pl-8">
-            res = <span className="text-yellow-300">max</span>(res, values[i] + <span className="text-yellow-300">go</span>(i - <span className="text-purple-400">1</span>, w - weights[i]));
-          </div>
-          
-          <div className="pl-4">
-            <span className="text-pink-400">return</span> dp[i][w] = res;
-          </div>
-          <div>&#125;</div>
-          <br />
-
-          {/* Main */}
-          <div><span className="text-blue-400">int</span> <span className="text-yellow-300">main</span>() &#123;</div>
-          <div className="pl-4">
-            ios::<span className="text-yellow-300">sync_with_stdio</span>(<span className="text-pink-400">false</span>);
-          </div>
-          <div className="pl-4">
-            cin.<span className="text-yellow-300">tie</span>(<span className="text-pink-400">nullptr</span>);
-          </div>
-          <div className="pl-4 text-slate-500">// ... logic implementation</div>
-          <div className="pl-4">
-            cout &lt;&lt; <span className="text-yellow-300">go</span>(n - <span className="text-purple-400">1</span>, W) &lt;&lt; <span className="text-green-400">'\n'</span>;
-          </div>
-          <div className="pl-4">
-            <span className="text-pink-400">return</span> <span className="text-purple-400">0</span>;
-          </div>
-          <div>&#125;</div>
-        </>
-      )
-    }
-  ];
-
-  // Auto-play effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // Change every 6 seconds
-
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  return (
-    <div className="relative hidden lg:block h-[550px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl group select-none">
-      
-      {/* Background Grids & Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
-
-      {/* Decorative glows */}
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
-
-      {/* Center Container */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        
-        {/* Render all slides, but control visibility with opacity to allow smooth transitions */}
-        {slides.map((slide, index) => (
-          <div 
-            key={slide.id}
-            className={`absolute transition-all duration-700 ease-in-out transform 
-              ${index === currentSlide 
-                ? 'opacity-100 rotate-0 scale-100 z-10' 
-                : 'opacity-0 -rotate-2 scale-95 z-0'
-              }
-              bg-slate-900 p-4 rounded-xl border border-slate-700 shadow-2xl w-3/4 max-w-sm hover:rotate-0`}
-          >
-            {/* Window Header */}
-            <div className="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                {slide.language === 'python' ? <Terminal size={12} /> : <Code2 size={12} />}
-                {slide.filename}
-              </div>
-            </div>
-
-            {/* Code Content */}
-            <div className="space-y-1 font-mono text-xs text-slate-300 overflow-x-auto h-[400px] scrollbar-hide">
-              {slide.content}
-              
-              {/* Cursor Effect */}
-              {index === currentSlide && (
-                 <div className="flex items-center gap-2 mt-4">
-                  <div className="h-4 w-2 bg-blue-500/50 animate-pulse"></div>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Dots Navigation */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlide(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 
-              ${idx === currentSlide ? 'bg-indigo-500 w-4' : 'bg-slate-400/50 hover:bg-slate-400'}`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function HomePage() {
-  const [isDark, setIsDark] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Synchronize with Docusaurus theme
-  useEffect(() => {
-    const updateTheme = () => {
-      const theme = document.documentElement.dataset.theme;
-      setIsDark(theme === 'dark');
-    };
-
-    // Update on mount
-    updateTheme();
-
-    // Observe changes to the data-theme attribute
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Navbar shadow effect on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = isDark ? 'light' : 'dark';
-    document.documentElement.dataset.theme = newTheme;
-    setIsDark(!isDark);
-  };
-
   // Sample data
-  const stats = [
+  const stats: Stat[] = [
     { label: "Native", value: "🇪🇸Spanish" },
     { label: "B1+", value: "🇬🇧English" },
     { label: "Years of Exp.", value: `${calculateDuration('2021-07-01')}` },
   ];
 
+  // Not rendered (the Research Areas section is hidden); kept for future use.
   const researchAreas = [
     {
       title: "Generative Artificial Intelligence",
@@ -312,7 +85,7 @@ function HomePage() {
     }
   ];
 
-  const experience = [
+  const experience: ExperienceItem[] = [
     {
       role: "Back-End Software Engineer",
       company: "Instaleap by Instacart",
@@ -333,7 +106,7 @@ function HomePage() {
     }
   ];
 
-  const publications = [
+  const publications: Publication[] = [
     {
       year: 2025,
       title: "Quick Test CLI: A Cross‑Platform for Automated Testing in Competitive Programming",
@@ -357,7 +130,7 @@ function HomePage() {
     // }
   ];
 
-  const projects = [
+  const projects: FeaturedProject[] = [
     {
       title: "LuchoBazz/quicktest",
       type: "CLI / Open Source",
@@ -381,145 +154,112 @@ function HomePage() {
     }
   ];
 
-  const subpages = [
+  const subpages: Subpage[] = [
     {
       title: "Personal Toolkit",
       desc: "Collection of utilities and scripts for automation.",
-      icon: <Wrench className="w-8 h-8" />,
+      icon: Wrench,
       link: "https://luchobazz.github.io/personal-toolkit/docs/intro/",
-      color: "bg-slate-600/10 dark:bg-slate-600/20",
-      textColor: "text-slate-600 dark:text-slate-400"
     },
     {
       title: "Knowledge Core",
       desc: "My Knowledge Core Repo.",
-      icon: <Brain className="w-8 h-8" />,
+      icon: Brain,
       link: "https://luchobazz.github.io/knowledge-core/docs/intro",
-      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
-      textColor: "text-indigo-500"
     },
     {
       title: "AI Handbook",
       desc: "Notes and guides about AI and Machine Learning.",
-      icon: <Cpu className="w-8 h-8" />,
+      icon: Cpu,
       link: "https://luchobazz.github.io/ai-handbook/docs/intro",
-      color: "bg-blue-500/10 dark:bg-blue-500/20",
-      textColor: "text-blue-500"
     },
     {
       title: "Cpp Algorithm Snippets",
       desc: "Optimized repository of data structures and algorithms.",
-      icon: <Library className="w-8 h-8" />,
+      icon: Library,
       link: "https://luchobazz.github.io/cpp-algorithm-snippets/docs/intro/",
-      color: "bg-orange-500/10 dark:bg-orange-500/20",
-      textColor: "text-orange-500"
     },
     {
       title: "Prompts Library",
       desc: "Collection of useful AI prompts and templates.",
-      icon: <Terminal className="w-8 h-8" />,
+      icon: Terminal,
       link: "https://luchobazz.github.io/knowledge-core/prompts/",
-      color: "bg-emerald-500/10 dark:bg-emerald-500/20",
-      textColor: "text-emerald-500"
     },
     {
       title: "Cultural Explorer",
       desc: "Discover curious cultural facts with AI.",
-      icon: <Globe className="w-8 h-8" />,
+      icon: Globe,
       link: "/about-me/apps/cultural-explorer/",
-      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
-      textColor: "text-indigo-500"
     },
     {
       title: "Daily Inspiration",
       desc: "Fragments of thought collected over time.",
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: Sparkles,
       link: "/about-me/apps/inspiration",
-      color: "bg-violet-500/10 dark:bg-violet-500/20",
-      textColor: "text-violet-500"
     },
     {
       title: "My English Grammar Path",
       desc: "My personal English learning journey from A1 to C2.",
-      icon: <Languages className="w-8 h-8" />,
+      icon: Languages,
       link: "/about-me/languages/english/grammar-topics",
-      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
-      textColor: "text-indigo-500"
     },
     {
       title: "My English Common Phrases",
       desc: "My personal collection of common English phrases.",
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: BookOpen,
       link: "/about-me/languages/english/common-phrases",
-      color: "bg-teal-500/10 dark:bg-teal-500/20",
-      textColor: "text-teal-500"
     },
     // {
     //   title: "Christmas Tree",
     //   desc: "Interactive 3D Christmas tree experience.",
-    //   icon: <TreePine className="w-8 h-8" />, 
+    //   icon: TreePine,
     //   link: "/about-me/apps/christmas",
-    //   color: "bg-green-500/10 dark:bg-green-500/20",
-    //   textColor: "text-green-500"
     // },
     {
       title: "Phrasal Verb Master",
       desc: "Interactive tool to learn English phrasal verbs with definitions, examples, and grammar.",
-      icon: <GraduationCap className="w-8 h-8" />,
+      icon: GraduationCap,
       link: "/about-me/languages/english/phrasal-verb-master",
-      color: "bg-indigo-600/10 dark:bg-indigo-600/20",
-      textColor: "text-indigo-600 dark:text-indigo-400"
     },
     {
       title: "IELTS Master",
       desc: "Practice IELTS Academic Reading with AI-generated tests.",
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: BookOpen,
       link: "/about-me/languages/english/ielts-academic-reading",
-      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
-      textColor: "text-indigo-500"
     },
     {
       title: "Academic Word List Explorer",
       desc: "Interactive tool to explore essential academic vocabulary terms.",
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: BookOpen,
       link: "/about-me/languages/english/academic-word-list-explorer",
-      color: "bg-indigo-500/10 dark:bg-indigo-500/20",
-      textColor: "text-indigo-500"
     },
     {
       title: "Vocabulary Builder",
       desc: "Master new words with synonyms, antonyms, and common collocations.",
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: BookOpen,
       link: "/about-me/languages/english/vocab-builder",
-      color: "bg-teal-500/10 dark:bg-teal-500/20",
-      textColor: "text-teal-500"
     },
     {
       title: "Life Calendar",
       desc: "Visualize your life in weeks.",
-      icon: <CalendarClock className="w-8 h-8" />,
+      icon: CalendarClock,
       link: "/about-me/apps/life-calendar",
-      color: "bg-blue-500/10 dark:bg-blue-500/20",
-      textColor: "text-blue-500"
     },
     {
       title: "Work Schedule Comparator",
       desc: "Compare work hours across countries and see how they affect your sleep.",
-      icon: <Clock className="w-8 h-8" />,
+      icon: Clock,
       link: "/about-me/apps/work-schedule-comparator",
-      color: "bg-teal-500/10 dark:bg-teal-500/20",
-      textColor: "text-teal-500"
     },
   ];
 
-  const launchedProjects = [
+  const launchedProjects: LaunchedProject[] = [
     {
       id: 1,
       title: "Quick Test CLI",
       description: "A cross-platform CLI tool for automated stress testing in competitive programming. Supports multiple languages and eliminates the need for complex testing scripts.",
       url: "https://luchobazz.github.io/quicktest/docs/intro",
       image: "https://raw.githubusercontent.com/LuchoBazz/quicktest/refs/heads/main/assets/logo/quicktest-512x512.png",
-      color: "text-blue-500",
     },
     // {
     //   id: 2,
@@ -527,7 +267,6 @@ function HomePage() {
     //   description: "A comprehensive developer productivity suite featuring a wide array of tools and utilities designed to streamline software development workflows.",
     //   url: "#",
     //   image: "https://i.ibb.co/d0tDkbtH/logo-dark.png",
-    //   color: "text-purple-500",
     // },
     // {
     //   id: 3,
@@ -535,51 +274,29 @@ function HomePage() {
     //   description: "A centralized platform for storing and perfecting AI prompts. Organize your library and use AI-driven suggestions to improve prompt clarity and output quality.",
     //   url: "#",
     //   image: "https://i.ibb.co/XrxcM2nb/prompt-composer-logo.png",
-    //   color: "text-emerald-500",
     // },
   ];
 
-  const LaunchedProjectCard = ({ project }: { project: any }) => {
-    const Icon = project.icon;
+  const awards = [
+    "The 2021 ICPC South America-North Finals",
+    "The 2021 ICPC Colombia - XXXV Maraton Nacional de Programacion ACIS REDIS",
+    "2rd Place Ironhacks Competition 2018 Issued by RCODI Purdue University",
+  ];
 
-    return (
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative block w-full aspect-square rounded-xl overflow-hidden transition-all duration-300 ease-in-out border border-transparent hover:shadow-lg hover:border-slate-200 dark:hover:border-slate-800"
-      >
-        {/* Default State: Icon or Image Centered */}
-        <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:opacity-20">
-          <div className={`w-[70%] h-[70%] rounded-full flex items-center justify-center ${project.color}`}>
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-[85%] h-[85%] object-contain drop-shadow-sm"
-              />
-            ) : (
-              <Icon className="w-[85%] h-[85%]" strokeWidth={1.5} />
-            )}
-          </div>
-        </div>
-
-        {/* Hover State: Overlay with Info */}
-        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center backdrop-blur-sm ${isDark ? 'bg-slate-900/95' : 'bg-white/95'}`}>
-          <h3 className={`font-bold text-sm mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75 leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
-            {project.title}
-          </h3>
-          <p className={`text-xs mb-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 line-clamp-3 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-            {project.description}
-          </p>
-          <div className={`flex items-center text-[10px] font-bold uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
-            <span>View</span>
-            <ExternalLink size={12} className="ml-1" />
-          </div>
-        </div>
-      </a>
-    );
-  };
+  const heroActions: HeroAction[] = [
+    {
+      label: "View Projects / GitHub",
+      href: "https://github.com/LuchoBazz",
+      icon: Terminal,
+      variant: "default",
+    },
+    {
+      label: "Publications",
+      href: "https://orcid.org/0009-0008-7515-457X",
+      icon: BookOpen,
+      variant: "outline",
+    },
+  ];
 
   return (
     <Layout
@@ -588,395 +305,37 @@ function HomePage() {
     // noFooter={true}
     // wrapperClassName="homepage-wrapper"
     >
-      <div className="min-h-screen transition-colors duration-300 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans selection:bg-blue-200 dark:selection:bg-blue-900">
+      <div className="portfolio-root min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary/30">
+        <HeroSection
+          status="Open for Research Collaborations"
+          name="Luis Miguel Báez"
+          headline="Systems and Computer Engineer at UNAL."
+          bio={
+            <>
+              I am a <strong>Systems and Computer Engineer</strong> from the National University of Colombia (UNAL).
+              {' '}
+              I have experience working as a <strong>Software Engineer</strong> at high-growth startups and large tech companies. I specialize in backend development, high-scalability systems, and optimization.
+            </>
+          }
+          actions={heroActions}
+          stats={stats}
+        />
 
-        {/* --- NAVBAR --- */}
-        {/* <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800' : 'bg-transparent'}`}>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center text-white font-mono font-bold text-xl shadow-lg shadow-indigo-500/30">
-                  {`/>`}
-                </div>
-                <div>
-                  <h1 className="font-bold text-lg leading-none tracking-tight">LuchoBazz</h1>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Systems and Computer Engineer at UNAL</span>
-                </div>
-              </div>
+        <PublicationsSection
+          publications={publications}
+          profileUrl="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22B%C3%A1ez%20Aponte%2C%20Luis%20Miguel%22&l=list&p=1&s=10&sort=mostviewed"
+          profileLabel="View Luis Miguel Báez on Zenodo.org"
+        />
 
-              <div className="flex items-center gap-8">
-                <div className="hidden md:flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
-                  <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About Me</a>
-                  <a href="#research" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Research</a>
-                  <a href="#publications" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Publications</a>
-                </div>
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-300 dark:hover:border-slate-700"
-                  aria-label="Toggle Dark Mode"
-                >
-                  {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-600" />}
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav> */}
+        <ExperienceTimeline experience={experience} />
 
-        {/* --- HERO SECTION --- */}
-        <header className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-wider text-indigo-700 uppercase bg-indigo-50 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-full border border-indigo-100 dark:border-indigo-800">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                </span>
-                Open for Research Collaborations
-              </div>
+        <LaunchedProjectsSection projects={launchedProjects} />
 
-              {/* <img
-                src="https://i.ibb.co/ZpXwSFB7/serbia-1-removebg-preview.png"
-                alt="Profile"
-                className="w-32 h-auto mb-8 shadow-lg"
-              /> */}
+        <FeaturedProjectsSection projects={projects} />
 
-              <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                Luis Miguel Báez <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-600">
-                  Systems and Computer Engineer at UNAL.
-                </span>
-              </h1>
+        <SubpagesSection subpages={subpages} />
 
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg">
-                I am a <strong>Systems and Computer Engineer</strong> from the National University of Colombia (UNAL).
-                {' '}
-                I have experience working as a <strong>Software Engineer</strong> at high-growth startups and large tech companies. I specialize in backend development, high-scalability systems, and optimization.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-xl shadow-slate-900/20"
-                  href="https://github.com/LuchoBazz"
-                  target="_blank"
-                >
-                  <Terminal size={18} />
-                  View Projects / GitHub
-                </a>
-                <a
-                  className="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-medium rounded-lg transition-all flex items-center gap-2"
-                  href="https://orcid.org/0009-0008-7515-457X"
-                  target="_blank"
-                >
-                  <BookOpen size={18} />
-                  Publications
-                </a>
-              </div>
-
-              {/* Stats Row */}
-              <div className="pt-8 border-t border-slate-200 dark:border-slate-800 grid grid-cols-4 gap-4">
-                {stats.map((stat, idx) => (
-                  <div key={idx}>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</div>
-                    <div className="text-xs text-slate-500 uppercase tracking-wide font-medium">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Abstract Visual Representation - CODE THEMED */}
-            <CodeCarousel />
-          </div>
-        </header>
-
-        {/* --- RESEARCH AREAS --- */}
-        {/* <section id="research" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Research Areas</h2>
-                <p className="text-slate-600 dark:text-slate-400 max-w-xl">
-                  My research addresses fundamental problems in the scalability and security of modern computational systems.
-                </p>
-              </div>
-              <a href="#" className="text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                View Lab <ArrowRight size={18} />
-              </a>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {researchAreas.map((area, index) => (
-                <div key={index} className="group relative bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl hover:bg-white dark:hover:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300">
-                  <div className={`mb-6 p-3 rounded-lg bg-white dark:bg-slate-900 w-fit shadow-sm ring-1 ring-slate-200 dark:ring-slate-700 ${area.color}`}>
-                    {area.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                    {area.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
-                    {area.desc}
-                  </p>
-                  <ul className="space-y-2 mb-6">
-                    {[1, 2].map((i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-500">
-                        <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
-                        Paper under review {i}
-                      </li>
-                    ))}
-                  </ul>
-                  <span className="absolute bottom-8 right-8 text-slate-300 dark:text-slate-600 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
-                    <ArrowRight size={20} />
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-
-        {/* --- LATEST PUBLICATIONS --- */}
-        <section id="publications" className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Featured Publications</h2>
-            <div className="h-1 w-20 bg-indigo-600 mx-auto rounded-full"></div>
-          </div>
-
-          <div className="space-y-6">
-            {publications.map((pub, index) => (
-              <div key={index} className="group flex flex-col sm:flex-row gap-6 p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500/30 dark:hover:border-indigo-500/30 transition-all shadow-sm hover:shadow-md">
-                <div className="sm:w-24 flex-shrink-0 flex flex-col justify-center items-center sm:items-start border-b sm:border-b-0 sm:border-r border-slate-100 dark:border-slate-800 pb-4 sm:pb-0">
-                  <span className="text-3xl font-bold text-slate-200 dark:text-slate-700 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
-                    {pub.year}
-                  </span>
-                </div>
-                <div className="flex-grow">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 uppercase tracking-wide">
-                      {pub.type}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {pub.title}
-                  </h3>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 font-mono text-xs mb-3">
-                    {pub.journal}
-                  </div>
-                  <a href={pub.link} target="_blank" className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
-                    View on Zenodo <ExternalLink size={12} />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <a href='https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22B%C3%A1ez%20Aponte%2C%20Luis%20Miguel%22&l=list&p=1&s=10&sort=mostviewed' target='_blank'>
-              <button className="px-8 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                View Luis Miguel Báez on Zenodo.org
-              </button>
-            </a>
-          </div>
-        </section>
-
-        {/* Experience Timeline */}
-        <section id="experience" className={`py-20 ${isDark ? 'bg-slate-800/30' : 'bg-slate-100/50'}`}>
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
-              <Globe className="text-indigo-500" />
-              Professional Timeline
-            </h2>
-            <div className="space-y-8">
-              {experience.map((exp, index) => (
-                <div key={index} className="relative pl-8 border-l-2 border-indigo-500/30">
-                  <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 ${isDark ? 'bg-slate-900 border-indigo-500' : 'bg-white border-indigo-500'}`}></div>
-                  <div className="mb-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-bold">{exp.role}</h3>
-                    <span className={`text-sm font-mono ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>{exp.period}</span>
-                  </div>
-                  <div className={`mb-2 font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{exp.company}</div>
-                  <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{exp.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- LAUNCHED PROJECTS --- */}
-        <section id="launched-projects" className="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-12 text-center">
-            <div className="flex flex-col items-center justify-center gap-4">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3 justify-center">
-                  <span className={`p-2 rounded-lg ${isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-100 text-blue-700'}`}>
-                    <Rocket size={24} />
-                  </span>
-                  Launched Projects
-                </h2>
-                <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                  A selection of applications and tools I've built and deployed.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {launchedProjects.map((project) => (
-              <LaunchedProjectCard key={project.id} project={project} />
-            ))}
-
-            {/* 'Coming Soon' placeholder */}
-            <div className={`flex flex-col items-center justify-center aspect-square rounded-xl border-2 border-dashed transition-all cursor-default
-              ${isDark ? 'border-slate-800 text-slate-600 hover:border-slate-700' : 'border-slate-200 text-slate-400 hover:border-slate-300'}
-            `}>
-              <Code2 size={40} className="mb-2 opacity-30" />
-              <span className="text-xs font-medium">Coming soon...</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Projects/Papers */}
-        <section id="projects" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
-            <Code2 className="text-indigo-500" />
-            Featured Projects
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} className={`flex flex-col h-full rounded-xl overflow-hidden border transition-all ${isDark ? 'bg-slate-900 border-slate-700 hover:border-indigo-500/50' : 'bg-white border-slate-200 hover:border-indigo-300'}`}>
-                <div className="p-6 flex-1">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className={`text-xs font-mono px-2 py-1 rounded ${isDark ? 'bg-slate-800 text-indigo-300' : 'bg-indigo-50 text-indigo-700'}`}>
-                      {project.type}
-                    </span>
-
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Open example (opens in a new tab)"
-                    >
-                      <ExternalLink size={18} className="text-slate-400 hover:text-indigo-500 cursor-pointer" />
-                    </a>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                  <p className={`text-sm mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                    {project.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className={`text-xs font-mono px-2 py-1 rounded-md border ${isDark ? 'border-slate-700 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="subpages" className="py-12 bg-slate-50 dark:bg-slate-950/50 border-y border-slate-200 dark:border-slate-800">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 text-center md:text-left">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 justify-center md:justify-start">
-                <Terminal size={24} className="text-slate-500" />
-                Subpages
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 max-w-2xl">
-                Resources and technical documentation maintained for internal and community use.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {subpages.map((tool, index) => (
-                <a
-                  key={index}
-                  href={tool.link}
-                  target="_self"
-                  className="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`p-3 rounded-lg ${tool.color}`}>
-                      <div className={tool.textColor}>
-                        {tool.icon}
-                      </div>
-                    </div>
-                    <ExternalLink size={16} className="text-slate-400 group-hover:text-indigo-500 transition-colors" />
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {tool.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
-                    {tool.desc}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- AWARDS & RECOGNITION (Compact) ---*/}
-        <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div className="absolute right-0 bottom-0 w-96 h-96 bg-indigo-600 rounded-full blur-3xl"></div>
-            <div className="absolute left-0 top-0 w-64 h-64 bg-pink-600 rounded-full blur-3xl"></div>
-          </div>
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-bold mb-6">Awards</h2>
-                <p className="text-slate-300 mb-8 leading-relaxed">
-                  My experience includes awards and recognition from multiple institutions.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {["The 2021 ICPC South America-North Finals", "The 2021 ICPC Colombia - XXXV Maraton Nacional de Programacion ACIS REDIS", "2rd Place Ironhacks Competition 2018 Issued by RCODI Purdue University"].map((award, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-                      <Award size={16} className="text-yellow-400" />
-                      <span className="text-sm font-medium">{award}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-indigo-600 rounded-lg">
-                    <CalendarClock size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Now Page</h3>
-                    <p className="text-slate-300 text-sm mb-4">
-                      A snapshot of my current focus, projects, and priorities.
-                    </p>
-                    <a href="/about-me/now" className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors flex items-center gap-2">
-                      View Now Page <ArrowRight size={16} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* --- FOOTER --- */}
-        {/* <footer className="py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-center">
-          <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-slate-500 text-sm">
-              <p>© {new Date().getFullYear()} Luis Miguel Báez. Open Source MIT License.</p>
-            </div>
-            <div className="flex gap-6">
-              {['GitHub', 'StackOverflow', 'LinkedIn', 'DBLP'].map((social) => (
-                <a key={social} href="#" className="text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 text-sm font-medium transition-colors">
-                  {social}
-                </a>
-              ))}
-            </div>
-          </div>
-        </footer> */}
-
+        <AwardsSection awards={awards} nowPageUrl="/about-me/now" />
       </div>
     </Layout>
   );

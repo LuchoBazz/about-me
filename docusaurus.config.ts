@@ -46,7 +46,11 @@ const config: Config = {
           blogSidebarCount: 'ALL',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            require.resolve('@fontsource-variable/geist'),
+            require.resolve('@fontsource-variable/geist-mono'),
+            './src/css/custom.css',
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -55,6 +59,9 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Emoji_u263a.svg',
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'About Me',
       logo: {
@@ -96,7 +103,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: 'Community',
