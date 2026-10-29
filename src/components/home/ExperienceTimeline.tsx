@@ -1,13 +1,107 @@
 import React from 'react';
 import { Globe } from 'lucide-react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-import { Badge } from '@site/src/components/ui/badge';
+import { Card } from '@site/src/components/ui/card';
 import { cn } from '@site/src/lib/utils';
 import { PageSection, SectionHeading } from './PageSection';
-import type { ExperienceItem } from './types';
+import { companyMonths, formatDateRange, formatDuration, positionMonths } from './experience';
+import type { ExperienceCompany, ExperiencePosition } from './types';
+
+function CompanyLogo({ company, logo }: Pick<ExperienceCompany, 'company' | 'logo'>) {
+  const src = useBaseUrl(logo ?? '');
+
+  return (
+    <div
+      aria-hidden={logo ? undefined : true}
+      className={cn(
+        'size-[var(--logo)] shrink-0 overflow-hidden rounded-lg border',
+        logo ? 'bg-card' : 'bg-muted',
+      )}
+    >
+      {logo && (
+        <img
+          src={src}
+          alt={`${company} logo`}
+          loading="lazy"
+          decoding="async"
+          className="size-full object-contain"
+        />
+      )}
+    </div>
+  );
+}
+
+function PositionDetails({ position, company }: { position: ExperiencePosition; company?: string }) {
+  const subtitle = [company, position.employmentType].filter(Boolean).join(' · ');
+
+  return (
+    <>
+      {subtitle && <p className="text-sm text-foreground">{subtitle}</p>}
+      <p className="text-sm text-muted-foreground" suppressHydrationWarning>
+        {formatDateRange(position)} · {formatDuration(positionMonths(position))}
+      </p>
+      {position.location && <p className="text-sm text-muted-foreground">{position.location}</p>}
+      <p className="mt-2 text-sm leading-relaxed text-foreground">{position.desc}</p>
+    </>
+  );
+}
+
+function SinglePosition({ company, logo, positions: [position] }: ExperienceCompany) {
+  return (
+    <div className="flex gap-[var(--gap)]">
+      <CompanyLogo company={company} logo={logo} />
+      <div className="min-w-0 space-y-0.5">
+        <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground">{position.role}</h3>
+        <PositionDetails position={position} company={company} />
+      </div>
+    </div>
+  );
+}
+
+function MultiplePositions({ company, logo, positions }: ExperienceCompany) {
+  return (
+    <>
+      <div className="flex gap-[var(--gap)]">
+        <CompanyLogo company={company} logo={logo} />
+        <div className="min-w-0 space-y-0.5">
+          <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground">{company}</h3>
+          <p className="text-sm text-foreground" suppressHydrationWarning>
+            {formatDuration(companyMonths(positions))}
+          </p>
+        </div>
+      </div>
+
+      <ul className="mt-5">
+        {positions.map((position, index) => {
+          const isLast = index === positions.length - 1;
+          return (
+            <li key={`${position.role}-${position.start}`} className={cn('flex gap-[var(--gap)]', !isLast && 'pb-6')}>
+              <div aria-hidden="true" className="relative flex w-[var(--logo)] shrink-0 justify-center">
+                <span
+                  className={cn(
+                    'mt-[7px] size-2.5 rounded-full',
+                    position.end ? 'bg-muted-foreground/50' : 'bg-primary-emphasis',
+                  )}
+                />
+                {!isLast && (
+                  <span className="absolute top-[23px] -bottom-px left-1/2 w-0.5 -translate-x-1/2 rounded-full bg-border" />
+                )}
+              </div>
+              <div className="min-w-0 space-y-0.5">
+                <h4 className="text-base font-semibold leading-6 tracking-tight text-foreground">{position.role}</h4>
+                <PositionDetails position={position} />
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+}
 
 interface ExperienceTimelineProps {
-  experience: ExperienceItem[];
+  experience: ExperienceCompany[];
 }
 
 export function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
@@ -15,45 +109,15 @@ export function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
     <PageSection id="experience" headingId="experience-heading" tone="muted" width="narrow">
       <SectionHeading id="experience-heading" title="Professional Timeline" icon={Globe} />
 
-      <ol className="relative space-y-4 before:absolute before:top-2 before:bottom-2 before:left-[7px] before:w-px before:bg-gradient-to-b before:from-primary/60 before:via-border before:to-border">
-        {experience.map((exp, index) => {
-          const isCurrent = index === 0;
-          return (
-            <li key={`${exp.company}-${exp.period}`} className="relative pl-10">
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'absolute top-7 left-0 flex size-[15px] items-center justify-center rounded-full border bg-background',
-                  isCurrent && 'border-primary/50 shadow-[0_0_0_4px] shadow-primary/15',
-                )}
-              >
-                <span
-                  className={cn(
-                    'size-[7px] rounded-full',
-                    isCurrent ? 'bg-primary-emphasis' : 'bg-muted-foreground/40',
-                  )}
-                />
-              </span>
-
-              <div className="group rounded-xl border bg-card p-6 shadow-xs transition-all hover:border-primary/40 hover:shadow-glow">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary-emphasis">{exp.role}</h3>
-                    <p className="font-medium text-foreground/80">{exp.company}</p>
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className="whitespace-normal font-mono text-[11px] font-normal text-muted-foreground sm:mt-1 sm:whitespace-nowrap"
-                  >
-                    {exp.period}
-                  </Badge>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{exp.desc}</p>
-              </div>
+      <Card className="gap-0 py-0 shadow-xs">
+        <ul className="divide-y [--gap:0.75rem] [--logo:2.5rem] sm:[--gap:1rem] sm:[--logo:3rem]">
+          {experience.map((entry) => (
+            <li key={entry.company} className="px-4 py-5 sm:px-6 sm:py-6">
+              {entry.positions.length > 1 ? <MultiplePositions {...entry} /> : <SinglePosition {...entry} />}
             </li>
-          );
-        })}
-      </ol>
+          ))}
+        </ul>
+      </Card>
     </PageSection>
   );
 }

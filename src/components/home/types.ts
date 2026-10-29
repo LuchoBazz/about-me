@@ -6,11 +6,25 @@ export interface Stat {
   value: string;
 }
 
-export interface ExperienceItem {
+export type EmploymentType = 'Full-time' | 'Part-time' | 'Contract' | 'Freelance' | 'Internship';
+
+export interface ExperiencePosition {
   role: string;
-  company: string;
-  period: string;
+  employmentType?: EmploymentType;
+  /** Start month, formatted as `YYYY-MM`. */
+  start: string;
+  /** End month, formatted as `YYYY-MM`. Omit for a current ("Present") position. */
+  end?: string;
+  location?: string;
   desc: string;
+}
+
+export interface ExperienceCompany {
+  company: string;
+  /** Absolute URL or site path (e.g. `/img/logos/ibm.svg`). A neutral placeholder is shown when omitted. */
+  logo?: string;
+  /** Newest first. One position renders a single role; several render a grouped timeline. */
+  positions: ExperiencePosition[];
 }
 
 export interface Publication {

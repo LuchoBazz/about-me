@@ -25,7 +25,7 @@ import { FeaturedProjectsSection } from '@site/src/components/home/FeaturedProje
 import { SubpagesSection } from '@site/src/components/home/SubpagesSection';
 import { AwardsSection } from '@site/src/components/home/AwardsSection';
 import type {
-  ExperienceItem,
+  ExperienceCompany,
   FeaturedProject,
   LaunchedProject,
   Publication,
@@ -85,24 +85,36 @@ function HomePage() {
     }
   ];
 
-  const experience: ExperienceItem[] = [
+  const experience: ExperienceCompany[] = [
     {
-      role: "Back-End Software Engineer",
       company: "Instaleap by Instacart",
-      period: `Oct 2022 - Present · ${calculateDuration('2022-10-26')}`,
-      desc: "Back-End Engineer."
+      positions: [
+        {
+          role: "Back-End Software Engineer",
+          employmentType: "Full-time",
+          start: "2022-10",
+          desc: "Back-End Engineer."
+        }
+      ]
     },
     {
-      role: "Back-End Software Engineer",
       company: "IBM",
-      period: "Jan 2022 - Sep 2022 · 9 mos",
-      desc: "Backend Software Engineer + Integration."
-    },
-    {
-      role: "Software Engineer Intern",
-      company: "IBM",
-      period: "Jul 2021 - Dec 2021 · 6 mos",
-      desc: "Software Engineer Intern + Integration."
+      positions: [
+        {
+          role: "Back-End Software Engineer",
+          employmentType: "Full-time",
+          start: "2022-01",
+          end: "2022-09",
+          desc: "Backend Software Engineer + Integration."
+        },
+        {
+          role: "Software Engineer Intern",
+          employmentType: "Internship",
+          start: "2021-07",
+          end: "2021-12",
+          desc: "Software Engineer Intern + Integration."
+        }
+      ]
     }
   ];
 
