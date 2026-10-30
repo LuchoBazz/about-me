@@ -87,7 +87,7 @@ function HomePage() {
 
   const experience: ExperienceCompany[] = [
     {
-      company: "Instaleap by Instacart",
+      company: "Instaleap by 🥕 Instacart",
       logo: "https://github.com/user-attachments/assets/4418b5d2-13a0-4631-934e-1e6e84d3e8f3",
       positions: [
         {
