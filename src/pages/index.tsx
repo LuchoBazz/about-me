@@ -14,6 +14,7 @@ import {
   GraduationCap,
   Languages,
   Clock,
+  Target,
 } from 'lucide-react';
 import Layout from '@theme/Layout';
 
@@ -204,6 +205,12 @@ function HomePage() {
       desc: "Discover curious cultural facts with AI.",
       icon: Globe,
       link: "/about-me/apps/cultural-explorer/",
+    },
+    {
+      title: "Harada Goals",
+      desc: "Track goals with the Harada Method (Open Window 64).",
+      icon: Target,
+      link: "/about-me/harada",
     },
     {
       title: "Daily Inspiration",
